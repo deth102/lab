@@ -1,0 +1,84 @@
+{
+  "Nav": {
+    "brand": "ITD Lab",
+    "home": "Home",
+    "research": "Research",
+    "publications": "Publications",
+    "members": "Members",
+    "join": "Join"
+  },
+  "Hero": {
+    "eyebrow": "Hanoi University of Science and Technology",
+    "name": "ITD Lab",
+    "fullName": "Intelligent Technical Diagnostics",
+    "tagline": "Vibration · AI · Edge Diagnostics",
+    "bio": "We build intelligent fault-diagnosis systems for industrial machinery, bridging signal processing, machine learning and embedded hardware to make predictive maintenance accessible and reliable.",
+    "ctaPrimary": "Research",
+    "ctaSecondary": "Join us"
+  },
+  "About": {
+    "title": "About the Lab",
+    "body": "ITD Lab specializes in digital signal processing for early fault detection in rotating machinery. We combine vibration analysis, classical signal processing and modern AI to build diagnostic systems that work in the lab and on the factory floor.",
+    "stats": {
+      "founded": "Founded",
+      "foundedValue": "Hanoi, Vietnam",
+      "focus": "Focus",
+      "focusValue": "Vibration · AI · PHM",
+      "host": "Host",
+      "hostValue": "HUST · School of Mechanical Engineering"
+    }
+  },
+  "Research": {
+    "title": "Research Focus",
+    "subtitle": "Six interlocking directions, all aimed at reliable real-world diagnostics."
+  },
+  "Publications": {
+    "title": "Publications",
+    "subtitle": "Selected papers and works in progress.",
+    "viewLink": "View",
+    "types": {
+      "journal": "Journal",
+      "conference": "Conference",
+      "thesis": "Thesis"
+    }
+  },
+  "Members": {
+    "title": "Members",
+    "subtitle": "The people behind the work.",
+    "categories": {
+      "faculty": "Faculty",
+      "phd": "PhD students",
+      "master": "Master's students",
+      "bachelor": "Bachelor's students",
+      "alumni": "Alumni"
+    },
+    "empty": "Open seats — see the Join section."
+  },
+  "Join": {
+    "title": "Join the Lab",
+    "subtitle": "Open thesis topics and research positions.",
+    "requirementsLabel": "Requirements",
+    "applyTitle": "How to apply",
+    "applyBody": "Send a short email with your CV and a paragraph on why this topic interests you."
+  },
+  "News": {
+    "title": "News & Updates"
+  },
+  "Contact": {
+    "title": "Contact",
+    "addressLabel": "Address",
+    "address": "Room 633M-C7, Building C7, 1 Dai Co Viet Street, Hai Ba Trung, Hanoi",
+    "emailLabel": "Email",
+    "email": "du.nguyentrong@hust.edu.vn",
+    "phoneLabel": "Phone",
+    "phone": "+84 912 650 116"
+  },
+  "Footer": {
+    "rights": "ITD Lab · Hanoi University of Science and Technology"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "vi": "Tiếng Việt"
+  }
+}

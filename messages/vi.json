@@ -1,0 +1,84 @@
+{
+  "Nav": {
+    "brand": "ITD Lab",
+    "home": "Trang chủ",
+    "research": "Nghiên cứu",
+    "publications": "Công bố",
+    "members": "Thành viên",
+    "join": "Tham gia"
+  },
+  "Hero": {
+    "eyebrow": "Đại học Bách khoa Hà Nội",
+    "name": "ITD Lab",
+    "fullName": "Intelligent Technical Diagnostics",
+    "tagline": "Tín hiệu rung · AI · Chẩn đoán Edge",
+    "bio": "Chúng tôi xây dựng các hệ thống chẩn đoán lỗi thông minh cho máy móc công nghiệp, kết nối xử lý tín hiệu, machine learning và phần cứng nhúng để bảo trì dự đoán trở nên dễ tiếp cận và đáng tin cậy.",
+    "ctaPrimary": "Nghiên cứu",
+    "ctaSecondary": "Tham gia Lab"
+  },
+  "About": {
+    "title": "Về Lab",
+    "body": "ITD Lab chuyên sâu về xử lý tín hiệu số nhằm phát hiện sớm hư hỏng trong các máy quay. Chúng tôi kết hợp phân tích rung, xử lý tín hiệu cổ điển và AI hiện đại để xây các hệ chẩn đoán hoạt động được cả trong lab và trên dây chuyền sản xuất.",
+    "stats": {
+      "founded": "Địa điểm",
+      "foundedValue": "Hà Nội, Việt Nam",
+      "focus": "Hướng nghiên cứu",
+      "focusValue": "Rung · AI · PHM",
+      "host": "Đơn vị chủ quản",
+      "hostValue": "ĐHBK HN · Trường Cơ khí"
+    }
+  },
+  "Research": {
+    "title": "Hướng nghiên cứu",
+    "subtitle": "Sáu hướng đan xen, đều hướng tới chẩn đoán đáng tin cậy trong thực tế."
+  },
+  "Publications": {
+    "title": "Công bố khoa học",
+    "subtitle": "Một số công trình tiêu biểu và đang trong quá trình thực hiện.",
+    "viewLink": "Xem",
+    "types": {
+      "journal": "Tạp chí",
+      "conference": "Hội nghị",
+      "thesis": "Luận văn"
+    }
+  },
+  "Members": {
+    "title": "Thành viên",
+    "subtitle": "Những người đứng sau các công trình.",
+    "categories": {
+      "faculty": "Giảng viên",
+      "phd": "Nghiên cứu sinh",
+      "master": "Học viên Cao học",
+      "bachelor": "Sinh viên",
+      "alumni": "Cựu thành viên"
+    },
+    "empty": "Đang còn chỗ trống — xem mục Tham gia."
+  },
+  "Join": {
+    "title": "Tham gia Lab",
+    "subtitle": "Các đề tài luận văn và vị trí nghiên cứu đang mở.",
+    "requirementsLabel": "Yêu cầu",
+    "applyTitle": "Cách ứng tuyển",
+    "applyBody": "Gửi email ngắn kèm CV và một đoạn chia sẻ lý do bạn quan tâm đến đề tài này."
+  },
+  "News": {
+    "title": "Tin tức & Cập nhật"
+  },
+  "Contact": {
+    "title": "Liên hệ",
+    "addressLabel": "Địa chỉ",
+    "address": "Phòng 633M-C7, Tòa C7, 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội",
+    "emailLabel": "Email",
+    "email": "du.nguyentrong@hust.edu.vn",
+    "phoneLabel": "Điện thoại",
+    "phone": "+84 912 650 116"
+  },
+  "Footer": {
+    "rights": "ITD Lab · Đại học Bách khoa Hà Nội"
+  },
+  "LocaleSwitcher": {
+    "label": "Ngôn ngữ",
+    "en": "English",
+    "vi": "Tiếng Việt"
+  }
+}
