@@ -1,9 +1,28 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { gallery } from "@/data/gallery";
+import { translate } from "@/lib/translate";
+
+const SOURCE_LOCALE = "vi";
 
 export default async function Gallery() {
   const t = await getTranslations("Gallery");
+  const locale = await getLocale();
+
+  const items = await Promise.all(
+    gallery.map(async (p) => {
+      const tr = async (s?: string) =>
+        s && locale !== SOURCE_LOCALE
+          ? await translate(s, SOURCE_LOCALE, locale)
+          : s;
+      return {
+        src: p.src,
+        alt: (await tr(p.alt)) ?? p.alt,
+        name: await tr(p.name),
+        caption: await tr(p.caption),
+      };
+    })
+  );
 
   return (
     <section id="gallery" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
@@ -14,7 +33,7 @@ export default async function Gallery() {
         <p className="mt-3 text-foreground/70 max-w-2xl">{t("subtitle")}</p>
       </header>
 
-      {gallery.length === 0 ? (
+      {items.length === 0 ? (
         <ul className="mt-10 mx-auto max-w-4xl space-y-6">
           {Array.from({ length: 2 }).map((_, i) => (
             <li
@@ -27,7 +46,7 @@ export default async function Gallery() {
         </ul>
       ) : (
         <ul className="mt-10 mx-auto max-w-4xl space-y-10">
-          {gallery.map((p, i) => (
+          {items.map((p, i) => (
             <li
               key={i}
               className="group rounded-2xl border border-border/60 bg-card/40 overflow-hidden transition-colors hover:border-brand/50"

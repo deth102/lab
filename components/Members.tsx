@@ -1,9 +1,15 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { memberGroups } from "@/data/members";
+import { toWesternName } from "@/lib/vietnameseName";
+
+const SOURCE_LOCALE = "vi";
 
 export default async function Members() {
   const t = await getTranslations("Members");
+  const locale = await getLocale();
+  const displayName = (n: string) =>
+    locale === SOURCE_LOCALE ? n : toWesternName(n);
 
   return (
     <section id="members" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
@@ -40,13 +46,13 @@ export default async function Members() {
                         />
                       ) : (
                         <span className="flex h-full w-full items-center justify-center bg-brand/10 text-brand text-3xl md:text-4xl font-semibold">
-                          {initials(m.name)}
+                          {initials(displayName(m.name))}
                         </span>
                       )}
                     </div>
                     <div className="p-4">
                       <p className="font-semibold text-foreground leading-snug">
-                        {m.name}
+                        {displayName(m.name)}
                       </p>
                       {m.title && (
                         <p className="mt-1 text-[11px] uppercase tracking-wider text-brand">
