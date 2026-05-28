@@ -66,6 +66,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Lê Phúc Tân",
         affiliation: HUST,
+        photo: "/members/tan.jpg",
       },
     ],
   },
