@@ -5,7 +5,7 @@
     "research": "Research",
     "publications": "Publications",
     "members": "Members",
-    "join": "Join"
+    "contact": "Contact"
   },
   "Hero": {
     "eyebrow": "Hanoi University of Science and Technology",
@@ -34,13 +34,8 @@
   },
   "Publications": {
     "title": "Publications",
-    "subtitle": "Selected papers and works in progress.",
-    "viewLink": "View",
-    "types": {
-      "journal": "Journal",
-      "conference": "Conference",
-      "thesis": "Thesis"
-    }
+    "subtitle": "Selected papers and works in progress. Click a title to open the paper.",
+    "empty": "No publications listed yet."
   },
   "Members": {
     "title": "Members",
@@ -52,7 +47,7 @@
       "bachelor": "Bachelor's students",
       "alumni": "Alumni"
     },
-    "empty": "Open seats — see the Join section."
+    "empty": "Open seats — see the Contact page to apply."
   },
   "Join": {
     "title": "Join the Lab",

@@ -1,56 +1,41 @@
 export type Publication = {
+  // The clickable title shown on the page.
   title: string;
-  authors: string;
-  venue: string;
+  // Full link to the paper (DOI, arXiv, journal PDF, etc.). Required.
+  url: string;
+  // Year is required — the page groups publications by year automatically.
   year: number;
-  type: "journal" | "conference" | "thesis";
-  url?: string;
+  // Optional context shown below the title.
+  authors?: string;
+  venue?: string;
 };
 
-// EDIT TO UPDATE THE LAB'S PUBLICATIONS.
-// Sort newest first; the page groups them by year automatically.
+// =================================================================
+//  HOW TO ADD A PUBLICATION
+// =================================================================
+//  Copy the template block, paste at the top of the array, fill in.
+//  The page groups them by `year` (newest first) and renders the
+//  `title` as a clickable link to `url`.
+//
+//  TEMPLATE — uncomment and edit:
+//
+//  {
+//    title: "Paper title goes here",
+//    url: "https://doi.org/10.xxxx/yyyy",
+//    year: 2025,
+//    authors: "Author A., Author B., Nguyen T.D.",   // optional
+//    venue: "Journal of Sound and Vibration",         // optional
+//  },
+// =================================================================
+
 export const publications: Publication[] = [
+  // Example entry — delete or replace with a real one.
   {
     title:
-      "Vibration-based fault diagnosis of planetary roller screws via digital twin and transfer learning",
-    authors: "Nguyen M.C., et al.",
-    venue: "(In preparation, 2026)",
-    year: 2026,
-    type: "journal",
-  },
-  {
-    title:
-      "Real-time fault diagnosis on edge devices using lightweight classifiers from raw vibration signals",
-    authors: "ITD Lab",
-    venue: "National Conference on Mechanics (NCM)",
-    year: 2024,
-    type: "conference",
-  },
-  {
-    title:
-      "Transfer learning for fault diagnosis under varying operating conditions: a CNN approach",
-    authors: "ITD Lab",
-    venue: "Vietnam Journal of Mechanics",
-    year: 2024,
-    type: "journal",
-  },
-  {
-    title:
-      "Time-frequency analysis combined with random forest for gearbox fault classification",
-    authors: "ITD Lab",
-    venue: "International Conference on Engineering Mechanics and Automation",
-    year: 2023,
-    type: "conference",
-  },
-  {
-    title:
-      "Conv-Transformer architectures for early-stage rolling bearing fault detection",
-    authors: "ITD Lab",
-    venue: "Journal of Sound and Vibration (under review)",
-    year: 2023,
-    type: "journal",
+      "Example: Vibration-based fault diagnosis of rolling bearings (replace me)",
+    url: "https://example.com/paper",
+    year: new Date().getFullYear(),
+    authors: "Nguyen T.D., et al.",
+    venue: "Journal name (optional)",
   },
 ];
-
-// Note: This is a starter list compiled from the lab's research direction.
-// Replace with the lab's real bibliography (BibTeX or DOI list works great).

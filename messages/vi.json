@@ -5,7 +5,7 @@
     "research": "Nghiên cứu",
     "publications": "Công bố",
     "members": "Thành viên",
-    "join": "Tham gia"
+    "contact": "Liên hệ"
   },
   "Hero": {
     "eyebrow": "Đại học Bách khoa Hà Nội",
@@ -34,13 +34,8 @@
   },
   "Publications": {
     "title": "Công bố khoa học",
-    "subtitle": "Một số công trình tiêu biểu và đang trong quá trình thực hiện.",
-    "viewLink": "Xem",
-    "types": {
-      "journal": "Tạp chí",
-      "conference": "Hội nghị",
-      "thesis": "Luận văn"
-    }
+    "subtitle": "Một số công trình tiêu biểu. Bấm vào tiêu đề để mở bài báo.",
+    "empty": "Chưa có công bố nào được liệt kê."
   },
   "Members": {
     "title": "Thành viên",
@@ -52,7 +47,7 @@
       "bachelor": "Sinh viên",
       "alumni": "Cựu thành viên"
     },
-    "empty": "Đang còn chỗ trống — xem mục Tham gia."
+    "empty": "Đang còn chỗ trống — xem trang Liên hệ để ứng tuyển."
   },
   "Join": {
     "title": "Tham gia Lab",

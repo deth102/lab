@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "@/i18n/navigation";
 
 type Props = {
   eyebrow: string;
@@ -100,8 +101,8 @@ export default function Hero({
           {bio}
         </p>
         <div className="hero-cta mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href="#research"
+          <Link
+            href="/research"
             className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
           >
             {ctaPrimary}
@@ -116,13 +117,13 @@ export default function Hero({
             >
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
-          </a>
-          <a
-            href="#join"
+          </Link>
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full border border-border/60 px-5 py-2.5 text-sm font-medium text-foreground/80 hover:text-brand hover:border-brand/60 transition-colors"
           >
             {ctaSecondary}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

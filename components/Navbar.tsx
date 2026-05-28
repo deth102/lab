@@ -8,10 +8,10 @@ export default async function Navbar() {
 
   const links = [
     { href: "/", label: t("home") },
-    { href: "/#research", label: t("research") },
-    { href: "/#publications", label: t("publications") },
-    { href: "/#members", label: t("members") },
-    { href: "/#join", label: t("join") },
+    { href: "/research", label: t("research") },
+    { href: "/publications", label: t("publications") },
+    { href: "/members", label: t("members") },
+    { href: "/contact", label: t("contact") },
   ];
 
   return (
