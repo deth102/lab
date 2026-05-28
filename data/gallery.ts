@@ -1,37 +1,37 @@
 export type Photo = {
   src: string;       // path under public/, e.g. "/gallery/team.jpg"
   alt: string;       // accessibility text (for screen readers)
-  name?: string;     // who/what is in the photo — shown as the main label
-  caption?: string;  // optional secondary line (role, year, event…)
+  name?: string;     // event title or short label
+  caption?: string;  // optional secondary line (date, place…)
 };
 
 // =================================================================
-//  HOW TO ADD A PHOTO
+//  GALLERY = LAB EVENTS / ACTIVITIES
 // =================================================================
-//  1. Drop the image into  public/gallery/  (e.g. cuong.jpg)
-//  2. Add an entry below with:
-//      - src: "/gallery/<filename>"   (case-sensitive on Vercel!)
-//      - alt: short description (for screen readers)
-//      - name: who is in the photo (shown under the card)
-//      - caption: optional extra line (role, event, year…)
+//  This section showcases lab events: conferences, defenses, lab
+//  outings, group photos, experiments, equipment, etc.
 //
-//  Tips:
-//   - Square-ish photos look best (the grid uses a 4:3 aspect ratio).
-//   - Keep file size under ~500 KB. Use .jpg/.webp.
-//   - Order: top-left first, reading order (left → right, top → bottom).
+//  Individual member portraits live in  data/members.ts (use the
+//  `photo` field there), NOT here.
+//
+//  How to add an event photo:
+//   1. Drop the image into  public/gallery/  (e.g. ncm-2024.jpg)
+//   2. Add an entry below:
+//      - src: "/gallery/<filename>"
+//      - alt: short description (screen readers)
+//      - name: event title (shown bold under card)
+//      - caption: optional date / place
+//
+//  TEMPLATE:
+//
+//    {
+//      src: "/gallery/ncm-2024.jpg",
+//      alt: "Lab members presenting at NCM 2024",
+//      name: "National Conference on Mechanics",
+//      caption: "Hanoi · November 2024",
+//    },
 // =================================================================
 
 export const gallery: Photo[] = [
-  {
-    src: "/gallery/cuong.JPG",
-    alt: "Nguyễn Mạnh Cường",
-    name: "Nguyễn Mạnh Cường",
-    caption: "Master's researcher · NCU, Taiwan",
-  },
-  {
-    src: "/gallery/hung.jpg",
-    alt: "Phạm Thái Hưng",
-    name: "Phạm Thái Hưng",
-    caption: "Master's researcher · HUST",
-  },
+  // Add event photos here.
 ];

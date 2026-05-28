@@ -62,9 +62,9 @@
     "title": "News & Updates"
   },
   "Gallery": {
-    "title": "Lab Life",
-    "subtitle": "Snapshots from the lab — people, experiments, conferences.",
-    "placeholder": "Add photos in data/gallery.ts"
+    "title": "Events & Activities",
+    "subtitle": "Conferences, defenses, lab outings — moments worth remembering.",
+    "placeholder": "Add event photos in data/gallery.ts"
   },
   "Contact": {
     "title": "Contact",

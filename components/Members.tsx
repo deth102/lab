@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { memberGroups } from "@/data/members";
 
@@ -29,9 +30,21 @@ export default async function Members() {
                     className="rounded-xl border border-border/60 bg-card/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand font-semibold text-sm">
-                        {initials(m.name)}
-                      </span>
+                      {m.photo ? (
+                        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-border/60">
+                          <Image
+                            src={m.photo}
+                            alt={m.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover"
+                          />
+                        </span>
+                      ) : (
+                        <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand font-semibold text-sm">
+                          {initials(m.name)}
+                        </span>
+                      )}
                       <div className="min-w-0">
                         <p className="font-medium text-foreground leading-snug">
                           {m.name}

@@ -62,9 +62,9 @@
     "title": "Tin tức & Cập nhật"
   },
   "Gallery": {
-    "title": "Hoạt động Lab",
-    "subtitle": "Khoảnh khắc trong lab — con người, thí nghiệm, hội nghị.",
-    "placeholder": "Thêm ảnh vào data/gallery.ts"
+    "title": "Sự kiện & Hoạt động",
+    "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại — những khoảnh khắc đáng nhớ.",
+    "placeholder": "Thêm ảnh sự kiện vào data/gallery.ts"
   },
   "Contact": {
     "title": "Liên hệ",

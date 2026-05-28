@@ -2,7 +2,8 @@ export type Member = {
   name: string;
   title?: string;          // chức danh (Lab Director, PhD student, Master's researcher…)
   affiliation: string;    // đơn vị công tác (HUST · School of Mechanical Engineering…)
-  contact?: string;         // optional
+  photo?: string;          // optional path under public/, e.g. "/members/cuong.jpg"
+  contact?: string;         // optional (email or website URL)
 };
 
 export type MemberGroup = {
@@ -82,6 +83,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Phạm Thái Hưng",
         affiliation: HUST,
+        photo: "/members/hung.jpg",
       },
       {
         name: "Phạm Thành Trung",
@@ -94,14 +96,17 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Phạm Tuấn Đông",
         affiliation: "MCUT · Ming Chi University of Technology",
+        photo: "/members/dong.jpg",
       },
       {
         name: "Đỗ Danh Thanh Bình",
         affiliation: HUST,
+        photo: "/members/binh.jpg",
       },
       {
         name: "Nguyễn Mạnh Cường",
         affiliation: "NCU · National Central University",
+        photo: "/members/cuong.JPG",
         contact: "cuongnm.com",
       },
     ],
