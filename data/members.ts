@@ -128,10 +128,11 @@ export const memberGroups: MemberGroup[] = [
       { name: "Bùi Minh Thắng", affiliation: HUST },
       { name: "Đình Bách", affiliation: HUST },
       { name: "Nguyễn Công Minh", affiliation: HUST },
-      { name: "Nhật Hùng", affiliation: HUST },
-      { name: "Vũ Kỳ", affiliation: HUST },
+      { name: "Nhật Hùng", affiliation: HUST,photo: "/members/nhathung.jpg" },
+      { name: "Vũ Kỳ", affiliation: HUST, photo: "/members/ky.jpg" },
       { name: "Khôi Nguyên", affiliation: HUST },
       { name: "Huy Trung", affiliation: HUST },
+      { name: "Phan Phú Bình", affiliation: HUST, photo: "/members/binh.jpg" },
     ],
   },
 ];
