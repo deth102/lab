@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import ThemeToggle from "./ThemeToggle";
@@ -19,11 +20,16 @@ export default async function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="flex items-center gap-2 font-semibold tracking-tight text-foreground"
+          className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground"
         >
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-brand text-background font-bold text-xs">
-            IT
-          </span>
+          <Image
+            src="/lab-logo-mark.svg"
+            alt={t("brand")}
+            width={32}
+            height={32}
+            priority
+            className="h-8 w-8"
+          />
           <span className="text-base">{t("brand")}</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">

@@ -36,20 +36,32 @@ export default async function Members() {
                         <p className="font-medium text-foreground leading-snug">
                           {m.name}
                         </p>
-                        <p className="mt-0.5 text-xs uppercase tracking-wider text-brand">
-                          {m.title}
-                        </p>
+                        {m.title && (
+                          <p className="mt-0.5 text-xs uppercase tracking-wider text-brand">
+                            {m.title}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <p className="mt-3 text-sm text-foreground/75 leading-relaxed">
                       {m.affiliation}
                     </p>
-                    {m.email && (
+                    {m.contact && (
                       <a
-                        href={`mailto:${m.email}`}
+                        href={contactHref(m.contact)}
+                        target={
+                          contactHref(m.contact).startsWith("http")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          contactHref(m.contact).startsWith("http")
+                            ? "noreferrer noopener"
+                            : undefined
+                        }
                         className="mt-3 inline-block text-xs text-brand hover:underline underline-offset-4 break-all"
                       >
-                        {m.email}
+                        {m.contact}
                       </a>
                     )}
                   </li>
@@ -67,4 +79,11 @@ function initials(name: string): string {
   const parts = name.replace(/\(.*?\)/g, "").trim().split(/\s+/);
   if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function contactHref(value: string): string {
+  const v = value.trim();
+  if (v.includes("@") && !v.includes("/")) return `mailto:${v}`;
+  if (/^https?:\/\//i.test(v)) return v;
+  return `https://${v}`;
 }
