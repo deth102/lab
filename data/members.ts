@@ -80,6 +80,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Hoàng Nhân Phúc",
         affiliation: HUST,
+        photo: "/members/du.jpg",
       },
       {
         name: "Phạm Thái Hưng",
@@ -89,6 +90,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Phạm Thành Trung",
         affiliation: "MCUT · Ming Chi University of Technology",
+        photo: "/members/du.jpg",
       },
       {
         name: "Nguyễn Quang Huy",
