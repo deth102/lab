@@ -1,8 +1,8 @@
 export type Member = {
   name: string;
-  title: string;          // chức danh (Lab Director, PhD student, Master's researcher…)
+  title?: string;          // chức danh (Lab Director, PhD student, Master's researcher…)
   affiliation: string;    // đơn vị công tác (HUST · School of Mechanical Engineering…)
-  email?: string;         // optional
+  contact?: string;         // optional
 };
 
 export type MemberGroup = {
@@ -35,19 +35,44 @@ export const memberGroups: MemberGroup[] = [
     members: [
       // Example — replace or remove.
       {
-        name: "Replace me",
+        name: "Nguyễn Trọng Du",
         title: "Lab Director",
+        affiliation: "HUST · School of Mechanical Engineering",
+      },
+            {
+        name: "Trương Quốc Chiến",
+        title: "",
         affiliation: "HUST · School of Mechanical Engineering",
       },
     ],
   },
   {
     category: "phd",
-    members: [],
+    members: [
+      {
+        name: "Lê Phúc Tân",
+        affiliation: "HUST · School of Mechanical Engineering",
+      },
+            {
+        name: "Nguyễn Văn Quyền",
+        affiliation: "HUST · School of Mechanical Engineering",
+      },
+    ],
   },
   {
     category: "master",
-    members: [],
+    members: [      
+            {
+        name: "Phạm Thái Hưng",
+        affiliation: "HUST · School of Mechanical Engineering",
+        
+      },
+      {
+        name: "Nguyễn Mạnh Cường",
+        affiliation: "NCU · National Central University",
+        contact: "cuongnm.com",
+      },
+      ],
   },
   {
     category: "bachelor",
