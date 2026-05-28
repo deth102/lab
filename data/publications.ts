@@ -26,6 +26,8 @@
 
 export const publicationsBibtex = String.raw`
 
+% ============================ 2026 ============================
+
 @article{huang2026hybrid,
   author  = {Huang, Shyh-Chin and Trung, Pham and Nguyen, Trong-Du and Chiu, Yu-Jen},
   year    = {2026},
@@ -56,6 +58,8 @@ export const publicationsBibtex = String.raw`
   doi       = {10.1109/MEMS64181.2026.11419509}
 }
 
+% ============================ 2025 ============================
+
 @article{dien2025gearmesh,
   author  = {Dien, Nguyen and Pham, Tuan-Dong and Do, Danh-Thanh-Binh and Liang, Jin-Wei and Nguyen, Trong-Du},
   year    = {2025},
@@ -75,6 +79,124 @@ export const publicationsBibtex = String.raw`
   isbn      = {978-3-032-03858-6},
   booktitle = {Smart Innovation, Systems and Technologies},
   doi       = {10.1007/978-3-032-03859-3_4}
+}
+
+% ============================ 2024 ============================
+
+@article{nguyen2024tacholess,
+  author  = {Nguyen, Trong-Du and Nguyen, Huu-Cuong and Nguyen, Van-Minh-Hoang and Nguyen, Phong-Dien},
+  year    = {2024},
+  title   = {Tacholess Time Synchronous Averaging for Gear Fault Diagnosis in Wind Turbine Gearboxes Using a Single Accelerometer},
+  journal = {Machines}
+}
+
+@article{nguyen2024deeplearning,
+  author  = {Nguyen, Trong-Du and Nguyen, Huu-Cuong and Pham, Duong-Hung and Nguyen, Phong-Dien},
+  year    = {2024},
+  title   = {A distinguished deep learning method for gear fault classification using time-frequency representation},
+  journal = {Discover Applied Sciences},
+  doi     = {10.1007/s42452-024-06033-7}
+}
+
+@article{du2024automatic,
+  author  = {Nguyen, Trong-Du and Pham, Trung and Nguyen, Huu-Cuong and Dien, Nguyen Phong},
+  year    = {2024},
+  title   = {Automatic rolling bearings fault classification: a case study at varying speed conditions},
+  volume  = {10},
+  journal = {Frontiers in Mechanical Engineering},
+  pages   = {1341466},
+  doi     = {10.3389/fmech.2024.1341466}
+}
+
+@article{nguyen2024wavelet,
+  author  = {Nguyen, Trong-Du and Nguyen, Phong-Dien},
+  year    = {2024},
+  title   = {Improvements in the Wavelet Transform and Its Variations: Concepts and Applications in Diagnosing Gearbox in Non-Stationary Conditions},
+  volume  = {14},
+  pages   = {4642},
+  journal = {Applied Sciences},
+  doi     = {10.3390/app14114642}
+}
+
+% ============================ 2022 ============================
+
+@article{du2022sideband,
+  author  = {Nguyen, Trong-Du and Dien, Nguyen Phong and Nga, Nguyen Thi Thanh},
+  year    = {2022},
+  title   = {Gear fault detection in gearboxes operated in non-stationary conditions based on variable sideband analysis without a tachometer},
+  volume  = {8},
+  pages   = {1021222},
+  journal = {Frontiers in Mechanical Engineering},
+  doi     = {10.3389/fmech.2022.1021222}
+}
+
+@inproceedings{du2022detection,
+  author    = {Nguyen, Trong-Du and Dien, Nguyen Phong and Nguyen, Huu-Cuong},
+  year      = {2022},
+  title     = {Detection Fault Symptoms of Rolling Bearing Based on Enhancing Collected Transient Vibration Signals},
+  booktitle = {The AUN/SEED-Net Joint Regional Conference in Transportation, Energy, and Mechanical Manufacturing Engineering (RCTEMME 2021), Lecture Notes in Mechanical Engineering, Springer},
+  doi       = {10.1007/978-981-19-1968-8_30}
+}
+
+@inproceedings{du2022advanced,
+  author    = {Nguyen, Trong-Du and Dien, Nguyen Phong},
+  year      = {2022},
+  title     = {Advanced Signal Decomposition Methods for Vibration Diagnosis of Rotating Machines: A Case Study at Variable Speed},
+  booktitle = {Modern Mechanics and Applications, Lecture Notes in Mechanical Engineering, Springer Singapore},
+  doi       = {10.1007/978-981-16-3239-6_30}
+}
+
+% ============================ 2021 ============================
+
+@inproceedings{du2021gearclassification,
+  author    = {Nguyen, Trong-Du and Dien, Nguyen Phong},
+  year      = {2021},
+  title     = {Gear Fault Classification Using the Vibration Signal Decomposition and Neural Networks},
+  booktitle = {Advances in Engineering Research and Application (ICERA 2020), Lecture Notes in Networks and Systems, vol. 178, Springer Cham},
+  doi       = {10.1007/978-3-030-64719-3_53}
+}
+
+% ============================ 2020 ============================
+
+@article{dien2020gearcrack,
+  author  = {Dien, Nguyen Phong and Nguyen, Trong-Du},
+  year    = {2020},
+  title   = {Gear Crack Detection Under Variable Rotating Speed Conditions using A Single Channel Accelerometer},
+  volume  = {10},
+  number  = {3},
+  journal = {International Journal of Mechanical and Production Engineering Research and Development (IJMPERD)}
+}
+
+@inproceedings{dien2020cepstrum,
+  author    = {Dien, Nguyen Phong and Nguyen, Trong-Du},
+  year      = {2020},
+  title     = {Fault Detection for Machines in Non-stationary Operations Using Order Tracking and Cepstrum},
+  booktitle = {Advances in Engineering Research and Application (ICERA 2019), Lecture Notes in Networks and Systems, vol. 104, Springer Cham}
+}
+
+% ============================ 2019 ============================
+
+@inproceedings{dien2019gearsvm,
+  author    = {Dien, Nguyen Phong and Nguyen, Trong-Du},
+  year      = {2019},
+  title     = {On a Diagnostic Procedure to Automatically Classify Gear Faults Using the Vibration Signal Decomposition and Support Vector Machine},
+  booktitle = {Advances in Engineering Research and Application (ICERA 2018), Lecture Notes in Networks and Systems, vol. 63, Springer Cham}
+}
+
+% ============================ 2014 ============================
+
+@inproceedings{du2014khybrid,
+  author    = {Nguyen, Trong-Du and Dien, Nguyen Phong},
+  year      = {2014},
+  title     = {Detecting gear tooth cracks using K-hybrid thresholding de-noising method based on continuous wavelet transforms},
+  booktitle = {Proceedings of the 7th AUN/SEED-Net Regional Conference in Mechanical and Manufacturing Engineering (RCMME 2014), Hanoi}
+}
+
+@inproceedings{du2014gearnnwp,
+  author    = {Nguyen, Trong-Du and Dien, Nguyen Phong},
+  year      = {2014},
+  title     = {Gear fault identification using artificial neural network and wavelet packet transform},
+  booktitle = {Proceedings of the 3rd International Conference on Engineering Mechanics and Automation (ICEMA 3), Hanoi}
 }
 
 `;

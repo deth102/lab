@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import News from "@/components/News";
+import Gallery from "@/components/Gallery";
 
 export default async function Home({
   params,
@@ -25,6 +26,9 @@ export default async function Home({
       />
       <Reveal>
         <News />
+      </Reveal>
+      <Reveal>
+        <Gallery />
       </Reveal>
     </>
   );

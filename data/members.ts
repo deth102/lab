@@ -60,11 +60,7 @@ export const memberGroups: MemberGroup[] = [
       },
       {
         name: "Nguyễn Hữu Cương",
-        affiliation: "Australia",
-      },
-      {
-        name: "Nguyễn Văn Minh Hoàng",
-        affiliation: "Taiwan",
+        affiliation: "Griffith University, Australia",
       },
       {
         name: "Lê Phúc Tân",
@@ -89,7 +85,7 @@ export const memberGroups: MemberGroup[] = [
       },
       {
         name: "Phạm Thành Trung",
-        affiliation: "Taiwan",
+        affiliation: "MCUT · Ming Chi University of Technology",
       },
       {
         name: "Nguyễn Quang Huy",
@@ -101,7 +97,7 @@ export const memberGroups: MemberGroup[] = [
       },
       {
         name: "Đỗ Danh Thanh Bình",
-        affiliation: "Taiwan",
+        affiliation: HUST,
       },
       {
         name: "Nguyễn Mạnh Cường",

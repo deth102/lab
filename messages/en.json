@@ -61,6 +61,11 @@
   "News": {
     "title": "News & Updates"
   },
+  "Gallery": {
+    "title": "Lab Life",
+    "subtitle": "Snapshots from the lab — people, experiments, conferences.",
+    "placeholder": "Add photos in data/gallery.ts"
+  },
   "Contact": {
     "title": "Contact",
     "addressLabel": "Address",
