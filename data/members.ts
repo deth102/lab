@@ -132,7 +132,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Vũ Kỳ", affiliation: HUST, photo: "/members/ky.jpg" },
       { name: "Khôi Nguyên", affiliation: HUST },
       { name: "Huy Trung", affiliation: HUST },
-      { name: "Phan Phú Bình", affiliation: HUST, photo: "/members/binh.jpg" },
+      { name: "Phan Phú Bình", affiliation: HUST, photo: "/members/teo.jpg" },
     ],
   },
 ];
