@@ -1,11 +1,27 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { news } from "@/data/news";
+import { translate } from "@/lib/translate";
 import { routing } from "@/i18n/routing";
+
+const SOURCE_LOCALE = "vi";
 
 export default async function News() {
   const t = await getTranslations("News");
   const locale = (await getLocale()) as (typeof routing.locales)[number];
-  const items = news[locale] ?? news[routing.defaultLocale];
+
+  const items = await Promise.all(
+    news.map(async (n) => ({
+      date: n.date,
+      title:
+        locale === SOURCE_LOCALE
+          ? n.title
+          : await translate(n.title, SOURCE_LOCALE, locale),
+      body:
+        locale === SOURCE_LOCALE
+          ? n.body
+          : await translate(n.body, SOURCE_LOCALE, locale),
+    }))
+  );
 
   return (
     <section id="news" className="mx-auto max-w-6xl px-6 py-16 md:py-20">

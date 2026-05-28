@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ITD Lab — Intelligent Technical Diagnostics",
+  title: "Intelligent Technical Diagnostics",
   description:
     "Vibration-based fault diagnosis, PHM and edge AI for industrial machinery. Hanoi University of Science and Technology.",
 };

@@ -22,27 +22,28 @@ export type MemberGroup = {
 //    name: "Nguyen Van A",
 //    title: "PhD student",
 //    affiliation: "HUST · School of Mechanical Engineering",
-//    email: "a@example.com",   // optional
+//    contact: "a@example.com",   // optional (email OR website url)
 //  },
 //
 //  Empty groups display a small "open seats" hint instead of being
 //  hidden — delete the group entirely if you don't want it shown.
 // =================================================================
 
+const HUST = "HUST · School of Mechanical Engineering";
+
 export const memberGroups: MemberGroup[] = [
   {
     category: "faculty",
     members: [
-      // Example — replace or remove.
       {
         name: "Nguyễn Trọng Du",
         title: "Lab Director",
-        affiliation: "HUST · School of Mechanical Engineering",
+        affiliation: HUST,
       },
-            {
+      {
         name: "Trương Quốc Chiến",
         title: "",
-        affiliation: "HUST · School of Mechanical Engineering",
+        affiliation: HUST,
       },
     ],
   },
@@ -50,36 +51,82 @@ export const memberGroups: MemberGroup[] = [
     category: "phd",
     members: [
       {
-        name: "Lê Phúc Tân",
-        affiliation: "HUST · School of Mechanical Engineering",
-      },
-            {
         name: "Nguyễn Văn Quyền",
-        affiliation: "HUST · School of Mechanical Engineering",
+        affiliation: HUST,
+      },
+      {
+        name: "Vũ Trần Chính",
+        affiliation: HUST,
+      },
+      {
+        name: "Nguyễn Hữu Cương",
+        affiliation: "Australia",
+      },
+      {
+        name: "Nguyễn Văn Minh Hoàng",
+        affiliation: "Taiwan",
+      },
+      {
+        name: "Lê Phúc Tân",
+        affiliation: HUST,
       },
     ],
   },
   {
     category: "master",
-    members: [      
-            {
+    members: [
+      {
+        name: "Nguyễn Khánh Dư",
+        affiliation: HUST,
+      },
+      {
+        name: "Hoàng Nhân Phúc",
+        affiliation: HUST,
+      },
+      {
         name: "Phạm Thái Hưng",
-        affiliation: "HUST · School of Mechanical Engineering",
-        
+        affiliation: HUST,
+      },
+      {
+        name: "Phạm Thành Trung",
+        affiliation: "Taiwan",
+      },
+      {
+        name: "Nguyễn Quang Huy",
+        affiliation: HUST,
+      },
+      {
+        name: "Phạm Tuấn Đông",
+        affiliation: "MCUT · Ming Chi University of Technology",
+      },
+      {
+        name: "Đỗ Danh Thanh Bình",
+        affiliation: "Taiwan",
       },
       {
         name: "Nguyễn Mạnh Cường",
         affiliation: "NCU · National Central University",
         contact: "cuongnm.com",
       },
-      ],
+    ],
   },
   {
     category: "bachelor",
-    members: [],
-  },
-  {
-    category: "alumni",
-    members: [],
+    members: [
+      { name: "Hoàng Văn Anh", affiliation: HUST },
+      { name: "Mạnh Tuấn", affiliation: HUST },
+      { name: "Lê Công Hiếu", affiliation: HUST },
+      { name: "Ngô Lâm", affiliation: HUST },
+      { name: "Bùi Minh Đức", affiliation: HUST },
+      { name: "Trần Chí Độ", affiliation: HUST },
+      { name: "Trương Văn Hiệp", affiliation: HUST },
+      { name: "Bùi Minh Thắng", affiliation: HUST },
+      { name: "Đình Bách", affiliation: HUST },
+      { name: "Nguyễn Công Minh", affiliation: HUST },
+      { name: "Nhật Hùng", affiliation: HUST },
+      { name: "Vũ Kỳ", affiliation: HUST },
+      { name: "Khôi Nguyên", affiliation: HUST },
+      { name: "Huy Trung", affiliation: HUST },
+    ],
   },
 ];

@@ -26,27 +26,55 @@
 
 export const publicationsBibtex = String.raw`
 
-% ----- Example entries (replace with the lab's real publications) -----
-
-@article{example2024,
-  title   = {Example: Vibration-based fault diagnosis of rolling bearings},
-  author  = {Nguyen T.D. and Pham T.H. and Le P.T.},
-  journal = {Journal of Sound and Vibration},
-  year    = {2024},
-  doi     = {10.1016/j.jsv.2024.000000}
+@article{huang2026hybrid,
+  author  = {Huang, Shyh-Chin and Trung, Pham and Nguyen, Trong-Du and Chiu, Yu-Jen},
+  year    = {2026},
+  month   = {04},
+  title   = {A Hybrid Diagnostic Framework with Compensation Algorithms for Inherent Rotor Faults Using Rotor Experiments},
+  volume  = {26},
+  journal = {Sensors},
+  doi     = {10.3390/s26082565}
 }
 
-@inproceedings{example2023,
-  title     = {Example: Real-time edge inference for rotating machinery},
-  author    = {ITD Lab},
-  booktitle = {National Conference on Mechanics (NCM)},
-  year      = {2023},
-  url       = {https://example.com/paper.pdf}
+@article{nguyen2026biosensor,
+  author  = {Nguyen, Trong-Du and Nguyen, Huy and Tran, Mai and Nguyen, Son and Do, Cuong},
+  year    = {2026},
+  month   = {02},
+  title   = {Disposable non-enzymatic impedimetric biosensor using Mn-doped ZnS-chitosan nanocomposite for tetracycline detection},
+  volume  = {21},
+  journal = {PLOS One},
+  doi     = {10.1371/journal.pone.0344103}
 }
 
-@misc{exampleMinimal,
-  title = {Example: A title alone is enough to show up},
-  year  = {2025}
+@inproceedings{nguyen2026mems,
+  author    = {Nguyen, Huu Cuong and Truong, Thanh and Habeb, Alaa and Zuaiter, Omar and Nguyen, Trong-Du and Woodfield, P. and Dau, Van and Dao, Dzung Viet},
+  year      = {2026},
+  month     = {01},
+  pages     = {851-854},
+  title     = {2-DOF Electromagnetic MEMS Mirror for Dental Laser Ablation},
+  booktitle = {2026 IEEE 39th International Conference on Micro Electro Mechanical Systems (MEMS)},
+  doi       = {10.1109/MEMS64181.2026.11419509}
+}
+
+@article{dien2025gearmesh,
+  author  = {Dien, Nguyen and Pham, Tuan-Dong and Do, Danh-Thanh-Binh and Liang, Jin-Wei and Nguyen, Trong-Du},
+  year    = {2025},
+  month   = {11},
+  title   = {Strain energy-based gear mesh stiffness modeling and synthetic data generation for AI-driven fault diagnosis in smart manufacturing},
+  volume  = {11},
+  journal = {Frontiers in Mechanical Engineering},
+  doi     = {10.3389/fmech.2025.1682102}
+}
+
+@inbook{nguyenvanminh2025gearcnn,
+  author    = {Nguyen Van Minh, Hoang and Pham, Thai-Hung and Nguyen, Trong-Du and Nguyen, Thi and Dien, Nguyen},
+  year      = {2025},
+  month     = {11},
+  pages     = {35-45},
+  title     = {A Study of Convolutional Neural Networks Combined with Autoencoders for Gear Fault Classification},
+  isbn      = {978-3-032-03858-6},
+  booktitle = {Smart Innovation, Systems and Technologies},
+  doi       = {10.1007/978-3-032-03859-3_4}
 }
 
 `;
