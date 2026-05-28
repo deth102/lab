@@ -37,6 +37,6 @@ export const gallery: Photo[] = [
        src: "/gallery/liangvelab.jpg",
        alt: "...",
        name: "Chào đón Giáo sư Jing-Wei Liang từ Đại học MCUT Đài Loan đến thăm và làm việc cùng Lab và Giáo sư Yong-Hwa Park từ KAIST Hàn Quốc",
-       caption: "Hanoi · November 2024",
+       caption: "Hanoi · April 2026",
      },
 ];
