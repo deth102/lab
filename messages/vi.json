@@ -49,7 +49,7 @@
       "bachelor": "Sinh viên",
       "alumni": "Cựu thành viên"
     },
-    "empty": "Đang còn chỗ trống — xem trang Liên hệ để ứng tuyển."
+    "empty": "Đang còn chỗ trống xem trang Liên hệ để ứng tuyển."
   },
   "Join": {
     "title": "Tham gia Lab",
@@ -63,7 +63,7 @@
   },
   "Gallery": {
     "title": "Sự kiện & Hoạt động",
-    "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại — những khoảnh khắc đáng nhớ.",
+    "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại những khoảnh khắc đáng nhớ.",
     "placeholder": "Thêm ảnh sự kiện vào data/gallery.ts"
   },
   "Contact": {

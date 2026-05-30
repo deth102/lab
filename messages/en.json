@@ -63,7 +63,7 @@
   },
   "Gallery": {
     "title": "Events & Activities",
-    "subtitle": "Conferences, defenses, lab outings — moments worth remembering.",
+    "subtitle": "Conferences, defenses, lab outings moments worth remembering.",
     "placeholder": "Add event photos in data/gallery.ts"
   },
   "Contact": {

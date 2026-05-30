@@ -18,16 +18,22 @@ export const news: NewsItem[] = [
   {
     date: "2026-05-28",
     title: "Thạc sĩ Trung trúng tuyển vào chương trình tiến sĩ ở KAIST Hàn Quốc",
-    body: "Đề tài 24 tháng về chẩn đoán hỏng vít-me bi đũa hành tinh, sử dụng digital twin nền tảng vật lý và transfer learning, đã chính thức khởi động.",
+    body: "",
   },
-  {
+    {
     date: "2026-05-20",
     title: "Cử nhân Cường trúng tuyển vào chương trình thạc sĩ NCU Đài Loan",
     body: "Đề tài 24 tháng về chẩn đoán hỏng vít-me bi đũa hành tinh, sử dụng digital twin nền tảng vật lý và transfer learning, đã chính thức khởi động.",
   },
+    {
+    date: "2026-06-05",
+    title: "Cử Nhân Đỗ Danh Thanh Bình trúng tuyển chương trình trao đổi với MCUT Đài Loan",
+    body: "",
+  },
+
   {
-    date: "2026-06-20",
-    title: "Bảo vệ thành công luận văn Thạc sĩ",
+    date: "2026-08-20",
+    title: "Phạm Thái Hưng bảo vệ thành công luận văn Thạc sĩ",
     body: "Một số thành viên Lab đã bảo vệ thành công luận văn Thạc sĩ về chẩn đoán dựa trên tín hiệu rung.",
   },
 ];
