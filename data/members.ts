@@ -123,7 +123,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Bùi Minh Đức", affiliation: HUST, 
         photo: "/members/duc.jpg",
       },
-      { name: "Trần Chí Độ", affiliation: HUST },
+      { name: "Trần Chí Độ", affiliation: HUST, photo: "/members/mixi.jpg" },
       { name: "Trương Văn Hiệp", affiliation: HUST },
       { name: "Bùi Minh Thắng", affiliation: HUST },
       { name: "Đình Bách", affiliation: HUST },
