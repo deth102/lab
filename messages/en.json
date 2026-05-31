@@ -76,7 +76,8 @@
     "phone": "+84 912 650 116"
   },
   "Footer": {
-    "rights": "ITD Lab · Hanoi University of Science and Technology"
+    "rights": "ITD Lab · Hanoi University of Science and Technology",
+    "builtBy": "Built by"
   },
   "LocaleSwitcher": {
     "label": "Language",

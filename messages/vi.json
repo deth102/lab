@@ -76,7 +76,8 @@
     "phone": "+84 912 650 116"
   },
   "Footer": {
-    "rights": "ITD Lab · Đại học Bách khoa Hà Nội"
+    "rights": "ITD Lab · Đại học Bách khoa Hà Nội",
+    "builtBy": "Xây dựng bởi"
   },
   "LocaleSwitcher": {
     "label": "Ngôn ngữ",

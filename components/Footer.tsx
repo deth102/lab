@@ -10,7 +10,17 @@ export default async function Footer() {
         <span>
           © {year} · {t("rights")}
         </span>
-        <span className="text-xs">Built with Next.js · GSAP · Tailwind</span>
+        <span className="text-xs">
+          {t("builtBy")}{" "}
+          <a
+            href="https://cuongnm.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-foreground/80 hover:text-brand underline-offset-4 hover:underline"
+          >
+            cuongnm.com
+          </a>
+        </span>
       </div>
     </footer>
   );
