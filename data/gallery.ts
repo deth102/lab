@@ -39,10 +39,17 @@ export const gallery: Photo[] = [
        name: "Chào đón Giáo sư Jing-Wei Liang từ Đại học MCUT Đài Loan đến thăm và làm việc cùng Lab và Giáo sư Yong-Hwa Park từ KAIST Hàn Quốc",
        caption: "Hanoi · April 2026",
      },
-          {
+      {
+       src: "/gallery/mou_signing.jpg",
+       alt: "...",
+       name: "TRƯỜNG CƠ KHÍ TỔ CHỨC SEMINAR KHOA HỌC CỦA GS. JIN-WEI LIANG VÀ KÝ KẾT BIÊN BẢN GHI NHỚ HỢP TÁC VỚI MCUT",
+       caption: "Hanoi · April 2026",
+     },
+      {
        src: "/gallery/hoplab30.5.jpg",
        alt: "...",
        name: "Họp Lab tháng 5/2026: Chia sẻ tiến độ nghiên cứu và thảo luận kế hoạch sắp tới",
-       caption: "Hanoi · April 2026",
+       caption: "Hanoi · May 2026",
      },
+
 ];
