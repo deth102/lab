@@ -37,34 +37,64 @@ export const memberGroups: MemberGroup[] = [
     category: "faculty",
     members: [
       {
-        name: "Nguyễn Trọng Du",
+        name: "PGS.TS Nguyễn Trọng Du",
         title: "Lab Director",
         affiliation: HUST,
+        photo: "/members/du.jpg",
       },
       {
-        name: "Trương Quốc Chiến",
+        name: "PGS.TS Nguyễn Phong Điền",
+        title: "Lab Director",
+        affiliation: HUST,
+        photo: "/members/dien.jpg",
+      },
+      {
+        name: "TS. Trương Quốc Chiến",
         title: "",
         affiliation: HUST,
+        photo: "/members/chien.jpg",
       },
+      {
+        name: "TS. Nguyễn Thái Minh Tuấn",
+        title: "",
+        affiliation: HUST,
+        photo: "/members/minhtuan.png",
+      },
+      {
+        name: "TS. Nguyễn Thị Vân Hương",
+        title: "",
+        affiliation: HUST,
+        photo: "/members/vanhuong.jpg",
+      },
+      {
+        name: "TS. Nguyễn Hải Sơn",
+        title: "",
+        affiliation: HUST,
+        photo: "/members/haison.jpeg",
+      },
+
+
     ],
   },
   {
     category: "phd",
     members: [
       {
-        name: "Nguyễn Văn Quyền",
+        name: "Ths.Nguyễn Văn Quyền",
+        affiliation: HUST,
+        photo: "/members/quyen.jpg",
+      },
+      {
+        name: "Ths. Vũ Trần Chính",
         affiliation: HUST,
       },
       {
-        name: "Vũ Trần Chính",
-        affiliation: HUST,
-      },
-      {
-        name: "Nguyễn Hữu Cương",
+        name: "Ths. Nguyễn Hữu Cương",
         affiliation: "Griffith University, Australia",
+        photo: "/members/huucuong.jpg",
       },
       {
-        name: "Lê Phúc Tân",
+        name: "Ths. Lê Phúc Tân",
         affiliation: HUST,
         photo: "/members/tan.jpg",
       },
@@ -74,25 +104,29 @@ export const memberGroups: MemberGroup[] = [
     category: "master",
     members: [
       {
-        name: "Nguyễn Khánh Dư",
+        name: "Ths. Nguyễn Khánh Dư",
         affiliation: HUST,
       },
       {
         name: "Hoàng Nhân Phúc",
+        title: "Leader",
         affiliation: HUST,
       },
       {
         name: "Phạm Thái Hưng",
+        title: "Leader",
         affiliation: HUST,
         photo: "/members/hung.jpg",
       },
       {
         name: "Phạm Thành Trung",
+        title: "Leader",
         affiliation: "MCUT · Ming Chi University of Technology",
       },
       {
         name: "Nguyễn Quang Huy",
         affiliation: HUST,
+        title: "Leader",
         photo: "/members/huy.jpg",
       },
       {
@@ -103,11 +137,13 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Đỗ Danh Thanh Bình",
         affiliation: HUST,
+        title: "Leader",
         photo: "/members/binh.jpg",
       },
       {
         name: "Nguyễn Mạnh Cường",
         affiliation: "NCU · National Central University",
+        title: "Leader",
         photo: "/members/cuong.JPG",
         contact: "cuongnm.com",
       },
@@ -117,7 +153,7 @@ export const memberGroups: MemberGroup[] = [
     category: "bachelor",
     members: [
       { name: "Hoàng Văn Anh", affiliation: HUST },
-      { name: "Mạnh Tuấn", affiliation: HUST },
+      { name: "Lê Mạnh Tuấn", affiliation: HUST, title: "Leader"},
       { name: "Lê Công Hiếu", affiliation: HUST },
       { name: "Ngô Lâm", affiliation: HUST },
       { name: "Bùi Minh Đức", affiliation: HUST, 
