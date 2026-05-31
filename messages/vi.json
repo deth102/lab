@@ -61,6 +61,12 @@
   "News": {
     "title": "Tin tức & Cập nhật"
   },
+  "Stats": {
+    "members": "Thành viên",
+    "publications": "Công bố",
+    "years": "Năm hoạt động",
+    "research": "Hướng nghiên cứu"
+  },
   "Gallery": {
     "title": "Sự kiện & Hoạt động",
     "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại những khoảnh khắc đáng nhớ.",

@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackgroundBlobs from "@/components/BackgroundBlobs";
 import { routing } from "@/i18n/routing";
 
 const geistSans = Geist({
@@ -60,6 +62,8 @@ export default async function LocaleLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider>
+          <ScrollProgress />
+          <BackgroundBlobs />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

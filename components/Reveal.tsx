@@ -11,6 +11,10 @@ type Props = {
   y?: number;
   delay?: number;
   duration?: number;
+  /** CSS selector inside this section whose matched elements stagger in. */
+  staggerSelector?: string;
+  staggerY?: number;
+  staggerGap?: number;
   className?: string;
 };
 
@@ -19,6 +23,9 @@ export default function Reveal({
   y = 28,
   delay = 0,
   duration = 0.8,
+  staggerSelector,
+  staggerY = 16,
+  staggerGap = 0.06,
   className,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +37,15 @@ export default function Reveal({
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 88%",
+            once: true,
+          },
+        });
+
+        tl.fromTo(
           ref.current,
           { y, opacity: 0 },
           {
@@ -39,22 +54,41 @@ export default function Reveal({
             duration,
             delay,
             ease: "power3.out",
-            scrollTrigger: {
-              trigger: ref.current,
-              start: "top 88%",
-              once: true,
-            },
           }
         );
+
+        if (staggerSelector) {
+          const targets = ref.current!.querySelectorAll(staggerSelector);
+          if (targets.length > 0) {
+            tl.fromTo(
+              targets,
+              { y: staggerY, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.55,
+                stagger: staggerGap,
+                ease: "power3.out",
+              },
+              "-=0.4"
+            );
+          }
+        }
       });
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
         gsap.set(ref.current, { opacity: 1, y: 0 });
+        if (staggerSelector) {
+          gsap.set(ref.current!.querySelectorAll(staggerSelector), {
+            opacity: 1,
+            y: 0,
+          });
+        }
       });
     }, ref);
 
     return () => ctx.revert();
-  }, [y, delay, duration]);
+  }, [y, delay, duration, staggerSelector, staggerY, staggerGap]);
 
   return (
     <div ref={ref} className={className} style={{ opacity: 0 }}>

@@ -61,6 +61,12 @@
   "News": {
     "title": "News & Updates"
   },
+  "Stats": {
+    "members": "Members",
+    "publications": "Publications",
+    "years": "Years active",
+    "research": "Research areas"
+  },
   "Gallery": {
     "title": "Events & Activities",
     "subtitle": "Conferences, defenses, lab outings moments worth remembering.",

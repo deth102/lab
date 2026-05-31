@@ -10,7 +10,7 @@ export default async function MembersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <Reveal>
+    <Reveal staggerSelector="ul > li">
       <Members />
     </Reveal>
   );
