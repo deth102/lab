@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { memberGroups } from "@/data/members";
 import { toWesternName } from "@/lib/vietnameseName";
+import TiltCard from "./TiltCard";
 
 const SOURCE_LOCALE = "vi";
 
@@ -31,56 +32,55 @@ export default async function Members() {
             ) : (
               <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {group.members.map((m, i) => (
-                  <li
-                    key={i}
-                    className="glow-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:-translate-y-1 hover:border-brand/50"
-                  >
-                    <div className="relative aspect-square overflow-hidden bg-brand/5">
-                      {m.photo ? (
-                        <Image
-                          src={m.photo}
-                          alt={m.name}
-                          fill
-                          sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 45vw"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <span className="flex h-full w-full items-center justify-center bg-brand/10 text-brand text-3xl md:text-4xl font-semibold">
-                          {initials(displayName(m.name))}
-                        </span>
-                      )}
-                    </div>
-                    <div className="p-4">
-                      <p className="font-semibold text-foreground leading-snug">
-                        {displayName(m.name)}
-                      </p>
-                      {m.title && (
-                        <p className="mt-1 text-[11px] uppercase tracking-wider text-brand">
-                          {m.title}
+                  <li key={i} className="[perspective:900px]">
+                    <TiltCard className="glow-hover shine-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-brand/50">
+                      <div className="relative aspect-square overflow-hidden bg-brand/5">
+                        {m.photo ? (
+                          <Image
+                            src={m.photo}
+                            alt={m.name}
+                            fill
+                            sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 45vw"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <span className="flex h-full w-full items-center justify-center bg-brand/10 text-brand text-3xl md:text-4xl font-semibold">
+                            {initials(displayName(m.name))}
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-4">
+                        <p className="font-semibold text-foreground leading-snug">
+                          {displayName(m.name)}
                         </p>
-                      )}
-                      <p className="mt-2 text-sm text-foreground/75 leading-relaxed">
-                        {m.affiliation}
-                      </p>
-                      {m.contact && (
-                        <a
-                          href={contactHref(m.contact)}
-                          target={
-                            contactHref(m.contact).startsWith("http")
-                              ? "_blank"
-                              : undefined
-                          }
-                          rel={
-                            contactHref(m.contact).startsWith("http")
-                              ? "noreferrer noopener"
-                              : undefined
-                          }
-                          className="mt-2 inline-block text-xs text-brand hover:underline underline-offset-4 break-all"
-                        >
-                          {m.contact}
-                        </a>
-                      )}
-                    </div>
+                        {m.title && (
+                          <p className="mt-1 text-[11px] uppercase tracking-wider text-brand">
+                            {m.title}
+                          </p>
+                        )}
+                        <p className="mt-2 text-sm text-foreground/75 leading-relaxed">
+                          {m.affiliation}
+                        </p>
+                        {m.contact && (
+                          <a
+                            href={contactHref(m.contact)}
+                            target={
+                              contactHref(m.contact).startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              contactHref(m.contact).startsWith("http")
+                                ? "noreferrer noopener"
+                                : undefined
+                            }
+                            className="mt-2 relative z-[2] inline-block text-xs text-brand hover:underline underline-offset-4 break-all"
+                          >
+                            {m.contact}
+                          </a>
+                        )}
+                      </div>
+                    </TiltCard>
                   </li>
                 ))}
               </ul>

@@ -31,7 +31,7 @@ export default async function Navbar() {
             width={32}
             height={32}
             priority
-            className="h-8 w-8"
+            className="logo-glow h-8 w-8"
           />
           <span className="text-base">{t("brand")}</span>
         </Link>

@@ -43,7 +43,7 @@ export default async function Publications() {
                 {groups.get(year)!.map((p, i) => (
                   <li
                     key={`${year}-${i}`}
-                    className="glow-hover group rounded-xl border border-border/60 bg-card/30 backdrop-blur-sm p-5 hover:border-brand/50 hover:bg-card/60"
+                    className="glow-hover shine-hover group rounded-xl border border-border/60 bg-card/30 backdrop-blur-sm p-5 hover:border-brand/50 hover:bg-card/60"
                   >
                     <TitleOrLink p={p} />
                     {(p.authors || p.venue) && (

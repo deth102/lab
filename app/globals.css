@@ -76,6 +76,40 @@
   animation: shimmer-bar 2.4s ease-in-out infinite;
 }
 
+/* Diagonal light sweep on hover */
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shine-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    color-mix(in oklab, var(--foreground) 8%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-150%);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.shine-hover:hover::after {
+  transform: translateX(150%);
+}
+
+/* Logo mark hover glow */
+.logo-glow {
+  transition: filter 320ms ease;
+}
+.logo-glow:hover {
+  filter: drop-shadow(0 0 10px color-mix(in oklab, var(--brand) 70%, transparent))
+          drop-shadow(0 0 22px color-mix(in oklab, var(--accent) 35%, transparent));
+}
+
 /* Card glow on hover */
 .glow-hover {
   transition: box-shadow 350ms ease, transform 350ms ease, border-color 350ms ease;

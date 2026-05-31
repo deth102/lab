@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Link } from "@/i18n/navigation";
+import Magnetic from "./Magnetic";
 
 type Props = {
   eyebrow: string;
@@ -136,29 +137,33 @@ export default function Hero({
               {bio}
             </p>
             <div className="hero-cta mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="/research"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
-              >
-                {ctaPrimary}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-4 w-4"
+              <Magnetic>
+                <Link
+                  href="/research"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-accent px-5 py-2.5 text-sm font-medium text-background shadow-lg shadow-brand/30 hover:shadow-brand/50 transition-shadow"
                 >
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border/60 px-5 py-2.5 text-sm font-medium text-foreground/80 hover:text-brand hover:border-brand/60 transition-colors"
-              >
-                {ctaSecondary}
-              </Link>
+                  {ctaPrimary}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                  >
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-border/60 px-5 py-2.5 text-sm font-medium text-foreground/80 hover:text-brand hover:border-brand/60 transition-colors"
+                >
+                  {ctaSecondary}
+                </Link>
+              </Magnetic>
             </div>
           </div>
 
