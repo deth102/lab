@@ -33,6 +33,12 @@ export type Photo = {
 // =================================================================
 
 export const gallery: Photo[] = [
+        {
+       src: "/gallery/hoinghianhhung.jpg",
+       alt: "...",
+       name: "Hội nghị sinh viên nghiên cứu khoa học toàn quốc lần thứ 41 (2023-2024) tại Đại học Bách Khoa Hà Nội",
+       caption: "Hanoi · May 2026",
+     },
      {
        src: "/gallery/liangvelab.jpg",
        alt: "...",

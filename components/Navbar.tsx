@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
 import MobileMenu from "./MobileMenu";
+import NavLink from "./NavLink";
 
 export default async function Navbar() {
   const t = await getTranslations("Nav");
@@ -36,13 +37,9 @@ export default async function Navbar() {
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-foreground/75 hover:text-brand transition-colors"
-            >
+            <NavLink key={l.href} href={l.href}>
               {l.label}
-            </Link>
+            </NavLink>
           ))}
           <LocaleSwitcher />
           <ThemeToggle />

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Link } from "@/i18n/navigation";
+import NavLink from "./NavLink";
 
 type LinkItem = { href: string; label: string };
 
@@ -51,14 +51,14 @@ export default function MobileMenu({
         >
           <nav className="mx-auto max-w-6xl px-6 py-4 flex flex-col">
             {links.map((l) => (
-              <Link
+              <NavLink
                 key={l.href}
                 href={l.href}
+                variant="mobile"
                 onClick={() => setOpen(false)}
-                className="px-2 py-3 text-base text-foreground/85 hover:text-brand transition-colors border-b border-border/40 last:border-b-0"
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
         </div>
