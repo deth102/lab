@@ -34,43 +34,49 @@ export default async function Gallery() {
       </header>
 
       {items.length === 0 ? (
-        <ul className="mt-10 mx-auto max-w-4xl space-y-6">
+        <ul className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
           {Array.from({ length: 2 }).map((_, i) => (
             <li
               key={i}
-              className="aspect-[16/9] rounded-2xl border-2 border-dashed border-border/60 bg-card/20 flex items-center justify-center text-sm text-muted text-center px-6"
+              className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border/60 bg-card/20 flex items-center justify-center text-sm text-muted text-center px-6"
             >
               {t("placeholder")}
             </li>
           ))}
         </ul>
       ) : (
-        <ul className="mt-10 mx-auto max-w-4xl space-y-10">
+        <ul className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {items.map((p, i) => (
             <li
               key={i}
-              className="group rounded-2xl border border-border/60 bg-card/40 overflow-hidden transition-colors hover:border-brand/50"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border/60 bg-card/40"
             >
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  sizes="(min-width: 896px) 896px, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               {(p.name || p.caption) && (
-                <div className="px-5 py-4 md:px-6 md:py-5">
-                  {p.name && (
-                    <p className="text-base md:text-lg font-medium leading-snug text-foreground">
-                      {p.name}
-                    </p>
-                  )}
-                  {p.caption && (
-                    <p className="mt-1 text-sm text-muted">{p.caption}</p>
-                  )}
-                </div>
+                <>
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 text-white">
+                    {p.name && (
+                      <p className="text-base md:text-lg font-semibold leading-snug line-clamp-3">
+                        {p.name}
+                      </p>
+                    )}
+                    {p.caption && (
+                      <p className="mt-1.5 text-xs md:text-sm text-white/75">
+                        {p.caption}
+                      </p>
+                    )}
+                  </div>
+                </>
               )}
             </li>
           ))}

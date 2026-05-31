@@ -91,7 +91,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Ths. Nguyễn Hữu Cương",
         affiliation: "Griffith University, Australia",
-        photo: "/members/huucuong.jpg",
+        photo: "/members/huucuong.png",
       },
       {
         name: "Ths. Lê Phúc Tân",
@@ -110,6 +110,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Hoàng Nhân Phúc",
         title: "Leader",
+        photo: "/members/phuc.jpg",
         affiliation: HUST,
       },
       {
@@ -122,6 +123,7 @@ export const memberGroups: MemberGroup[] = [
         name: "Phạm Thành Trung",
         title: "Leader",
         affiliation: "MCUT · Ming Chi University of Technology",
+        photo: "/members/trung.jpg",
       },
       {
         name: "Nguyễn Quang Huy",
