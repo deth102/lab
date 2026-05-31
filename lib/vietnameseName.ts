@@ -22,8 +22,8 @@ const TITLE_RULES: TitleRule[] = [
   { regex: /^GS\b\.?\s+/i, en: "Prof " },
   { regex: /^PGS\b\.?\s+/i, en: "A/Prof " },
   // Doctorates.
-  { regex: /^TSKH\b\.?\s*/i, en: "Dr " },
-  { regex: /^TS\b\.?\s*/i, en: "Dr " },
+  { regex: /^TSKH\b\.?\s*/i, en: "PhD " },
+  { regex: /^TS\b\.?\s*/i, en: "PhD " },
   // Master's (no Western prenominal equivalent; drop it).
   { regex: /^Th\.?S\b\.?\s*/i, en: "" },
   // Engineer / Bachelor.
