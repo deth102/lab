@@ -52,6 +52,39 @@
   will-change: transform;
 }
 
+@keyframes aurora-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee-x {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.animate-marquee {
+  width: max-content;
+  animation: marquee-x 35s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes shimmer-bar {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+.shimmer-bar {
+  animation: shimmer-bar 2.4s ease-in-out infinite;
+}
+
+/* Card glow on hover */
+.glow-hover {
+  transition: box-shadow 350ms ease, transform 350ms ease, border-color 350ms ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent),
+              0 12px 40px -10px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -33,7 +33,7 @@ export default async function Members() {
                 {group.members.map((m, i) => (
                   <li
                     key={i}
-                    className="rounded-2xl border border-border/60 bg-card/40 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-brand/40"
+                    className="glow-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:-translate-y-1 hover:border-brand/50"
                   >
                     <div className="relative aspect-square overflow-hidden bg-brand/5">
                       {m.photo ? (

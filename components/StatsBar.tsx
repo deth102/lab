@@ -78,7 +78,7 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
         {stats.map((s, i) => (
           <div
             key={i}
-            className="stat-card rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm px-5 py-6 md:px-6 md:py-7 text-center"
+            className="stat-card glow-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm px-5 py-6 md:px-6 md:py-7 text-center"
           >
             <div className="flex items-baseline justify-center gap-0.5">
               <span

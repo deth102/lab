@@ -76,11 +76,36 @@ export default function Hero({
     return () => ctx.revert();
   }, []);
 
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!root.current) return;
+    const rect = root.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    root.current.style.setProperty("--mx", `${x}%`);
+    root.current.style.setProperty("--my", `${y}%`);
+  };
+
   return (
     <section
       ref={root}
-      className="relative overflow-hidden border-b border-border/60"
+      onMouseMove={onMove}
+      className="relative overflow-hidden border-b border-border/60 group/hero"
+      style={
+        {
+          "--mx": "50%",
+          "--my": "30%",
+        } as React.CSSProperties
+      }
     >
+      {/* Mouse-tracking spotlight */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+        style={{
+          background:
+            "radial-gradient(600px circle at var(--mx) var(--my), color-mix(in oklab, var(--brand) 18%, transparent), transparent 60%)",
+        }}
+      />
       <div
         aria-hidden
         className="hero-orb pointer-events-none absolute -top-32 right-[-10%] h-[520px] w-[520px] rounded-full bg-brand/15 blur-3xl"

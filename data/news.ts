@@ -22,7 +22,7 @@ export const news: NewsItem[] = [
   },
     {
     date: "2026-06-05",
-    title: "Cử Nhân Đỗ Danh Thanh Bình trúng tuyển chương trình trao đổi với MCUT Đài Loan",
+    title: "Kỹ sư Đỗ Danh Thanh Bình trúng tuyển chương trình trao đổi với MCUT Đài Loan",
     body: "",
   },
   {
