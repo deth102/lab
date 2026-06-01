@@ -6,6 +6,31 @@ import TiltCard from "./TiltCard";
 
 const SOURCE_LOCALE = "vi";
 
+const TITLE_VI: Record<string, string> = {
+  "Key Member": "Thành viên chính",
+  "Senior Advisor": "Cố vấn cấp cao",
+  "Head of Research Group": "Trưởng nhóm nghiên cứu",
+  "Research Group Leader": "Trưởng nhóm nghiên cứu",
+  "Lab Director": "Trưởng phòng lab",
+  "Collaborator": "Cộng tác viên",
+};
+
+const AFFIL_REPLACE_VI: [string, string][] = [
+  ["School of Mechanical Engineering", "Trường Cơ khí"],
+];
+
+function localizeTitle(title: string | undefined, locale: string) {
+  if (!title || locale !== SOURCE_LOCALE) return title;
+  return TITLE_VI[title] ?? title;
+}
+
+function localizeAffiliation(affil: string, locale: string) {
+  if (locale !== SOURCE_LOCALE) return affil;
+  let out = affil;
+  for (const [en, vi] of AFFIL_REPLACE_VI) out = out.replace(en, vi);
+  return out;
+}
+
 export default async function Members() {
   const t = await getTranslations("Members");
   const locale = await getLocale();
@@ -82,11 +107,11 @@ export default async function Members() {
                         </p>
                         {m.title && (
                           <p className="mt-1 text-[11px] uppercase tracking-wider text-brand">
-                            {m.title}
+                            {localizeTitle(m.title, locale)}
                           </p>
                         )}
                         <p className="mt-2 text-sm text-foreground/75 leading-relaxed">
-                          {m.affiliation}
+                          {localizeAffiliation(m.affiliation, locale)}
                         </p>
                         {m.contact && (
                           <a
