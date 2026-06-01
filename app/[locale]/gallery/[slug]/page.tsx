@@ -37,11 +37,14 @@ export default async function GalleryArticle({
   const caption = await tr(article.caption);
   const altText = (await tr(article.alt)) ?? article.alt;
 
-  // Parse body BEFORE translating so image refs are never sent to the
-  // translator (which would mangle the URL).
+  // Parse body BEFORE translating so image src URLs are never sent to
+  // the translator (which would mangle the path). The alt/caption is
+  // still translated normally.
   const blocks: Block[] = await Promise.all(
     parseBody(article.body ?? "").map(async (b): Promise<Block> => {
-      if (b.kind === "image") return b;
+      if (b.kind === "image") {
+        return { kind: "image", src: b.src, alt: (await tr(b.alt)) ?? b.alt };
+      }
       return { kind: "text", text: (await tr(b.text)) ?? b.text };
     })
   );
