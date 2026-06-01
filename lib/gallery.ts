@@ -26,20 +26,42 @@ export type Block =
   | { kind: "image"; src: string; alt: string };
 
 /**
- * Parse a body string into blocks. Paragraphs are split on blank lines.
- * Any block that is exactly a markdown image  ![alt](src)  becomes an
- * image block; everything else is a text paragraph.
+ * Parse a body string into blocks. Paragraphs are split on blank
+ * lines; WITHIN each paragraph, any line that is a markdown image
+ *   ![alt](src)
+ * becomes its own image block. Non-image lines are merged back into
+ * a single text block. This lets several images sit on consecutive
+ * lines without needing a blank line between them.
  */
+const IMG_RE = /^!\[(.*?)\]\((.+?)\)$/;
+
 export function parseBody(body: string): Block[] {
-  return body
+  const out: Block[] = [];
+  const paragraphs = body
     .split(/\n\s*\n/)
-    .map((b) => b.trim())
-    .filter(Boolean)
-    .map<Block>((raw) => {
-      const m = raw.match(/^!\[(.*?)\]\((.+?)\)$/);
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  for (const para of paragraphs) {
+    let textBuf: string[] = [];
+    const flush = () => {
+      const text = textBuf.join(" ").trim();
+      if (text) out.push({ kind: "text", text });
+      textBuf = [];
+    };
+
+    for (const line of para.split(/\n/)) {
+      const trimmed = line.trim();
+      const m = trimmed.match(IMG_RE);
       if (m) {
-        return { kind: "image", alt: m[1].trim(), src: m[2].trim() };
+        flush();
+        out.push({ kind: "image", alt: m[1].trim(), src: m[2].trim() });
+      } else if (trimmed) {
+        textBuf.push(trimmed);
       }
-      return { kind: "text", text: raw };
-    });
+    }
+    flush();
+  }
+
+  return out;
 }
