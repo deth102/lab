@@ -2,7 +2,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { articlePhotos, findArticle } from "@/lib/gallery";
+import {
+  articlePhotos,
+  findArticle,
+  parseBody,
+  type Block,
+} from "@/lib/gallery";
 import { translate } from "@/lib/translate";
 
 const SOURCE_LOCALE = "vi";
@@ -24,15 +29,22 @@ export default async function GalleryArticle({
 
   const t = await getTranslations("Gallery");
   const cur = await getLocale();
+  const needTranslate = cur !== SOURCE_LOCALE;
   const tr = async (s?: string) =>
-    s && cur !== SOURCE_LOCALE ? await translate(s, SOURCE_LOCALE, cur) : s;
+    s && needTranslate ? await translate(s, SOURCE_LOCALE, cur) : s;
 
   const title = (await tr(article.name)) ?? article.alt;
   const caption = await tr(article.caption);
-  const body = (await tr(article.body)) ?? "";
   const altText = (await tr(article.alt)) ?? article.alt;
 
-  const paragraphs = body.split(/\n\s*\n/).filter(Boolean);
+  // Parse body BEFORE translating so image refs are never sent to the
+  // translator (which would mangle the URL).
+  const blocks: Block[] = await Promise.all(
+    parseBody(article.body ?? "").map(async (b): Promise<Block> => {
+      if (b.kind === "image") return b;
+      return { kind: "text", text: (await tr(b.text)) ?? b.text };
+    })
+  );
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12 md:py-16">
@@ -76,11 +88,30 @@ export default async function GalleryArticle({
         />
       </div>
 
-      {paragraphs.length > 0 && (
-        <div className="prose mt-10 max-w-none space-y-5 text-base md:text-lg leading-relaxed text-foreground/85">
-          {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+      {blocks.length > 0 && (
+        <div className="mt-10 space-y-6 text-base md:text-lg leading-relaxed text-foreground/85">
+          {blocks.map((b, i) =>
+            b.kind === "image" ? (
+              <figure key={i} className="not-prose">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border/60">
+                  <Image
+                    src={b.src}
+                    alt={b.alt || altText}
+                    fill
+                    sizes="(min-width: 1024px) 896px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                {b.alt && (
+                  <figcaption className="mt-2 text-center text-sm text-muted">
+                    {b.alt}
+                  </figcaption>
+                )}
+              </figure>
+            ) : (
+              <p key={i}>{b.text}</p>
+            )
+          )}
         </div>
       )}
 

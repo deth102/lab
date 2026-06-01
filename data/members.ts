@@ -4,6 +4,9 @@ export type Member = {
   affiliation: string;    // đơn vị công tác (HUST · School of Mechanical Engineering…)
   photo?: string;          // optional path under public/, e.g. "/members/cuong.jpg"
   contact?: string;         // optional (email or website URL)
+  scholar?: string;         // optional Google Scholar profile URL — when set,
+                            //   the whole card opens this URL in a new tab.
+                            //   Find it at: scholar.google.com/citations?user=<ID>
 };
 
 export type MemberGroup = {
@@ -41,36 +44,42 @@ export const memberGroups: MemberGroup[] = [
         title: "Lab Director",
         affiliation: HUST,
         photo: "/members/du.jpg",
+        scholar: "https://scholar.google.com/citations?user=0l-GoPAAAAAJ&hl=en",
       },
       {
         name: "PGS.TS Nguyễn Phong Điền",
         title: "Lab Director",
         affiliation: HUST,
         photo: "/members/dien.jpg",
+        scholar: "https://scholar.google.com/citations?user=0KhWZ04AAAAJ&hl=en",
       },
       {
         name: "TS. Trương Quốc Chiến",
         title: "",
         affiliation: HUST,
         photo: "/members/chien.jpg",
+        scholar: "https://scholar.google.com/citations?user=P9yPJnsAAAAJ&hl=en",
       },
       {
         name: "TS. Nguyễn Thái Minh Tuấn",
         title: "",
         affiliation: HUST,
         photo: "/members/minhtuan.png",
+        scholar: "https://scholar.google.com/citations?user=D0LOGkcAAAAJ&hl=en",
       },
       {
         name: "TS. Nguyễn Thị Vân Hương",
         title: "",
         affiliation: HUST,
         photo: "/members/vanhuong.jpg",
+        scholar: "https://scholar.google.com/citations?user=EeTxfr4AAAAJ&hl=en",
       },
       {
         name: "TS. Nguyễn Hải Sơn",
         title: "",
         affiliation: HUST,
         photo: "/members/haison.jpeg",
+        scholar: "https://scholar.google.com/citations?user=lSbY-IUAAAAJ&hl=en",
       },
 
 
@@ -94,6 +103,7 @@ export const memberGroups: MemberGroup[] = [
         affiliation: "Griffith University, Australia",
         photo: "/members/huucuong.png",
         title: "ITD08 Leader",
+        scholar: "https://scholar.google.com/citations?user=tKCuv1gAAAAJ&hl=en",
       },
       {
         name: "Ths. Lê Phúc Tân",
@@ -122,12 +132,14 @@ export const memberGroups: MemberGroup[] = [
         title: "ITD01 Leader",
         affiliation: HUST,
         photo: "/members/hung.jpg",
+        scholar: "https://www.researchgate.net/scientific-contributions/Thai-Hung-Pham-2314575101",
       },
       {
         name: "Phạm Thành Trung",
         title: "ITD09 Leader",
         affiliation: "MCUT · Ming Chi University of Technology",
         photo: "/members/trung.jpg",
+        scholar: "https://scholar.google.com/citations?user=5KQVCpAAAAAJ&hl=en",
       },
       {
         name: "Nguyễn Quang Huy",
@@ -140,12 +152,14 @@ export const memberGroups: MemberGroup[] = [
         title: "ITD09 Member",
         affiliation: "MCUT · Ming Chi University of Technology",
         photo: "/members/dong.jpg",
+        scholar: "https://www.researchgate.net/scientific-contributions/Tuan-Dong-Pham-2330511574",
       },
       {
         name: "Đỗ Danh Thanh Bình",
         affiliation: HUST,
         title: "ITD02 Leader",
         photo: "/members/binh.jpg",
+        scholar: "https://www.researchgate.net/scientific-contributions/Danh-Thanh-Binh-Do-2314567615",
       },
       {
         name: "Nguyễn Mạnh Cường",

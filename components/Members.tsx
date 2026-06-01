@@ -33,8 +33,19 @@ export default async function Members() {
               <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {group.members.map((m, i) => (
                   <li key={i} className="[perspective:900px]">
-                    <TiltCard className="glow-hover shine-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-brand/50">
-                      <div className="relative aspect-square overflow-hidden bg-brand/5">
+                    <TiltCard className="relative glow-hover shine-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-brand/50">
+                      {/* Card-wide invisible link to Google Scholar (when set) */}
+                      {m.scholar && (
+                        <a
+                          href={m.scholar}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`Google Scholar — ${m.name}`}
+                          className="absolute inset-0 z-[1]"
+                        />
+                      )}
+
+                      <div className="relative aspect-square overflow-hidden bg-brand/5 pointer-events-none">
                         {m.photo ? (
                           <Image
                             src={m.photo}
@@ -48,8 +59,20 @@ export default async function Members() {
                             {initials(displayName(m.name))}
                           </span>
                         )}
+
+                        {/* Scholar badge on the photo, top-right */}
+                        {m.scholar && (
+                          <span
+                            aria-hidden
+                            className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/90 backdrop-blur-sm border border-border/60 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand shadow"
+                          >
+                            <ScholarIcon />
+                            Scholar
+                          </span>
+                        )}
                       </div>
-                      <div className="p-4">
+
+                      <div className="p-4 pointer-events-none">
                         <p className="font-semibold text-foreground leading-snug">
                           {displayName(m.name)}
                         </p>
@@ -74,7 +97,7 @@ export default async function Members() {
                                 ? "noreferrer noopener"
                                 : undefined
                             }
-                            className="mt-2 relative z-[2] inline-block text-xs text-brand hover:underline underline-offset-4 break-all"
+                            className="mt-2 pointer-events-auto relative z-[2] inline-block text-xs text-brand hover:underline underline-offset-4 break-all"
                           >
                             {m.contact}
                           </a>
@@ -103,4 +126,19 @@ function contactHref(value: string): string {
   if (v.includes("@") && !v.includes("/")) return `mailto:${v}`;
   if (/^https?:\/\//i.test(v)) return v;
   return `https://${v}`;
+}
+
+function ScholarIcon() {
+  // Simplified mortarboard glyph
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-3 w-3"
+      aria-hidden
+    >
+      <path d="M12 3 1 9l11 6 9-4.91V17h2V9z" />
+      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17z" />
+    </svg>
+  );
 }
