@@ -70,7 +70,9 @@
   "Gallery": {
     "title": "Sự kiện & Hoạt động",
     "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại những khoảnh khắc đáng nhớ.",
-    "placeholder": "Thêm ảnh sự kiện vào data/gallery.ts"
+    "placeholder": "Thêm ảnh sự kiện vào data/gallery.ts",
+    "readMore": "Đọc thêm",
+    "back": "Về trang chủ"
   },
   "Contact": {
     "title": "Liên hệ",

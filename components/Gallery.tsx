@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { gallery } from "@/data/gallery";
+import { slugOf } from "@/lib/gallery";
 import { translate } from "@/lib/translate";
+import { Link } from "@/i18n/navigation";
 
 const SOURCE_LOCALE = "vi";
 
@@ -20,6 +22,8 @@ export default async function Gallery() {
         alt: (await tr(p.alt)) ?? p.alt,
         name: await tr(p.name),
         caption: await tr(p.caption),
+        hasBody: !!p.body,
+        slug: slugOf(p),
       };
     })
   );
@@ -46,40 +50,72 @@ export default async function Gallery() {
         </ul>
       ) : (
         <ul className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
-          {items.map((p, i) => (
-            <li
-              key={i}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border/60 bg-card/40"
-            >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              {(p.name || p.caption) && (
-                <>
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 text-white">
-                    {p.name && (
-                      <p className="text-base md:text-lg font-semibold leading-snug line-clamp-3">
-                        {p.name}
-                      </p>
-                    )}
-                    {p.caption && (
-                      <p className="mt-1.5 text-xs md:text-sm text-white/75">
-                        {p.caption}
-                      </p>
-                    )}
-                  </div>
-                </>
-              )}
-            </li>
-          ))}
+          {items.map((p, i) => {
+            const card = (
+              <>
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {(p.name || p.caption) && (
+                  <>
+                    <div
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 text-white">
+                      {p.name && (
+                        <p className="text-base md:text-lg font-semibold leading-snug line-clamp-3">
+                          {p.name}
+                        </p>
+                      )}
+                      <div className="mt-1.5 flex items-center gap-2 text-xs md:text-sm text-white/75">
+                        {p.caption && <span>{p.caption}</span>}
+                        {p.hasBody && (
+                          <span className="inline-flex items-center gap-1 ml-auto rounded-full bg-white/15 backdrop-blur-sm px-2 py-0.5 text-[11px] font-medium">
+                            {t("readMore")}
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="h-3 w-3"
+                            >
+                              <path d="M5 12h14M13 5l7 7-7 7" />
+                            </svg>
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </>
+            );
+
+            return (
+              <li
+                key={i}
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border/60 bg-card/40"
+              >
+                {p.hasBody ? (
+                  <Link
+                    href={`/gallery/${p.slug}`}
+                    className="absolute inset-0"
+                    aria-label={p.name ?? p.alt}
+                  >
+                    {card}
+                  </Link>
+                ) : (
+                  card
+                )}
+              </li>
+            );
+          })}
         </ul>
       )}
     </section>

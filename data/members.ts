@@ -93,6 +93,7 @@ export const memberGroups: MemberGroup[] = [
         name: "Ths. Nguyễn Hữu Cương",
         affiliation: "Griffith University, Australia",
         photo: "/members/huucuong.png",
+        title: "ITD08 Leader",
       },
       {
         name: "Ths. Lê Phúc Tân",
@@ -136,6 +137,7 @@ export const memberGroups: MemberGroup[] = [
       },
       {
         name: "Phạm Tuấn Đông",
+        title: "ITD09 Member",
         affiliation: "MCUT · Ming Chi University of Technology",
         photo: "/members/dong.jpg",
       },
@@ -167,7 +169,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Đình Bách", affiliation: HUST, title: "ITD06 Member", photo: "/members/dinhbach.jpg" },
       { name: "Nguyễn Công Minh", affiliation: HUST, title: "ITD04 Leader" },
       { name: "Nhật Hùng", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
-      { name: "Vũ Kỳ", affiliation: HUST, title: "ITD02 Member", photo: "/members/ky.jpg" },
+      { name: "Vũ Kỳ", affiliation: HUST, title: "ITD08 Member", photo: "/members/ky.jpg" },
       { name: "Khôi Nguyên", affiliation: HUST, title:"ITD03 Member" },
       { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member" },
       { name: "Phan Phú Bình", affiliation: HUST, photo: "/members/teo.jpg", title: "ITD05 Member" },

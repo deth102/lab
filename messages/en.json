@@ -70,7 +70,9 @@
   "Gallery": {
     "title": "Events & Activities",
     "subtitle": "Conferences, defenses, lab outings moments worth remembering.",
-    "placeholder": "Add event photos in data/gallery.ts"
+    "placeholder": "Add event photos in data/gallery.ts",
+    "readMore": "Read more",
+    "back": "Back to home"
   },
   "Contact": {
     "title": "Contact",
