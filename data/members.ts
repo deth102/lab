@@ -90,7 +90,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Prof. Shyn-Chin Huang",          affiliation: "", title: "Collaborator", photo: "/members/huang.jpg" },
       { name: "Prof. Dao Viet Dzung",           affiliation: "", title: "Collaborator", photo: "/members/dzung.jpg" },
       { name: "Prof. Dao Ba Phong",             affiliation: "", title: "Collaborator", photo: "/members/phong.jpg" },
-      { name: "TS. Nguyễn Thanh Hải",           affiliation: "", title: "Collaborator", photo: "/members/thanhhai.jpg" },
+      { name: "TS. Nguyễn Thanh Hải",           affiliation: "", title: "Collaborator", photo: "/members/thanhhai.png" },
       { name: "TS. Trần Thị Mai",               affiliation: "", title: "Collaborator", photo: "/members/thimai.jpg" },
     ],
   },
