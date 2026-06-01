@@ -31,7 +31,7 @@ export const publicationsBibtex = String.raw`
   journal = {Sensors},
   doi     = {10.3390/s26082565}
 }
-hii
+
 @article{nguyen2026biosensor,
   author  = {Nguyen, Trong-Du and Nguyen, Huy and Tran, Mai and Nguyen, Son and Do, Cuong},
   year    = {2026},
