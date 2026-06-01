@@ -36,7 +36,7 @@ export function parseBody(body: string): Block[] {
     .map((b) => b.trim())
     .filter(Boolean)
     .map<Block>((raw) => {
-      const m = raw.match(/^!\[(.*?)\]\((.+?)\)$/s);
+      const m = raw.match(/^!\[(.*?)\]\((.+?)\)$/);
       if (m) {
         return { kind: "image", alt: m[1].trim(), src: m[2].trim() };
       }
