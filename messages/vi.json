@@ -46,7 +46,12 @@
       "faculty": "Giảng viên",
       "phd": "Nghiên cứu sinh",
       "master": "Học viên Cao học",
+      "finalyear": "Sinh viên năm cuối",
+      "year3": "Sinh viên năm 3",
+      "year2": "Sinh viên năm 2",
+      "year1": "Sinh viên năm 1",
       "bachelor": "Sinh viên",
+      "collaborator": "Cộng tác viên",
       "alumni": "Cựu thành viên"
     },
     "empty": "Đang còn chỗ trống xem trang Liên hệ để ứng tuyển."

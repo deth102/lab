@@ -46,7 +46,12 @@
       "faculty": "Faculty",
       "phd": "PhD students",
       "master": "Master's students",
+      "finalyear": "Final-year students",
+      "year3": "3rd-year students",
+      "year2": "2nd-year students",
+      "year1": "1st-year students",
       "bachelor": "Bachelor's students",
+      "collaborator": "Collaborators",
       "alumni": "Alumni"
     },
     "empty": "Open seats — see the Contact page to apply."
