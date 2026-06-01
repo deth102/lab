@@ -15,13 +15,23 @@ const TITLE_VI: Record<string, string> = {
   "Collaborator": "Cộng tác viên",
 };
 
+// ITD group codes: "ITD01 Leader" → "ITD01 Trưởng nhóm", "ITD01 Member" → "ITD01 Thành viên"
+function localizeITDTitle(title: string): string {
+  return title
+    .replace(/\bLeader\b/, "Trưởng nhóm")
+    .replace(/\bMember\b/, "Thành viên");
+}
+
 const AFFIL_REPLACE_VI: [string, string][] = [
   ["School of Mechanical Engineering", "Trường Cơ khí"],
 ];
 
 function localizeTitle(title: string | undefined, locale: string) {
   if (!title || locale !== SOURCE_LOCALE) return title;
-  return TITLE_VI[title] ?? title;
+  if (TITLE_VI[title]) return TITLE_VI[title];
+  // Handle ITD group codes like "ITD01 Leader", "ITD03 Member"
+  if (/^ITD\d+\s+(Leader|Member)$/.test(title)) return localizeITDTitle(title);
+  return title;
 }
 
 function localizeAffiliation(affil: string, locale: string) {
