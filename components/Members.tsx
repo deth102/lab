@@ -15,11 +15,11 @@ const TITLE_VI: Record<string, string> = {
   "Collaborator": "Cộng tác viên",
 };
 
-// ITD group codes: "ITD01 Leader" → "ITD01 Trưởng nhóm", "ITD01 Member" → "ITD01 Thành viên"
+// "ITD01 Leader" → "Trưởng nhóm ITD01"  |  "ITD01 Member" → "Thành viên ITD01"
 function localizeITDTitle(title: string): string {
   return title
-    .replace(/\bLeader\b/, "Trưởng nhóm")
-    .replace(/\bMember\b/, "Thành viên");
+    .replace(/^(ITD\d+)\s+Leader$/, "Trưởng nhóm $1")
+    .replace(/^(ITD\d+)\s+Member$/, "Thành viên $1");
 }
 
 const AFFIL_REPLACE_VI: [string, string][] = [
