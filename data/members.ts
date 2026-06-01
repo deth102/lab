@@ -97,6 +97,7 @@ export const memberGroups: MemberGroup[] = [
       {
         name: "Ths. Lê Phúc Tân",
         affiliation: HUST,
+        title: "ITD07 Leader",
         photo: "/members/tan.jpg",
       },
     ],
@@ -106,6 +107,7 @@ export const memberGroups: MemberGroup[] = [
     members: [
       {
         name: "Ths. Nguyễn Khánh Dư",
+        title: "ITD07 Member",
         affiliation: HUST,
       },
       {
@@ -158,9 +160,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Hoàng Văn Anh", affiliation: HUST, title: "ITD10 Member" },
       { name: "Lê Mạnh Tuấn", affiliation: HUST, title: "ITD10 Leader"},
       { name: "Lê Công Hiếu", affiliation: HUST,title: "ITD03 Member" },
-      { name: "Bùi Minh Đức", affiliation: HUST,title: "ITD06 Member",
-        photo: "/members/duc.jpg",
-      },
+      { name: "Bùi Minh Đức", affiliation: HUST,title: "ITD06 Member",photo: "/members/duc.jpg",},
       { name: "Trần Chí Độ", affiliation: HUST,title: "ITD01 Member", photo: "/members/mixi.jpg" },
       { name: "Trương Văn Hiệp", affiliation: HUST,title: "ITD01 Member" },
       { name: "Bùi Minh Thắng", affiliation: HUST,title:"ITD04 Member" },
@@ -172,6 +172,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member" },
       { name: "Phan Phú Bình", affiliation: HUST, photo: "/members/teo.jpg", title: "ITD05 Member" },
       { name: "Nguyễn Văn Tuấn", affiliation: HUST, photo: "/members/vantuan.jpg", title: "ITD05 Member" },
+      { name: "Lê Đức Dương", affiliation: HUST,  title: "ITD07 Member" },
     ],
   },
 ];
