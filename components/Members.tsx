@@ -30,9 +30,13 @@ export default async function Members() {
             {group.members.length === 0 ? (
               <p className="mt-4 text-sm text-muted italic">{t("empty")}</p>
             ) : (
-              <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              <ul className={
+                group.members.length === 1
+                  ? "mt-6 flex justify-center"
+                  : "mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+              }>
                 {group.members.map((m, i) => (
-                  <li key={i} className="[perspective:900px]">
+                  <li key={i} className={`[perspective:900px] ${group.members.length === 1 ? "w-56 md:w-72" : ""}`}>
                     <TiltCard className="relative glow-hover shine-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-brand/50">
                       {/* Card-wide invisible link to Google Scholar (when set) */}
                       {m.scholar && (

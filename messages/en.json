@@ -43,6 +43,7 @@
     "title": "Members",
     "subtitle": "The people behind the work.",
     "categories": {
+      "head": "Head of Research Group",
       "faculty": "Faculty",
       "phd": "PhD students",
       "master": "Master's students",

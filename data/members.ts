@@ -9,7 +9,7 @@ export type Member = {
 
 export type MemberGroup = {
   // Available keys: faculty | phd | master | finalyear | year3 | year2 | year1 | alumni
-  category: "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "collaborator" | "alumni";
+  category: "head" | "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "collaborator" | "alumni";
   members: Member[];
 };
 
@@ -34,15 +34,20 @@ const HUST = "HUST · School of Mechanical Engineering";
 
 export const memberGroups: MemberGroup[] = [
   {
-    category: "faculty",
+    category: "head",
     members: [
       {
         name: "PGS.TS Nguyễn Trọng Du",
-        title: "Research Group Leader",
+        title: "Head of Research Group",
         affiliation: HUST,
         photo: "/members/du.png",
         scholar: "https://scholar.google.com/citations?user=0l-GoPAAAAAJ&hl=en",
       },
+    ],
+  },
+  {
+    category: "faculty",
+    members: [
       {
         name: "PGS.TS Nguyễn Phong Điền",
         title: "Senior Advisor",

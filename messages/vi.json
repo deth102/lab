@@ -43,6 +43,7 @@
     "title": "Thành viên",
     "subtitle": "Những người đứng sau các công trình.",
     "categories": {
+      "head": "Trưởng nhóm nghiên cứu",
       "faculty": "Giảng viên",
       "phd": "Nghiên cứu sinh",
       "master": "Học viên Cao học",
