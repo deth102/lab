@@ -90,7 +90,7 @@ export const memberGroups: MemberGroup[] = [
     members: [
       { name: "PGS.TS. Nguyễn Thị Thanh Nga", affiliation: "", title: "Collaborator", photo: "/members/nga.jpg"},
       { name: "TS. Bùi Quang Thành",           affiliation: "", title: "Collaborator", photo: "/members/thanh.jpg" },
-      { name: "Assoc. Prof. Nguyen Thi Phuong Khanh", affiliation: "", title: "Collaborator", photo: "/members/khanh.jpg" },
+      { name: "Prof. Nguyen Thi Phuong Khanh", affiliation: "", title: "Collaborator", photo: "/members/khanh.jpg" },
       { name: "Prof. Jin-Wei Liang",            affiliation: "", title: "Collaborator", photo: "/members/liang.jpg" },
       { name: "Prof. Shyn-Chin Huang",          affiliation: "", title: "Collaborator", photo: "/members/huang.jpg" },
       { name: "Prof. Dao Viet Dzung",           affiliation: "", title: "Collaborator", photo: "/members/dzung.jpg" },
@@ -204,11 +204,11 @@ export const memberGroups: MemberGroup[] = [
     category: "year2",
     members: [
       { name: "Trần Chí Độ", affiliation: HUST, title: "ITD01 Member", photo: "/members/mixi.jpg" },
-      { name: "Trương Văn Hiệp", affiliation: HUST, title: "ITD01 Member" },
+      { name: "Trương Văn Hiệp", affiliation: HUST, title: "ITD01 Member", photo: "/members/hiep.jpg" },
       { name: "Bùi Minh Thắng", affiliation: HUST, title: "ITD04 Member" },
       { name: "Nguyễn Đình Bách", affiliation: HUST, title: "ITD06 Member", photo: "/members/dinhbach.jpg" },
       { name: "Nguyễn Công Minh", affiliation: HUST, title: "ITD04 Leader" },
-      { name: "Lê Đức Dương", affiliation: HUST, title: "ITD07 Member" },
+      { name: "Lê Đức Dương", affiliation: HUST, title: "ITD07 Member", photo: "/members/duong.jpg" },
       { name: "Nguyễn Văn Tuấn", affiliation: HUST, title: "ITD05 Member", photo: "/members/vantuan.jpg" },
       { name: "Trần Thanh Lâm", affiliation: HUST },
     ],
@@ -217,10 +217,10 @@ export const memberGroups: MemberGroup[] = [
     category: "year1",
     members: [
       { name: "Phan Phú Bình", affiliation: HUST, title: "ITD05 Member", photo: "/members/teo.jpg" },
-      { name: "Nhật Hùng", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
+      { name: "Trần Đăng Nhật Hùng ạ", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
       { name: "Vũ Kỳ", affiliation: HUST, title: "ITD08 Member", photo: "/members/ky.jpg" },
-      { name: "Phạm Khôi Nguyên", affiliation: HUST, title: "ITD03 Member" },
-      { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member" },
+      { name: "Phạm Khôi Nguyên", affiliation: HUST, title: "ITD03 Member", photo: "/members/nguyen.jpg" },
+      { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member",photo: "/members/huytrung.jpg" },
     ],
   },
 ];
