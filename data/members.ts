@@ -191,7 +191,7 @@ export const memberGroups: MemberGroup[] = [
   {
     category: "finalyear",
     members: [
-      { name: "Hoàng Văn Anh", affiliation: HUST, title: "ITD10 Member" },
+      { name: "Hoàng Văn Anh", affiliation: HUST, title: "ITD10 Member",photo: "/members/vananh.jpg" },
       { name: "Lê Mạnh Tuấn", affiliation: HUST, title: "ITD10 Leader" },
       { name: "Lê Công Hiếu", affiliation: HUST, title: "ITD03 Member" },
     ],
