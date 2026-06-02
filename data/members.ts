@@ -183,6 +183,7 @@ export const memberGroups: MemberGroup[] = [
         title: "ITD06 Leader",
         photo: "/members/cuong.JPG",
         contact: "cuongnm.com",
+        scholar: "https://scholar.google.com.vn/citations?hl=vi&user=6d8KpFQAAAAJ",
       },
     ],
   },
