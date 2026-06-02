@@ -97,6 +97,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Prof. Dao Ba Phong",             affiliation: "", title: "Collaborator", photo: "/members/phong.jpg" },
       { name: "TS. Nguyễn Thanh Hải",           affiliation: "", title: "Collaborator", photo: "/members/thanhhai.png" },
       { name: "TS. Trần Thị Mai",               affiliation: "", title: "Collaborator", photo: "/members/thimai.jpg" },
+      { name: "KS. Nguyễn Phương Hùng",               affiliation: "", title: "Collaborator", photo: "/members/phuonghung.jpg" },
     ],
   },
   {
@@ -131,8 +132,9 @@ export const memberGroups: MemberGroup[] = [
     category: "master",
     members: [
       {
-        name: "Ths. Nguyễn Khánh Dư",
+        name: "Nguyễn Khánh Dư",
         title: "ITD07 Member",
+        photo: "/members/khanhdu.jpg",
         affiliation: HUST,
       },
       {
@@ -219,7 +221,7 @@ export const memberGroups: MemberGroup[] = [
       { name: "Phan Phú Bình", affiliation: HUST, title: "ITD05 Member", photo: "/members/teo.jpg" },
       { name: "Trần Đăng Nhật Hùng ạ", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
       { name: "Vũ Kỳ", affiliation: HUST, title: "ITD08 Member", photo: "/members/ky.jpg" },
-      { name: "Phạm Khôi Nguyên", affiliation: HUST, title: "ITD03 Member", photo: "/members/nguyen.jpg" },
+      { name: "Phạm Khôi Nguyên", affiliation: HUST, title: "ITD03 Member", photo: "/members/khoinguyen.jpg" },
       { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member",photo: "/members/huytrung.jpg" },
     ],
   },
