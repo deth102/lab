@@ -58,19 +58,19 @@ export const gallery: Photo[] = [
   {
     src: "/gallery/mou_signing.jpg",
     alt: "Lễ ký kết MoU giữa Trường Cơ khí HUST và MCUT",
-    name: "Trường Cơ khí tổ chức Seminar khoa học của GS. Jing-Wei Liang và ký kết Biên bản ghi nhớ hợp tác với MCUT",
+    name: "Trường Cơ khí tổ chức Seminar khoa học của GS. Jin-Wei Liang và ký kết Biên bản ghi nhớ hợp tác với MCUT",
     caption: "Hanoi · April 2026",
-    body: "Trường Cơ khí, Đại học Bách Khoa Hà Nội tổ chức Seminar khoa học do Giáo sư Jing-Wei Liang (Ming Chi University of Technology, Đài Loan) trình bày về các phương pháp chẩn đoán cơ khí trên nền tảng AI và digital twin. Cùng buổi seminar, lãnh đạo Trường Cơ khí và MCUT ký Biên bản ghi nhớ (MoU) hợp tác về đào tạo, trao đổi sinh viên cao học và các đề tài nghiên cứu chung. ITD Lab là đơn vị trực tiếp triển khai các hoạt động hợp tác nghiên cứu trong khuôn khổ MoU.",
+    body: "Trường Cơ khí, Đại học Bách Khoa Hà Nội tổ chức Seminar khoa học do Giáo sư Jin-Wei Liang (Ming Chi University of Technology, Đài Loan) trình bày về các phương pháp chẩn đoán cơ khí trên nền tảng AI và digital twin. Cùng buổi seminar, lãnh đạo Trường Cơ khí và MCUT ký Biên bản ghi nhớ (MoU) hợp tác về đào tạo, trao đổi sinh viên cao học và các đề tài nghiên cứu chung. ITD Lab là đơn vị trực tiếp triển khai các hoạt động hợp tác nghiên cứu trong khuôn khổ MoU.",
   },
   {
     src: "/gallery/liangvelab.jpg",
-    alt: "Giáo sư Jing-Wei Liang (MCUT) và Giáo sư Yong-Hwa Park (KAIST) thăm ITD Lab",
-    name: "Chào đón Giáo sư Jing-Wei Liang từ Đại học MCUT Đài Loan đến thăm và làm việc cùng Lab và Giáo sư Yong-Hwa Park từ KAIST Hàn Quốc",
+    alt: "Giáo sư Jin-Wei Liang (MCUT) và Giáo sư Yong-Hwa Park (KAIST) thăm ITD Lab",
+    name: "Chào đón Giáo sư Jin-Wei Liang từ Đại học MCUT Đài Loan đến thăm và làm việc cùng Lab và Giáo sư Yong-Hwa Park từ KAIST Hàn Quốc",
     caption: "Hanoi · April 2026",
-    body: `ITD Lab có vinh dự đón tiếp Giáo sư Jing-Wei Liang (MCUT, Đài Loan) và Giáo sư Yong-Hwa Park (KAIST, Hàn Quốc) trong chuyến công tác chung tại Hà Nội.
+    body: `ITD Lab có vinh dự đón tiếp Giáo sư Jin-Wei Liang (MCUT, Đài Loan) và Giáo sư Yong-Hwa Park (KAIST, Hàn Quốc) trong chuyến công tác chung tại Hà Nội.
 
-![Trao đổi học thuật cùng GS. Jing-Wei Liang](/gallery/liangvelab2.jpg)
-![Trao đổi học thuật cùng GS. Jing-Wei Liang](/gallery/liangvelab3.jpg)
+![Trao đổi học thuật cùng GS. Jin-Wei Liang](/gallery/liangvelab2.jpg)
+![Trao đổi học thuật cùng GS. Jin-Wei Liang](/gallery/liangvelab3.jpg)
 
 Hai giáo sư cùng các thành viên của lab trao đổi về hướng hợp tác trong lĩnh vực chẩn đoán hỏng hóc dựa trên tín hiệu rung, digital twin cho cơ cấu truyền động chính xác, và transfer learning giữa dữ liệu mô phỏng và dữ liệu thực.
 
