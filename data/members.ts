@@ -88,16 +88,62 @@ export const memberGroups: MemberGroup[] = [
     {
     category: "collaborator",
     members: [
-      { name: "PGS.TS. Nguyễn Thị Thanh Nga", affiliation: "", title: "Collaborator", photo: "/members/nga.jpg"},
-      { name: "TS. Bùi Quang Thành",           affiliation: "", title: "Collaborator", photo: "/members/thanh.jpg" },
-      { name: "Prof. Nguyen Thi Phuong Khanh", affiliation: "", title: "Collaborator", photo: "/members/khanh.jpg" },
-      { name: "Prof. Jin-Wei Liang",            affiliation: "", title: "Collaborator", photo: "/members/liang.jpg" },
-      { name: "Prof. Shyn-Chin Huang",          affiliation: "", title: "Collaborator", photo: "/members/huang.jpg" },
-      { name: "Prof. Dao Viet Dzung",           affiliation: "", title: "Collaborator", photo: "/members/dzung.jpg" },
-      { name: "Prof. Dao Ba Phong",             affiliation: "", title: "Collaborator", photo: "/members/phong.jpg" },
-      { name: "TS. Nguyễn Thanh Hải",           affiliation: "", title: "Collaborator", photo: "/members/thanhhai.png" },
-      { name: "TS. Trần Thị Mai",               affiliation: "", title: "Collaborator", photo: "/members/thimai.jpg" },
-      { name: "KS. Nguyễn Phương Hùng",               affiliation: "", title: "Collaborator", photo: "/members/phuonghung.jpg" },
+      { name: "PGS.TS. Nguyễn Thị Thanh Nga", 
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/nga.jpg",
+        scholar: "https://scholar.google.com/citations?user=sxTye78AAAAJ&hl=vi"
+      },
+      { name: "TS. Bùi Quang Thành",           
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/thanh.jpg",
+        scholar: "https://scholar.google.com/citations?user=j6NhmNMAAAAJ&hl=en" 
+      },
+      { name: "Prof. Nguyen Thi Phuong Khanh", 
+        affiliation: "UTTOP", 
+        title: "Collaborator", 
+        photo: "/members/khanh.jpg", 
+        scholar: "https://scholar.google.com/citations?user=cN9HRaQAAAAJ&hl=fr" 
+      },
+      { name: "Prof. Jin-Wei Liang",            
+        affiliation: "", title: "Collaborator", 
+        photo: "/members/liang.jpg",
+        scholar: "https://scholar.google.com/citations?user=dPg9X9IAAAAJ&hl=en"
+      },
+      { name: "Prof. Shyn-Chin Huang",          
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/huang.jpg",
+        scholar: "https://www.researchgate.net/profile/Shyh-Chin-Huang-2" 
+      },
+      { name: "Prof. Dao Viet Dzung",           
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/dzung.jpg",
+        scholar: "https://scholar.google.com.vn/citations?user=Eqwg9BcAAAAJ&hl=vi" 
+      },
+      { name: "Prof. Dao Ba Phong",             
+        affiliation: "", title: "Collaborator", 
+        photo: "/members/phong.jpg",
+        scholar: "https://scholar.google.com/citations?user=dvTVPJ0AAAAJ&hl=en" 
+      },
+      { name: "TS. Nguyễn Thanh Hải",           
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/thanhhai.png" 
+      },
+      { name: "TS. Trần Thị Mai",               
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/thimai.jpg",
+        scholar: "https://scholar.google.com/citations?user=6S5gbIAAAAAJ&hl=en" 
+      },
+      { name: "ThS. Nguyễn Phương Hùng",               
+        affiliation: "", 
+        title: "Collaborator", 
+        photo: "/members/phuonghung.jpg" 
+      },
     ],
   },
   {
