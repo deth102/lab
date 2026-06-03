@@ -220,7 +220,7 @@ export const memberGroups: MemberGroup[] = [
     category: "year1",
     members: [
       { name: "Phan Phú Bình", affiliation: HUST, title: "ITD05 Member", photo: "/members/teo.jpg" },
-      { name: "Trần Đăng Nh^t Hùng ạ", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
+      { name: "Trần Đăng Nhật Hùng", affiliation: HUST, title: "ITD02 Member", photo: "/members/nhathung.jpg" },
       { name: "Vũ Kỳ", affiliation: HUST, title: "ITD08 Member", photo: "/members/ky.jpg" },
       { name: "Phạm Khôi Nguyên", affiliation: HUST, title: "ITD03 Member", photo: "/members/khoinguyen.jpg" },
       { name: "Huy Trung", affiliation: HUST, title: "ITD04 Member",photo: "/members/huytrung.jpg" },
