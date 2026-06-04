@@ -81,7 +81,7 @@ export const memberGroups: MemberGroup[] = [
         title: "Key Member",
         affiliation: HUST,
         photo: "/members/haison.jpeg",
-        scholar: "https://scholar.google.com/citations?user=lSbY-IUAAAAJ&hl=en",
+        scholar: "https://scholar.google.com/citations?user=dWFLO24AAAAJ&hl=en",
       },
     ],
   },
