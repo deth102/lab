@@ -1,26 +1,4 @@
-// =================================================================
-//  HOW TO ADD A PUBLICATION
-// =================================================================
-//  Paste any BibTeX entry between the backticks below. The page
-//  parses everything automatically and groups by year (newest first).
-//
-//  Minimum that will show: just a title. Add more fields if you
-//  have them — they'll appear when present.
-//
-//  Common fields the page renders:
-//    title    -> clickable heading (if a url/doi exists)
-//    author   -> shown under the title
-//    year     -> used to group entries by year
-//    journal / booktitle / publisher / series -> shown as venue
-//    url / doi -> the link the title opens (doi auto-prefixed with
-//                 https://doi.org/)
-//
-//  Tip: most publishers and Google Scholar have a "Cite → BibTeX"
-//  button — copy-paste straight in here.
-// =================================================================
-
 export const publicationsBibtex = String.raw`
-
 @article{nguyen2024wavelet,
   title={Improvements in the Wavelet Transform and Its Variations: Concepts and Applications in Diagnosing Gearbox in Non-Stationary Conditions},
   author={Nguyen, Trong-Du and Nguyen, Phong-Dien},
@@ -157,7 +135,7 @@ export const publicationsBibtex = String.raw`
 @article{pham2025shap,
   title={Explainable AI-Enhanced Fault Diagnosis for Rotating Machinery: A SHAP-Based Framework for Transparent Decision Making},
   author={Nguyen, T D and Vu, T T and Do Danh, T B and Pham, T H and Nguyen, P D},
-  booktitle={International Symposium on Communications and Information Technology},
+  journal={International Symposium on Communications and Information Technology},
   year={2025}
 }
 
@@ -217,3 +195,4 @@ export const publicationsBibtex = String.raw`
   pages={306--316},
   year={2025}
 }
+`;
