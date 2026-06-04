@@ -44,22 +44,33 @@ export default function GalleryMarquee({
     let raf = 0;
     const SPEED = 0.5; // px per frame (~30px/s at 60fps)
 
+    // Own float accumulator. We must NOT read scrollLeft back as our
+    // base: at DPR=1 the getter snaps to whole pixels, so writing N+0.5
+    // reads back as N next frame and the 0.5 is lost forever (strip
+    // appears frozen). Track position ourselves and resync on manual
+    // scroll/drag so both paths agree.
+    let pos = el.scrollLeft;
+
     const tick = () => {
       if (el && !paused.current && !drag.current.active) {
         const half = el.scrollWidth / 2;
-        let next = el.scrollLeft + SPEED;
-        if (next >= half) next -= half; // wrap seamlessly
-        el.scrollLeft = next;
+        pos += SPEED;
+        if (half > 0 && pos >= half) pos -= half; // wrap seamlessly
+        el.scrollLeft = pos;
       }
       raf = requestAnimationFrame(tick);
     };
     if (!reduce) raf = requestAnimationFrame(tick);
 
-    // Keep scrollLeft in the first half so manual scrolling also wraps.
+    // Manual scroll/drag: wrap into [0, half) and resync the accumulator
+    // so the next auto tick continues from the real position (no yank).
     const onScroll = () => {
       const half = el.scrollWidth / 2;
-      if (el.scrollLeft >= half) el.scrollLeft -= half;
-      else if (el.scrollLeft < 0) el.scrollLeft += half;
+      if (half > 0) {
+        if (el.scrollLeft >= half) el.scrollLeft -= half;
+        else if (el.scrollLeft < 0) el.scrollLeft += half;
+      }
+      if (!drag.current.active) pos = el.scrollLeft;
     };
     el.addEventListener("scroll", onScroll, { passive: true });
 
@@ -94,6 +105,9 @@ export default function GalleryMarquee({
       } catch {}
     }
   };
+  // Note: the float accumulator `pos` is resynced inside the effect's
+  // onScroll handler (guarded by !drag.current.active), so auto-scroll
+  // resumes smoothly from wherever the user released.
 
   if (items.length === 0) return null;
 

@@ -68,8 +68,12 @@ export default function GalleryCard({
     </>
   );
 
+  // `block w-full` is REQUIRED: a bare <Link>/<a> is display:inline, and
+  // aspect-ratio is ignored on inline elements — the card would collapse
+  // to height 0 and the absolutely-positioned fill image would vanish.
+  // w-full guarantees a definite width so aspect-ratio resolves a height.
   const base =
-    "group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border/60 bg-card/40 " +
+    "group relative block w-full aspect-[4/3] rounded-2xl overflow-hidden border border-border/60 bg-card/40 " +
     className;
 
   if (item.hasBody) {
