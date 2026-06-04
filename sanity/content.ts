@@ -42,6 +42,18 @@ export async function getNews(): Promise<NewsItem[]> {
 
 // ---- GALLERY ----------------------------------------------------
 
+/** Turn an ISO date "2026-05-30" into a Vietnamese caption
+ *  "Tháng 5, 2026". Returns undefined if no/invalid date. The site's
+ *  translate layer renders the English version ("May 2026"). */
+function captionFromDate(iso?: string): string | undefined {
+  if (!iso) return undefined;
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!m) return undefined;
+  const year = m[1];
+  const month = parseInt(m[2], 10); // 1–12
+  return `Tháng ${month}, ${year}`;
+}
+
 // Portable Text block (subset we care about). Kept as a single open
 // shape so TypeScript doesn't fight us when narrowing on _type.
 type PTBlock = {
@@ -86,7 +98,7 @@ export async function getGallery(): Promise<Photo[]> {
       {
         _id: string;
         name: string;
-        caption?: string;
+        date?: string;
         coverImage?: unknown;
         body?: PTBlock[];
       }[]
@@ -94,7 +106,7 @@ export async function getGallery(): Promise<Photo[]> {
       `*[_type == "galleryEvent"] | order(date desc){
         _id,
         name,
-        caption,
+        date,
         coverImage,
         body
       }`,
@@ -109,7 +121,9 @@ export async function getGallery(): Promise<Photo[]> {
         src: r.coverImage ? urlForImage(r.coverImage as never) : "",
         alt: r.name,
         name: r.name,
-        caption: r.caption,
+        // Caption auto-generated from the date (Vietnamese; the site's
+        // translate layer renders "May 2026" etc. for other locales).
+        caption: captionFromDate(r.date),
         slug: r._id, // stable unique slug from Sanity document id
         body: body || undefined,
       } satisfies Photo;

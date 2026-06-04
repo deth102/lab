@@ -27,15 +27,13 @@ export const galleryEvent = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: "caption",
-      title: "Chú thích (ví dụ: Hà Nội · Tháng 5/2026)",
-      type: "string",
-    }),
-    defineField({
       name: "date",
-      title: "Ngày (dùng để sắp xếp — mới nhất lên đầu)",
+      title: "Ngày sự kiện",
+      description:
+        "Dùng để sắp xếp (mới nhất lên đầu) VÀ tự sinh chú thích kiểu 'Tháng 5, 2026' dưới ảnh.",
       type: "date",
       options: { dateFormat: "YYYY-MM-DD" },
+      validation: (r) => r.required(),
     }),
     defineField({
       name: "body",
