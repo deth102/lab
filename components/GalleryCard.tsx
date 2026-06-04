@@ -9,10 +9,12 @@ export default function GalleryCard({
   item,
   readMore,
   className = "",
+  draggable,
 }: {
   item: GalleryItem;
   readMore: string;
   className?: string;
+  draggable?: boolean;
 }) {
   const inner = (
     <>
@@ -21,6 +23,12 @@ export default function GalleryCard({
         alt={item.alt}
         fill
         sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 85vw"
+        // Sanity CDN already serves optimized (auto=format) images, so
+        // we skip Next's optimizer. This also avoids cards in the
+        // off-screen marquee loop failing to lazy-load.
+        unoptimized
+        loading="eager"
+        draggable={draggable}
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       {(item.name || item.caption) && (

@@ -1,19 +1,18 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import GalleryCard from "./GalleryCard";
 import type { GalleryItem } from "@/lib/galleryItems";
 
-// Horizontal auto-scrolling strip of event cards for the home page.
+// Horizontal auto-scrolling, swipeable strip of event cards.
 //
-// The CSS animation translates the track by -50%, so the track must be
-// exactly two identical halves wide. To keep that math exact we:
-//   - put NO gap on the flex container (gap would break the -50% loop);
-//     spacing comes from each item's right padding instead.
-//   - repeat the items enough times that even a few events fill a wide
-//     screen, then duplicate that whole sequence once (the second half
-//     is what -50% scrolls into).
-//
-// Hover pauses; prefers-reduced-motion disables it (see globals.css).
+// Implementation: a real scroll container (so touch-swipe, trackpad and
+// drag work natively) whose scrollLeft is nudged every frame by a small
+// amount for the auto-scroll effect. The cards are duplicated once and
+// when we pass the half-way point we jump back by one half — seamless
+// loop. Auto-scroll pauses on hover, touch, and pointer-drag; resumes
+// on release. Respects prefers-reduced-motion (no auto-scroll, still
+// swipeable).
 export default function GalleryMarquee({
   items,
   readMore,
@@ -21,18 +20,85 @@ export default function GalleryMarquee({
   items: GalleryItem[];
   readMore: string;
 }) {
-  if (items.length === 0) return null;
+  const scroller = useRef<HTMLDivElement>(null);
+  const paused = useRef(false);
+  const drag = useRef<{ active: boolean; startX: number; startScroll: number }>(
+    { active: false, startX: 0, startScroll: 0 }
+  );
 
-  // Repeat the base list until we have a comfortable number of cards,
-  // so a small set (e.g. 5 events) still fills a wide viewport without
-  // gaps. Then the whole sequence is duplicated for the seamless loop.
+  // Repeat so a few events still fill a wide screen, then duplicate the
+  // whole sequence for the seamless loop.
   const MIN_CARDS = 8;
   const repeats = Math.max(1, Math.ceil(MIN_CARDS / items.length));
   const sequence = Array.from({ length: repeats }, () => items).flat();
   const loop = [...sequence, ...sequence];
 
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let raf = 0;
+    const SPEED = 0.5; // px per frame (~30px/s at 60fps)
+
+    const tick = () => {
+      if (el && !paused.current && !drag.current.active) {
+        const half = el.scrollWidth / 2;
+        let next = el.scrollLeft + SPEED;
+        if (next >= half) next -= half; // wrap seamlessly
+        el.scrollLeft = next;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    if (!reduce) raf = requestAnimationFrame(tick);
+
+    // Keep scrollLeft in the first half so manual scrolling also wraps.
+    const onScroll = () => {
+      const half = el.scrollWidth / 2;
+      if (el.scrollLeft >= half) el.scrollLeft -= half;
+      else if (el.scrollLeft < 0) el.scrollLeft += half;
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("scroll", onScroll);
+    };
+  }, [loop.length]);
+
+  // ---- pointer drag (mouse) ----
+  const onPointerDown = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el) return;
+    drag.current = {
+      active: true,
+      startX: e.clientX,
+      startScroll: el.scrollLeft,
+    };
+    el.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el || !drag.current.active) return;
+    el.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX);
+  };
+  const endDrag = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    drag.current.active = false;
+    if (el) {
+      try {
+        el.releasePointerCapture(e.pointerId);
+      } catch {}
+    }
+  };
+
+  if (items.length === 0) return null;
+
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       {/* edge fade masks */}
       <div
         aria-hidden
@@ -43,17 +109,28 @@ export default function GalleryMarquee({
         className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-24 bg-gradient-to-l from-background to-transparent"
       />
 
-      <ul className="animate-marquee-gallery flex w-max py-2">
+      <div
+        ref={scroller}
+        onMouseEnter={() => (paused.current = true)}
+        onMouseLeave={() => (paused.current = false)}
+        onTouchStart={() => (paused.current = true)}
+        onTouchEnd={() => (paused.current = false)}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        className="flex overflow-x-auto no-scrollbar py-2 cursor-grab active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none]"
+      >
         {loop.map((item, i) => (
-          <li
+          <div
             key={i}
-            className="w-[80vw] sm:w-[60vw] md:w-[42vw] lg:w-[360px] shrink-0 pr-5 lg:pr-6"
+            className="w-[80vw] sm:w-[60vw] md:w-[42vw] lg:w-[360px] shrink-0 pr-5 lg:pr-6 select-none"
             aria-hidden={i >= sequence.length ? true : undefined}
           >
-            <GalleryCard item={item} readMore={readMore} />
-          </li>
+            <GalleryCard item={item} readMore={readMore} draggable={false} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
