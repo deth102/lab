@@ -5,6 +5,7 @@
     "research": "Research",
     "publications": "Publications",
     "members": "Members",
+    "events": "Events",
     "openings": "Openings",
     "contact": "Contact",
     "menu": "Open menu"
@@ -78,7 +79,8 @@
     "subtitle": "Conferences, defenses, lab outings moments worth remembering.",
     "placeholder": "Add event photos in data/gallery.ts",
     "readMore": "Read more",
-    "back": "Back to home"
+    "viewAll": "View all",
+    "back": "Back to events"
   },
   "Contact": {
     "title": "Contact",

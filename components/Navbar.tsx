@@ -14,6 +14,7 @@ export default async function Navbar() {
     { href: "/research", label: t("research") },
     { href: "/publications", label: t("publications") },
     { href: "/members", label: t("members") },
+    { href: "/gallery", label: t("events") },
     { href: "/recruiting", label: t("openings") },
     { href: "/contact", label: t("contact") },
   ];

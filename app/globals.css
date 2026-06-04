@@ -68,6 +68,20 @@
   animation-play-state: paused;
 }
 
+/* Gallery marquee — bigger cards, slower drift, pause on hover. */
+.animate-marquee-gallery {
+  animation: marquee-x 60s linear infinite;
+  will-change: transform;
+}
+.animate-marquee-gallery:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-gallery {
+    animation: none;
+  }
+}
+
 @keyframes shimmer-bar {
   0%, 100% { opacity: 0.6; }
   50%      { opacity: 1; }

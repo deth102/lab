@@ -5,6 +5,7 @@
     "research": "Nghiên cứu",
     "publications": "Công bố",
     "members": "Thành viên",
+    "events": "Sự kiện",
     "openings": "Tuyển sinh",
     "contact": "Liên hệ",
     "menu": "Mở menu"
@@ -78,7 +79,8 @@
     "subtitle": "Hội nghị, bảo vệ luận văn, dã ngoại những khoảnh khắc đáng nhớ.",
     "placeholder": "Thêm ảnh sự kiện vào data/gallery.ts",
     "readMore": "Đọc thêm",
-    "back": "Về trang chủ"
+    "viewAll": "Xem tất cả",
+    "back": "Về trang Sự kiện"
   },
   "Contact": {
     "title": "Liên hệ",

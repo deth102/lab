@@ -56,7 +56,7 @@ export default async function GalleryArticle({
   return (
     <article className="mx-auto max-w-4xl px-6 py-12 md:py-16">
       <Link
-        href="/"
+        href="/gallery"
         className="inline-flex items-center gap-1.5 text-sm text-foreground/70 hover:text-brand transition-colors"
       >
         <svg
