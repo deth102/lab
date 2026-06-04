@@ -1,4 +1,5 @@
-import { gallery, type Photo } from "@/data/gallery";
+import type { Photo } from "@/data/gallery";
+import { getGallery } from "@/sanity/content";
 
 /** Derive a URL slug for a photo. Override via `Photo.slug` if needed. */
 export function slugOf(p: Photo): string {
@@ -7,18 +8,26 @@ export function slugOf(p: Photo): string {
   return file.replace(/\.[^.]+$/, "").toLowerCase();
 }
 
+/** All photos (from Sanity if configured, else the static file). */
+export async function getPhotos(): Promise<(Photo & { slug: string })[]> {
+  const gallery = await getGallery();
+  return gallery.map((p) => ({ ...p, slug: slugOf(p) }));
+}
+
 /** Photos that have a long-form body — these become clickable. */
-export function articlePhotos(): (Photo & { slug: string })[] {
-  return gallery
-    .filter((p) => !!p.body)
-    .map((p) => ({ ...p, slug: slugOf(p) }));
+export async function articlePhotos(): Promise<(Photo & { slug: string })[]> {
+  const photos = await getPhotos();
+  return photos.filter((p) => !!p.body);
 }
 
 /** Look up a photo by slug. Returns null if not found or has no body. */
-export function findArticle(slug: string): (Photo & { slug: string }) | null {
-  const hit = gallery.find((p) => slugOf(p) === slug);
+export async function findArticle(
+  slug: string
+): Promise<(Photo & { slug: string }) | null> {
+  const photos = await getPhotos();
+  const hit = photos.find((p) => p.slug === slug);
   if (!hit || !hit.body) return null;
-  return { ...hit, slug: slugOf(hit) };
+  return hit;
 }
 
 export type Block =

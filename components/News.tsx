@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { news } from "@/data/news";
+import { getNews } from "@/sanity/content";
 import { translate } from "@/lib/translate";
 import { routing } from "@/i18n/routing";
 
@@ -8,6 +8,7 @@ const SOURCE_LOCALE = "vi";
 export default async function News() {
   const t = await getTranslations("News");
   const locale = (await getLocale()) as (typeof routing.locales)[number];
+  const news = await getNews();
 
   const items = await Promise.all(
     news.map(async (n) => ({

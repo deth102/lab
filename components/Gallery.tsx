@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
-import { gallery } from "@/data/gallery";
-import { slugOf } from "@/lib/gallery";
+import { getPhotos } from "@/lib/gallery";
 import { translate } from "@/lib/translate";
 import { Link } from "@/i18n/navigation";
 
@@ -10,9 +9,10 @@ const SOURCE_LOCALE = "vi";
 export default async function Gallery() {
   const t = await getTranslations("Gallery");
   const locale = await getLocale();
+  const photos = await getPhotos();
 
   const items = await Promise.all(
-    gallery.map(async (p) => {
+    photos.map(async (p) => {
       const tr = async (s?: string) =>
         s && locale !== SOURCE_LOCALE
           ? await translate(s, SOURCE_LOCALE, locale)
@@ -23,7 +23,7 @@ export default async function Gallery() {
         name: await tr(p.name),
         caption: await tr(p.caption),
         hasBody: !!p.body,
-        slug: slugOf(p),
+        slug: p.slug,
       };
     })
   );

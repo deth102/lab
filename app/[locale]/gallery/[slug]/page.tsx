@@ -12,8 +12,9 @@ import { translate } from "@/lib/translate";
 
 const SOURCE_LOCALE = "vi";
 
-export function generateStaticParams() {
-  return articlePhotos().map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const photos = await articlePhotos();
+  return photos.map((p) => ({ slug: p.slug }));
 }
 
 export default async function GalleryArticle({
@@ -24,7 +25,7 @@ export default async function GalleryArticle({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const article = findArticle(slug);
+  const article = await findArticle(slug);
   if (!article) notFound();
 
   const t = await getTranslations("Gallery");

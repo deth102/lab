@@ -3,6 +3,13 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      // Sanity-hosted images (gallery covers, inline photos)
+      { protocol: "https", hostname: "cdn.sanity.io" },
+    ],
+  },
+};
 
 export default withNextIntl(nextConfig);
