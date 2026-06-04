@@ -24,6 +24,7 @@ export default async function PartnershipSection() {
     partnerships.map(async (p): Promise<Partnership> => ({
       name: p.name,
       logo: p.logo,
+      coverImage: p.coverImage,
       tagline: (await tr(p.tagline)) ?? p.tagline,
       period: await tr(p.period),
       summary: (await tr(p.summary)) ?? p.summary,
