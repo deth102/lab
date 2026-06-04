@@ -138,7 +138,7 @@ export default function GalleryMarquee({
         {loop.map((item, i) => (
           <div
             key={i}
-            className="w-[80vw] sm:w-[60vw] md:w-[42vw] lg:w-[360px] shrink-0 pr-5 lg:pr-6 select-none"
+            className="w-[85vw] sm:w-[65vw] md:w-[50vw] lg:w-[480px] shrink-0 pr-5 lg:pr-6 select-none"
             aria-hidden={i >= sequence.length ? true : undefined}
           >
             <GalleryCard item={item} readMore={readMore} draggable={false} />

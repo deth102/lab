@@ -15,6 +15,7 @@
 export type Partnership = {
   name: string;
   logo?: string;
+  coverImage?: string; // (tùy chọn) ảnh nền cho card, vd "/partners/vicem.jpg"
   tagline: string;
   period?: string;
   summary: string;
@@ -29,6 +30,7 @@ export const partnerships: Partnership[] = [
   {
     name: "Viện Công nghệ Xi măng VICEM",
     // logo: "/partners/vicem.png",   // thêm logo nếu có
+    coverImage: "/partners/vicem.jpg",
     tagline:
       "Đào tạo chuyên đề: Giám sát rung động thông minh & Bảo trì dự báo dựa trên AI cho thiết bị quay",
     period: "8–12/6/2026 · Hà Nội",

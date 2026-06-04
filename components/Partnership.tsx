@@ -51,69 +51,95 @@ export default async function PartnershipSection() {
           {items.map((p, i) => (
             <article
               key={i}
-              className="glow-hover rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm p-6 md:p-8"
+              className="glow-hover overflow-hidden rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm"
             >
-              <div className="flex items-start gap-4">
-                {p.logo ? (
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-border/60 bg-background">
+              {p.coverImage ? (
+                // Image banner header: photo background + dark gradient,
+                // title/tagline overlaid in white.
+                <div className="relative">
+                  <div className="relative aspect-[16/7] md:aspect-[16/6] w-full">
                     <Image
-                      src={p.logo}
+                      src={p.coverImage}
                       alt={p.name}
                       fill
-                      sizes="56px"
-                      className="object-contain p-1.5"
+                      sizes="(min-width: 1024px) 768px, 100vw"
+                      className="object-cover"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15"
                     />
                   </div>
-                ) : (
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand text-lg font-bold">
-                    {initials(p.name)}
-                  </span>
-                )}
-                <div className="min-w-0">
-                  <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
-                    {p.name}
-                  </h2>
-                  <p className="mt-1 text-sm md:text-base text-brand">
-                    {p.tagline}
-                  </p>
-                  {p.period && (
-                    <p className="mt-1 text-xs uppercase tracking-wider text-muted">
-                      {p.period}
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-white">
+                    <h2 className="text-xl md:text-3xl font-bold tracking-tight drop-shadow">
+                      {p.name}
+                    </h2>
+                    <p className="mt-1.5 text-sm md:text-base text-white/90 drop-shadow max-w-2xl">
+                      {p.tagline}
                     </p>
-                  )}
+                    {p.period && (
+                      <p className="mt-2 text-xs uppercase tracking-wider text-white/75">
+                        {p.period}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-
-              <p className="mt-5 text-sm md:text-base leading-relaxed text-foreground/80">
-                {p.summary}
-              </p>
-
-              {p.highlights && p.highlights.length > 0 && (
-                <ul className="mt-5 space-y-2.5">
-                  {p.highlights.map((h, j) => (
-                    <li
-                      key={j}
-                      className="flex gap-3 text-sm md:text-base text-foreground/75 leading-relaxed"
-                    >
-                      <span
-                        aria-hidden
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+              ) : (
+                // No cover image: header with optional logo, else plain title.
+                <div className="flex items-start gap-4 p-6 md:p-8 pb-0">
+                  {p.logo && (
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-border/60 bg-background">
+                      <Image
+                        src={p.logo}
+                        alt={p.name}
+                        fill
+                        sizes="56px"
+                        className="object-contain p-1.5"
                       />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+                      {p.name}
+                    </h2>
+                    <p className="mt-1 text-sm md:text-base text-brand">
+                      {p.tagline}
+                    </p>
+                    {p.period && (
+                      <p className="mt-1 text-xs uppercase tracking-wider text-muted">
+                        {p.period}
+                      </p>
+                    )}
+                  </div>
+                </div>
               )}
+
+              <div className="p-6 md:p-8">
+                <p className="text-sm md:text-base leading-relaxed text-foreground/80">
+                  {p.summary}
+                </p>
+
+                {p.highlights && p.highlights.length > 0 && (
+                  <ul className="mt-5 space-y-2.5">
+                    {p.highlights.map((h, j) => (
+                      <li
+                        key={j}
+                        className="flex gap-3 text-sm md:text-base text-foreground/75 leading-relaxed"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                        />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </article>
           ))}
         </div>
       )}
     </section>
   );
-}
-
-function initials(name: string): string {
-  const parts = name.replace(/\(.*?\)/g, "").trim().split(/\s+/);
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
