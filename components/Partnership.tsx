@@ -22,7 +22,7 @@ export default async function PartnershipSection() {
 
   const items = await Promise.all(
     partnerships.map(async (p): Promise<Partnership> => ({
-      name: p.name,
+      name: (await tr(p.name)) ?? p.name,
       logo: p.logo,
       coverImage: p.coverImage,
       tagline: (await tr(p.tagline)) ?? p.tagline,
