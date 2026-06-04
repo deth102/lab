@@ -7,8 +7,9 @@ const SITE = "https://itdhust.com";
 const PATHS = [
   "",
   "/research",
-  "/publications",
   "/members",
+  "/partnership",
+  "/gallery",
   "/recruiting",
   "/contact",
 ] as const;

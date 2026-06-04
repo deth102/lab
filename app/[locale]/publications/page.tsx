@@ -1,17 +1,9 @@
-import { setRequestLocale } from "next-intl/server";
-import Reveal from "@/components/Reveal";
-import Publications from "@/components/Publications";
+import { redirect } from "@/i18n/navigation";
+import { getLocale } from "next-intl/server";
 
-export default async function PublicationsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  return (
-    <Reveal staggerSelector="ul > li">
-      <Publications />
-    </Reveal>
-  );
+// Publications has been merged into /research. Keep this route as a
+// redirect so old links / bookmarks still work.
+export default async function PublicationsPage() {
+  const locale = await getLocale();
+  redirect({ href: "/research#publications", locale });
 }

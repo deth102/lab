@@ -5,6 +5,7 @@
     "research": "Nghiên cứu",
     "publications": "Công bố",
     "members": "Thành viên",
+    "partnership": "Hợp tác",
     "events": "Sự kiện",
     "openings": "Tuyển sinh",
     "contact": "Liên hệ",
@@ -39,6 +40,10 @@
     "title": "Công bố khoa học",
     "subtitle": "Một số công trình tiêu biểu. Bấm vào tiêu đề để mở bài báo.",
     "empty": "Chưa có công bố nào được liệt kê."
+  },
+  "Partnership": {
+    "title": "Hợp tác doanh nghiệp",
+    "empty": "Chưa có hợp tác nào được liệt kê."
   },
   "Members": {
     "title": "Thành viên",

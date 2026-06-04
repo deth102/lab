@@ -5,6 +5,7 @@
     "research": "Research",
     "publications": "Publications",
     "members": "Members",
+    "partnership": "Partnership",
     "events": "Events",
     "openings": "Openings",
     "contact": "Contact",
@@ -39,6 +40,10 @@
     "title": "Publications",
     "subtitle": "Selected papers and works in progress. Click a title to open the paper.",
     "empty": "No publications listed yet."
+  },
+  "Partnership": {
+    "title": "Industry Partnership",
+    "empty": "No partnerships listed yet."
   },
   "Members": {
     "title": "Members",
