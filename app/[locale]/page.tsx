@@ -9,6 +9,10 @@ import { memberGroups } from "@/data/members";
 import { publicationsBibtex } from "@/data/publications";
 import { parseBibtex } from "@/lib/bibtex";
 
+// Re-generate this page at most once per 60s so newly published
+// Sanity news/events appear without a redeploy.
+export const revalidate = 60;
+
 export default async function Home({
   params,
 }: {

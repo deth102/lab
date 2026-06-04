@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { apiVersion, dataset, projectId, sanityEnabled } from "./env";
 
@@ -16,7 +16,7 @@ export const sanityClient = sanityEnabled
   : null;
 
 const builder = sanityEnabled
-  ? imageUrlBuilder({ projectId, dataset })
+  ? createImageUrlBuilder({ projectId, dataset })
   : null;
 
 /** Build an image URL from a Sanity image reference. */

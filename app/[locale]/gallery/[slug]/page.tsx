@@ -12,6 +12,9 @@ import { translate } from "@/lib/translate";
 
 const SOURCE_LOCALE = "vi";
 
+// Refresh against Sanity at most once per 60s.
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const photos = await articlePhotos();
   return photos.map((p) => ({ slug: p.slug }));
