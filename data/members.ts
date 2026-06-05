@@ -9,7 +9,7 @@ export type Member = {
 
 export type MemberGroup = {
   // Available keys: faculty | phd | master | finalyear | year3 | year2 | year1 | alumni
-  category: "head" | "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "collaborator" | "alumni";
+  category: "head" | "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "Scientific Advisory Board" | "alumni";
   members: Member[];
 };
 
