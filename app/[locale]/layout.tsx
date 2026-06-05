@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackgroundBlobs from "@/components/BackgroundBlobs";
+import GearsBackground from "@/components/GearsBackground";
 import { routing } from "@/i18n/routing";
 
 const geistSans = Geist({
@@ -64,6 +65,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ScrollProgress />
           <BackgroundBlobs />
+          <GearsBackground />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

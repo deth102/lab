@@ -73,6 +73,30 @@
   display: none;
 }
 
+/* Rotating gears background (decorative). */
+@keyframes gear-rotate {
+  to { transform: rotate(360deg); }
+}
+@keyframes gear-rotate-reverse {
+  to { transform: rotate(-360deg); }
+}
+.gear-spin {
+  animation: gear-rotate 50s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.gear-spin-reverse {
+  animation: gear-rotate-reverse 50s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gear-spin,
+  .gear-spin-reverse {
+    animation: none;
+  }
+}
+
 @keyframes shimmer-bar {
   0%, 100% { opacity: 0.6; }
   50%      { opacity: 1; }

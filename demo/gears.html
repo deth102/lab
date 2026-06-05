@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo bánh răng — ITD Lab</title>
+<!--
+  ===================================================================
+  FILE DEMO ĐỘC LẬP — KHÔNG CẦN npm / build / dev server.
+  Double-click file này để mở bằng trình duyệt.
+
+  Mục đích: chỉnh bánh răng (đậm/nhạt, tốc độ, số răng, màu, theme
+  sáng/tối) bằng các thanh trượt bên dưới, xem thay đổi NGAY LẬP TỨC.
+  Khi ưng ý, bấm "Copy giá trị" để lấy số rồi dán vào:
+      components/GearsBackground.tsx   (màu, opacity, duration)
+      app/globals.css                 (nếu đổi keyframe)
+  ===================================================================
+-->
+<style>
+  :root {
+    --brand: #0e7490;       /* teal — khớp brand của web (light) */
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --gear-opacity: 0.30;   /* độ đậm tổng thể của bánh răng */
+    --fill-opacity: 0.16;   /* độ đặc của thân bánh răng */
+    --stroke-opacity: 0.5;  /* độ đậm viền */
+  }
+  html.dark {
+    --brand: #22d3ee;
+    --bg: #0a0a0a;
+    --fg: #fafafa;
+    --gear-opacity: 0.25;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ---- nền bánh răng (giống GearsBackground.tsx) ---- */
+  .gears {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    color: var(--brand);
+    opacity: var(--gear-opacity);
+  }
+  .gear {
+    position: absolute;
+  }
+  .gear svg { width: 100%; height: 100%; display: block; }
+  .gear path { fill: currentColor; fill-opacity: var(--fill-opacity);
+    stroke: currentColor; stroke-width: 3; stroke-opacity: var(--stroke-opacity);
+    stroke-linejoin: round; }
+  .gear circle { fill: none; stroke: currentColor; stroke-width: 5; }
+  .gear line { stroke: currentColor; stroke-width: 5; stroke-linecap: round; opacity: .7; }
+
+  @keyframes spin     { to { transform: rotate(360deg); } }
+  @keyframes spin-rev { to { transform: rotate(-360deg); } }
+  .spin     { animation: spin     var(--dur, 50s) linear infinite; transform-origin: 50% 50%; }
+  .spin-rev { animation: spin-rev var(--dur, 50s) linear infinite; transform-origin: 50% 50%; }
+
+  .g-big   { right: -120px; top: -120px; width: 460px; height: 460px; }
+  .g-mid   { right: 230px;  top: 200px;  width: 280px; height: 280px; }
+  .g-small { left: -64px;   bottom: -40px; width: 260px; height: 260px; }
+
+  /* ---- nội dung giả để thấy bánh răng nằm sau chữ ---- */
+  .content {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.02em; }
+  p  { font-size: 1.05rem; line-height: 1.7; color: color-mix(in oklab, var(--fg) 75%, transparent); }
+
+  /* ---- bảng điều khiển ---- */
+  .panel {
+    position: fixed; right: 16px; top: 16px; z-index: 10;
+    width: 280px; padding: 16px;
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in oklab, var(--fg) 15%, transparent);
+    border-radius: 14px;
+    font-size: 13px;
+  }
+  .panel h2 { margin: 0 0 12px; font-size: 14px; }
+  .row { margin-bottom: 12px; }
+  .row label { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .row input[type=range] { width: 100%; accent-color: var(--brand); }
+  .row b { color: var(--brand); }
+  .btns { display: flex; gap: 8px; margin-top: 8px; }
+  button {
+    flex: 1; padding: 8px; border-radius: 8px; cursor: pointer;
+    border: 1px solid color-mix(in oklab, var(--fg) 20%, transparent);
+    background: transparent; color: var(--fg); font-size: 12px;
+  }
+  button:hover { border-color: var(--brand); color: var(--brand); }
+  #out { margin-top: 10px; font-family: ui-monospace, monospace; font-size: 11px;
+    white-space: pre-wrap; color: color-mix(in oklab, var(--fg) 70%, transparent); }
+</style>
+</head>
+<body>
+
+  <div class="gears" id="gears">
+    <div class="gear spin g-big"   data-teeth="18" data-r="150" data-tooth="26" data-hub="40" data-spokes="6" style="--dur:60s"></div>
+    <div class="gear spin-rev g-mid" data-teeth="12" data-r="92"  data-tooth="22" data-hub="26" data-spokes="5" style="--dur:42s"></div>
+    <div class="gear spin g-small" data-teeth="10" data-r="80"  data-tooth="22" data-hub="22" data-spokes="4" style="--dur:30s"></div>
+  </div>
+
+  <div class="content">
+    <h1>Bánh răng nền — bản demo</h1>
+    <p>Đây là bản xem trước độc lập. Kéo các thanh trượt ở góc phải để chỉnh
+       độ đậm, độ đặc, viền và tốc độ quay. Khi ưng ý, bấm <b>Copy giá trị</b>
+       rồi dán vào <code>components/GearsBackground.tsx</code>.</p>
+    <p>Lorem ipsum — đoạn văn giả để bạn kiểm tra bánh răng có làm rối chữ không.
+       Nếu thấy bánh răng quá đậm che mất nội dung, giảm "Độ đậm tổng thể".
+       Nếu thấy quá mờ không nhận ra là bánh răng, tăng lên.</p>
+    <p>Thử bật <b>chế độ tối</b> (nút Dark) để xem bánh răng trên nền đen —
+       màu và độ đậm thường cần khác so với nền sáng.</p>
+  </div>
+
+  <div class="panel">
+    <h2>⚙️ Chỉnh bánh răng</h2>
+    <div class="row">
+      <label>Độ đậm tổng thể <b id="vOpacity">0.30</b></label>
+      <input id="opacity" type="range" min="0" max="0.8" step="0.01" value="0.30" />
+    </div>
+    <div class="row">
+      <label>Độ đặc thân <b id="vFill">0.16</b></label>
+      <input id="fill" type="range" min="0" max="0.6" step="0.01" value="0.16" />
+    </div>
+    <div class="row">
+      <label>Độ đậm viền <b id="vStroke">0.50</b></label>
+      <input id="stroke" type="range" min="0" max="1" step="0.05" value="0.50" />
+    </div>
+    <div class="row">
+      <label>Tốc độ (× nhanh) <b id="vSpeed">1.0</b></label>
+      <input id="speed" type="range" min="0.3" max="3" step="0.1" value="1" />
+    </div>
+    <div class="btns">
+      <button id="theme">🌙 Dark</button>
+      <button id="copy">📋 Copy giá trị</button>
+    </div>
+    <div id="out"></div>
+  </div>
+
+<script>
+  // ---- vẽ bánh răng bằng SVG (cùng thuật toán với GearsBackground.tsx) ----
+  function gearPath(teeth, r, toothH) {
+    const rOuter = r + toothH, rInner = r;
+    const step = (Math.PI * 2) / teeth;
+    const tipFrac = 0.42;
+    const P = (a, rad) => `${(Math.cos(a)*rad).toFixed(2)},${(Math.sin(a)*rad).toFixed(2)}`;
+    let d = "";
+    for (let i = 0; i < teeth; i++) {
+      const a0 = i*step, a1 = a0+step*tipFrac, a2 = a0+step*0.5,
+            a3 = a0+step*(0.5+tipFrac), a4 = a0+step;
+      if (i === 0) d += `M ${P(a0,rInner)} `;
+      d += `L ${P(a0,rOuter)} L ${P(a1,rOuter)} L ${P(a2,rInner)} L ${P(a3,rInner)} L ${P(a4,rInner)} `;
+    }
+    return d + "Z";
+  }
+  function buildGear(el) {
+    const teeth = +el.dataset.teeth, r = +el.dataset.r,
+          toothH = +el.dataset.tooth, hub = +el.dataset.hub, spokes = +el.dataset.spokes;
+    const size = (r + toothH) * 2;
+    let spk = "";
+    for (let i = 0; i < spokes; i++) {
+      const a = (i/spokes)*Math.PI*2;
+      spk += `<line x1="${(Math.cos(a)*(hub+4)).toFixed(1)}" y1="${(Math.sin(a)*(hub+4)).toFixed(1)}"
+                    x2="${(Math.cos(a)*(r-4)).toFixed(1)}" y2="${(Math.sin(a)*(r-4)).toFixed(1)}" />`;
+    }
+    el.innerHTML =
+      `<svg viewBox="${-size/2} ${-size/2} ${size} ${size}" fill="none">
+         <path d="${gearPath(teeth, r, toothH)}" />
+         <circle r="${hub}" />
+         <g>${spk}</g>
+       </svg>`;
+  }
+  document.querySelectorAll(".gear").forEach(buildGear);
+
+  // ---- điều khiển ----
+  const root = document.documentElement;
+  const baseDur = { ".g-big": 60, ".g-mid": 42, ".g-small": 30 };
+  const $ = (id) => document.getElementById(id);
+
+  function bind(id, varName, label, fmt = (v) => v) {
+    const inp = $(id), out = $("v" + id[0].toUpperCase() + id.slice(1));
+    const apply = () => {
+      root.style.setProperty(varName, inp.value);
+      out.textContent = fmt(inp.value);
+      dump();
+    };
+    inp.addEventListener("input", apply); apply();
+  }
+  bind("opacity", "--gear-opacity", "");
+  bind("fill",    "--fill-opacity", "");
+  bind("stroke",  "--stroke-opacity", "");
+
+  $("speed").addEventListener("input", () => {
+    const mult = +$("speed").value;
+    $("vSpeed").textContent = mult.toFixed(1);
+    document.querySelectorAll(".gear").forEach((g) => {
+      const cls = [".g-big",".g-mid",".g-small"].find((c) => g.classList.contains(c.slice(1)));
+      if (cls) g.style.setProperty("--dur", (baseDur[cls] / mult).toFixed(0) + "s");
+    });
+    dump();
+  });
+
+  $("theme").addEventListener("click", () => {
+    root.classList.toggle("dark");
+    $("theme").textContent = root.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+  });
+
+  function dump() {
+    $("out").textContent =
+      `gear-opacity: ${$("opacity").value}\n` +
+      `fill-opacity: ${$("fill").value}\n` +
+      `stroke-opacity: ${$("stroke").value}\n` +
+      `speed ×${(+$("speed").value).toFixed(1)}`;
+  }
+  $("copy").addEventListener("click", () => {
+    const txt =
+`// Dán các giá trị này vào components/GearsBackground.tsx:
+//   wrapper className: text-brand/${Math.round($("opacity").value*100)}
+//   <path fillOpacity={${$("fill").value}} strokeOpacity={${$("stroke").value}} />
+//   animationDuration nhân tốc độ ×${(+$("speed").value).toFixed(1)}`;
+    navigator.clipboard?.writeText(txt);
+    $("copy").textContent = "✓ Đã copy";
+    setTimeout(() => ($("copy").textContent = "📋 Copy giá trị"), 1500);
+  });
+</script>
+</body>
+</html>
