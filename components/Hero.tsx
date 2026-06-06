@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Link } from "@/i18n/navigation";
 import Magnetic from "./Magnetic";
+import LabLogo from "./LabLogo";
 
 type Props = {
   eyebrow: string;
@@ -168,13 +168,12 @@ export default function Hero({
           </div>
 
           <div className="order-1 md:order-2 justify-self-center md:justify-self-end">
-            <Image
-              src="/lab-logo-mark.svg"
-              alt={name}
-              width={400}
-              height={400}
-              priority
-              className="hero-mark h-48 w-48 sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80 drop-shadow-xl"
+            <LabLogo
+              size={320}
+              spin
+              spinDur={24}
+              ariaLabel={name}
+              className="hero-mark h-48 w-48 sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80 text-brand drop-shadow-xl"
             />
           </div>
         </div>

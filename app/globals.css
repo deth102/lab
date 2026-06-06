@@ -73,6 +73,71 @@
   display: none;
 }
 
+/* ---- Loading splash wordmark (full name types, then collapses) ---- */
+@keyframes splash-type {
+  from { width: 0; }
+  to   { width: 33ch; }
+}
+@keyframes splash-caret {
+  50% { border-color: transparent; }
+}
+@keyframes splash-fade-out {
+  to { opacity: 0; transform: translate(-50%, -10px); }
+}
+@keyframes splash-fade-in {
+  from { opacity: 0; transform: translate(-50%, 10px) scale(0.92); }
+  to   { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+.splash-type {
+  border-right: 2px solid var(--brand);
+  animation:
+    splash-type 1.3s steps(33, end) forwards,
+    splash-caret 0.7s step-end 4;
+}
+.splash-full {
+  animation: splash-fade-out 0.4s ease forwards;
+  animation-delay: 2s;
+}
+.splash-short {
+  opacity: 0;
+  animation: splash-fade-in 0.5s ease forwards;
+  animation-delay: 2.35s;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* No typing — just show the short wordmark immediately. */
+  .splash-type { animation: none; border-right: 0; width: auto; }
+  .splash-full { animation: none; opacity: 0; }
+  .splash-short { animation: none; opacity: 1; }
+}
+
+/* Isometric projection for the large logo: foreshorten + slight tilt so
+   the planetary gears read as a 3D dial. Applied once, never animated;
+   the inner spin groups rotate inside this projected plane. */
+.iso-stage {
+  transform: scaleY(0.58) rotate(-3deg);
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+}
+
+/* Splash logo one-shot entrance: scale in + wind into place, then the
+   gears keep idling (the infinite rotates live on inner groups). */
+@keyframes splash-pop {
+  0%   { opacity: 0; transform: scale(0.3)  rotate(-140deg); }
+  60%  { opacity: 1; transform: scale(1.06) rotate(10deg); }
+  80%  {             transform: scale(0.98) rotate(-3deg); }
+  100% { opacity: 1; transform: scale(1)    rotate(0deg); }
+}
+.splash-logo {
+  transform-origin: 50% 50%;
+  animation: splash-pop 1100ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo {
+    animation: splash-fade-in 400ms ease both;
+  }
+}
+
 /* Rotating gears background (decorative). */
 @keyframes gear-rotate {
   to { transform: rotate(360deg); }
@@ -83,11 +148,13 @@
 .gear-spin {
   animation: gear-rotate 50s linear infinite;
   transform-origin: 50% 50%;
+  transform-box: view-box;
   will-change: transform;
 }
 .gear-spin-reverse {
   animation: gear-rotate-reverse 50s linear infinite;
   transform-origin: 50% 50%;
+  transform-box: view-box;
   will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {

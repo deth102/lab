@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 240" width="700" height="240">
+  <style>
+    .ink{fill:none;stroke:#0e7490;stroke-linejoin:round;stroke-linecap:round}
+    .amber{stroke:#f59e0b}
+    .cap{font:600 11px system-ui;fill:#475569;text-anchor:middle}
+  </style>
+
+  <!-- A: Planetary set (sun + 3 planets + internal ring) -->
+  <g transform="translate(110,100)">
+    <!-- ring gear: internal teeth as inward tick ring -->
+    <circle class="ink" r="88" stroke-width="6"/>
+    <g class="ink" stroke-width="6">
+      <!-- 24 internal teeth as short inward ticks -->
+      <g id="ringteeth"></g>
+    </g>
+    <!-- carrier triangle linking planet centers -->
+    <path class="ink" stroke-width="3" opacity="0.55"
+          d="M 0,-50 L 43.3,25 L -43.3,25 Z"/>
+    <!-- sun gear -->
+    <circle class="ink" r="22" stroke-width="6"/>
+    <circle cx="0" cy="0" r="5" fill="#0e7490"/>
+    <!-- 3 planets -->
+    <g class="ink" stroke-width="6">
+      <circle cx="0"     cy="-50" r="16"/>
+      <circle cx="43.3"  cy="25"  r="16"/>
+      <circle cx="-43.3" cy="25"  r="16"/>
+    </g>
+  </g>
+  <text class="cap" x="110" y="222">A · planetary set</text>
+
+  <!-- B: Bearing cross-section (inner+outer race, 8 balls, cage) -->
+  <g transform="translate(350,100)">
+    <circle class="ink" r="88" stroke-width="6"/>  <!-- outer race outer -->
+    <circle class="ink" r="74" stroke-width="3" opacity="0.6"/> <!-- outer raceway -->
+    <circle class="ink" r="36" stroke-width="3" opacity="0.6"/> <!-- inner raceway -->
+    <circle class="ink" r="22" stroke-width="6"/>  <!-- inner race / shaft bore -->
+    <g id="balls" class="ink" stroke-width="5"></g>
+    <circle cx="0" cy="0" r="6" fill="#0e7490"/>
+  </g>
+  <text class="cap" x="350" y="222">B · bearing section</text>
+
+  <!-- C: Orbit-plot in gear ring (replaces FFT zigzag) -->
+  <g transform="translate(590,100)">
+    <path id="cgear" class="ink" stroke-width="6"></path>
+    <circle class="ink" r="44" stroke-width="4"/>
+    <!-- orbit ellipse (shaft whirl) -->
+    <ellipse class="ink" rx="30" ry="18" transform="rotate(-28)" stroke-width="4"/>
+    <!-- amber locus dot + crosshair probes at 90deg -->
+    <circle cx="22" cy="-9" r="4" class="amber" fill="#f59e0b" stroke="none"/>
+    <line class="ink" x1="-44" y1="0" x2="44" y2="0" stroke-width="2" opacity="0.4"/>
+    <line class="ink" x1="0" y1="-44" x2="0" y2="44" stroke-width="2" opacity="0.4"/>
+  </g>
+  <text class="cap" x="590" y="222">C · orbit plot</text>
+
+  <script><![CDATA[
+    const ns="http://www.w3.org/2000/svg";
+    // internal ring teeth
+    const rt=document.getElementById("ringteeth");
+    for(let i=0;i<24;i++){const a=i/24*2*Math.PI;
+      const l=document.createElementNS(ns,"line");
+      l.setAttribute("x1",Math.cos(a)*85);l.setAttribute("y1",Math.sin(a)*85);
+      l.setAttribute("x2",Math.cos(a)*77);l.setAttribute("y2",Math.sin(a)*77);
+      l.setAttribute("stroke-width","3");l.setAttribute("opacity","0.7");rt.appendChild(l);}
+    // bearing balls
+    const balls=document.getElementById("balls");
+    for(let i=0;i<8;i++){const a=i/8*2*Math.PI - Math.PI/2;
+      const c=document.createElementNS(ns,"circle");
+      c.setAttribute("cx",(Math.cos(a)*55).toFixed(1));
+      c.setAttribute("cy",(Math.sin(a)*55).toFixed(1));
+      c.setAttribute("r","9");balls.appendChild(c);}
+    // outer gear ring (16 trapezoid teeth) for C
+    function gp(N,ri,ro){const s=2*Math.PI/N,P=(a,r)=>`${(Math.cos(a)*r).toFixed(2)},${(Math.sin(a)*r).toFixed(2)}`;
+      let d="";for(let i=0;i<N;i++){const a0=i*s,a1=a0+s*0.4,a2=a0+s*0.5,a3=a0+s*0.9,a4=a0+s;
+      if(i===0)d+=`M ${P(a0,ri)} `;d+=`L ${P(a0,ro)} L ${P(a1,ro)} L ${P(a2,ri)} L ${P(a3,ri)} L ${P(a4,ri)} `;}return d+"Z";}
+    document.getElementById("cgear").setAttribute("d",gp(16,64,80));
+  ]]></script>
+</svg>
