@@ -9,7 +9,7 @@ export type Member = {
 
 export type MemberGroup = {
   // Available keys: faculty | phd | master | finalyear | year3 | year2 | year1 | alumni
-  category: "head" | "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "collaborator" | "alumni";
+  category: "head" | "faculty" | "phd" | "master" | "finalyear" | "year3" | "year2" | "year1" | "bachelor" | "Scientific Advisory Board" | "alumni";
   members: Member[];
 };
 
@@ -86,64 +86,64 @@ export const memberGroups: MemberGroup[] = [
     ],
   },
     {
-    category: "collaborator",
+    category: "Scientific Advisory Board",
     members: [
       { name: "PGS.TS. Nguyễn Thị Thanh Nga", 
         affiliation: "TNUT, VietNam", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/nga.jpg",
         scholar: "https://scholar.google.com/citations?user=sxTye78AAAAJ&hl=vi"
       },
       { name: "TS. Bùi Quang Thành",           
         affiliation: "USTH, VietNam", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/thanh.jpg",
         scholar: "https://scholar.google.com/citations?user=j6NhmNMAAAAJ&hl=en" 
       },
       { name: "Prof. Nguyen Thi Phuong Khanh", 
         affiliation: "UTTOP, France", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/khanh.jpg", 
         scholar: "https://scholar.google.com/citations?user=cN9HRaQAAAAJ&hl=fr" 
       },
       { name: "Prof. Jin-Wei Liang",            
         affiliation: "Ming Chi University of Technology, Taiwan",
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/liang.jpg",
         scholar: "https://scholar.google.com/citations?user=dPg9X9IAAAAJ&hl=en"
       },
       { name: "Prof. Shyn-Chin Huang",          
         affiliation: "Ming Chi University of Technology, Taiwan",
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/huang.jpg",
         scholar: "https://www.researchgate.net/profile/Shyh-Chin-Huang-2" 
       },
       { name: "Prof. Dao Viet Dzung",           
         affiliation: "Griffith University, Australia", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/dzung.jpg",
         scholar: "https://scholar.google.com.vn/citations?user=Eqwg9BcAAAAJ&hl=vi" 
       },
       { name: "Prof. Dao Ba Phong",             
         affiliation: "AGH University of Krakow, Poland", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/phong.jpg",
         scholar: "https://scholar.google.com/citations?user=dvTVPJ0AAAAJ&hl=en" 
       },
       { name: "TS. Nguyễn Thanh Hải",           
         affiliation: "SamSung", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/thanhhai.png" 
       },
       { name: "TS. Trần Thị Mai",               
         affiliation: "VinUniversity, VietNam", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/thimai.jpg",
         scholar: "https://scholar.google.com/citations?user=6S5gbIAAAAAJ&hl=en" 
       },
       { name: "ThS. Nguyễn Phương Hùng",               
         affiliation: "", 
-        title: "Collaborator", 
+        title: "Scientific Advisory Board", 
         photo: "/members/phuonghung.jpg" 
       },
     ],
