@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackgroundBlobs from "@/components/BackgroundBlobs";
 import GearsBackground from "@/components/GearsBackground";
-import Splash from "@/components/Splash";
 import { routing } from "@/i18n/routing";
 
 const geistSans = Geist({
@@ -64,7 +63,6 @@ export default async function LocaleLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider>
-          <Splash />
           <ScrollProgress />
           <BackgroundBlobs />
           <GearsBackground />

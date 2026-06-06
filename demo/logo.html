@@ -3,185 +3,295 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Demo logo + splash — ITD Lab</title>
+<title>Chỉnh logo — ITD Signal-Gear</title>
 <!--
   ===================================================================
   DEMO ĐỘC LẬP — double-click mở bằng trình duyệt, KHÔNG cần build.
-  Logo mới: "ITD Epicyclic Signet" — bộ bánh răng hành tinh kiểu con
-  dấu học thuật (vành răng trong + 3 bánh răng vệ tinh quay + bánh răng
-  mặt trời quay ngược). Xem ở nhiều kích thước + splash + đổi theme.
+  Logo "ITD Signal-Gear": bánh răng phẳng quay + tín hiệu rung trôi
+  ngang, đục rãnh xuyên bánh răng.
+
+  Kéo các thanh trượt bên phải để chỉnh:
+   • Kích thước bánh răng (bán kính, số răng)
+   • Tín hiệu: tần số, biên độ, độ rộng rãnh đục
+   • Độ đậm nét bánh răng + nét tín hiệu
+   • Màu component (color picker) + theme sáng/tối
+
+  Khi ưng, bấm "📋 Copy số" → dán cho mình để áp vào code thật.
   ===================================================================
 -->
 <style>
   :root{
-    --brand:#0e7490; --accent:#06b6d4; --highlight:#f59e0b;
+    --brand:#0e7490; --highlight:#f59e0b;
     --bg:#ffffff; --fg:#0a0a0a; --muted:#6b7280;
   }
-  html.dark{ --brand:#22d3ee; --accent:#67e8f9; --highlight:#fbbf24; --bg:#0a0a0a; --fg:#fafafa; --muted:#9ca3af; }
+  html.dark{ --brand:#22d3ee; --highlight:#fbbf24; --bg:#0a0a0a; --fg:#fafafa; --muted:#9ca3af; }
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;}
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;display:flex}
 
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes spinr{to{transform:rotate(-360deg)}}
-  .carrier{animation:spin var(--dc,24s) linear infinite;transform-origin:50% 50%}
-  .sun{animation:spinr var(--ds,14s) linear infinite;transform-origin:50% 50%}
-  .iso-stage{transform:scaleY(0.58) rotate(-3deg);transform-origin:50% 50%;transform-box:view-box}
-  @keyframes splash-pop{
-    0%{opacity:0;transform:scale(0.3) rotate(-140deg)}
-    60%{opacity:1;transform:scale(1.06) rotate(10deg)}
-    80%{transform:scale(0.98) rotate(-3deg)}
-    100%{opacity:1;transform:scale(1) rotate(0deg)}}
-  @media (prefers-reduced-motion:reduce){.carrier,.sun{animation:none}}
+  @keyframes wave-scroll{from{transform:translateX(0)}to{transform:translateX(-100px)}}
+  .wave-scroll{animation:wave-scroll var(--dw,4s) linear infinite;will-change:transform}
+  @media (prefers-reduced-motion:reduce){.wave-scroll{animation:none}}
 
-  .showcase{max-width:920px;margin:0 auto;padding:90px 24px 40px}
-  .sizes{display:flex;align-items:flex-end;gap:44px;flex-wrap:wrap;margin-top:24px}
-  .chip{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+  .stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;padding:40px}
   .logo{color:var(--brand)}
-  h1{font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
-  h2{font-size:1rem;color:var(--muted);font-weight:600;margin-top:40px}
-  .navbar-demo{display:flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid color-mix(in oklab,var(--fg) 12%,transparent);border-radius:12px;width:max-content;margin-top:10px}
+  .big{filter:drop-shadow(0 0 30px color-mix(in oklab,var(--brand) 25%,transparent))}
+  .row-sizes{display:flex;align-items:flex-end;gap:40px;flex-wrap:wrap;justify-content:center}
+  .chip{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+  .navbar-demo{display:flex;align-items:center;gap:10px;padding:12px 18px;
+    border:1px solid color-mix(in oklab,var(--fg) 12%,transparent);border-radius:12px}
   .navbar-demo b{font-size:16px;letter-spacing:-.01em}
 
-  /* splash */
-  .splash{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:26px;background:var(--bg);
-    transition:opacity .5s ease,visibility .5s ease}
-  .splash.hide{opacity:0;visibility:hidden}
-  .splash .logo{color:var(--brand);filter:drop-shadow(0 0 28px color-mix(in oklab,var(--brand) 35%,transparent));
-    animation:splash-pop 1100ms cubic-bezier(0.34,1.56,0.64,1) both;transform-origin:50% 50%}
-  .wordmark{position:relative;height:38px;width:100%;text-align:center;font-weight:800;letter-spacing:.01em}
-  .wordmark .full,.wordmark .short{position:absolute;left:50%;top:0;transform:translateX(-50%);white-space:nowrap}
-  .wordmark .full{font-size:20px;color:var(--fg)}
-  .wordmark .short{font-size:30px;color:var(--brand);opacity:0}
-  @keyframes type{from{width:0}to{width:33ch}}
-  @keyframes caret{50%{border-color:transparent}}
-  @keyframes fo{to{opacity:0;transform:translateX(-50%) translateY(-10px)}}
-  @keyframes fi{from{opacity:0;transform:translateX(-50%) translateY(10px) scale(.92)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
-  .type{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--brand);
-    animation:type 1.3s steps(33,end) forwards, caret .7s step-end 4}
-  .full{animation:fo .4s ease forwards;animation-delay:2s}
-  .short{animation:fi .5s ease forwards;animation-delay:2.35s}
-
-  .panel{position:fixed;right:16px;top:16px;z-index:60;width:230px;padding:14px;
-    background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(8px);
-    border:1px solid color-mix(in oklab,var(--fg) 15%,transparent);border-radius:14px;font-size:13px}
-  .panel h3{margin:0 0 10px;font-size:14px}
-  .panel button{width:100%;padding:9px;margin-top:6px;border-radius:9px;cursor:pointer;
+  .panel{width:300px;flex-shrink:0;height:100vh;overflow-y:auto;padding:20px;
+    background:color-mix(in oklab,var(--bg) 92%,transparent);
+    border-left:1px solid color-mix(in oklab,var(--fg) 14%,transparent);
+    backdrop-filter:blur(8px)}
+  .panel h2{margin:0 0 4px;font-size:16px}
+  .panel .sub{margin:0 0 18px;font-size:12px;color:var(--muted)}
+  .group{margin-bottom:18px}
+  .group .gt{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+    margin-bottom:8px;border-bottom:1px solid color-mix(in oklab,var(--fg) 10%,transparent);padding-bottom:4px}
+  .ctl{margin-bottom:11px}
+  .ctl label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
+  .ctl label b{color:var(--brand)}
+  .ctl input[type=range]{width:100%;accent-color:var(--brand)}
+  .ctl.color{display:flex;align-items:center;justify-content:space-between}
+  .ctl.color input[type=color]{width:42px;height:28px;border:none;background:none;cursor:pointer}
+  .btns{display:flex;gap:8px;margin-top:8px}
+  button{flex:1;padding:9px;border-radius:9px;cursor:pointer;font-size:12px;
     border:1px solid color-mix(in oklab,var(--fg) 20%,transparent);background:transparent;color:var(--fg)}
-  .panel button:hover{border-color:var(--brand);color:var(--brand)}
+  button:hover{border-color:var(--brand);color:var(--brand)}
+  #out{margin-top:12px;padding:10px;border-radius:8px;font-family:ui-monospace,monospace;font-size:10.5px;
+    white-space:pre-wrap;background:color-mix(in oklab,var(--fg) 6%,transparent);color:var(--muted);line-height:1.5}
 </style>
 </head>
 <body>
 
-  <div class="splash" id="splash">
-    <div class="logo" id="splashLogo"></div>
-    <div class="wordmark" id="wordmark">
-      <span class="full"><span class="type">Intelligent Technical Diagnostics</span></span>
-      <span class="short">ITD&nbsp;Lab</span>
+  <div class="stage">
+    <div class="logo big" id="hero"></div>
+    <div class="row-sizes">
+      <div class="chip"><div class="logo" id="s64"></div>64px</div>
+      <div class="chip"><div class="logo" id="s32"></div>32px (navbar)</div>
+      <div class="chip"><div class="logo" id="s16"></div>16px (favicon)</div>
     </div>
-  </div>
-
-  <div class="showcase">
-    <h1>Logo mới — “ITD Signal-Gear”</h1>
-    <p style="color:var(--muted)">2 thành phần: bánh răng spur 3D (15 răng, có độ dày khối + lỗ trục) quay tại tâm, và sóng rung động (damped sine) đo ngang qua bánh răng — tín hiệu chẩn đoán. Đỉnh cam = điểm lỗi. Bánh răng quay + nở ra; sóng đứng yên.</p>
-
-    <div class="sizes">
-      <div class="chip"><div class="logo" data-size="128"></div>128px (hero)</div>
-      <div class="chip"><div class="logo" data-size="64"></div>64px</div>
-      <div class="chip"><div class="logo" data-size="32"></div>32px (navbar)</div>
-      <div class="chip"><div class="logo" data-size="16" data-favicon="1"></div>16px (favicon)</div>
-    </div>
-
-    <h2>Trên navbar</h2>
-    <div class="navbar-demo">
-      <div class="logo" data-size="32"></div>
-      <b>ITD Lab</b>
-    </div>
+    <div class="navbar-demo"><div class="logo" id="snav"></div><b>ITD Lab</b></div>
   </div>
 
   <div class="panel">
-    <h3>🎛 Demo</h3>
-    <button id="replay">↻ Chạy lại Splash</button>
-    <button id="theme">🌙 Dark</button>
-    <button id="spinAll">⚙️ Bật/tắt quay (showcase)</button>
+    <h2>⚙️ Chỉnh logo</h2>
+    <p class="sub">Kéo trượt → xem ngay. Ưng thì bấm Copy số.</p>
+
+    <div class="group">
+      <div class="gt">Bánh răng</div>
+      <div class="ctl"><label>Bán kính (răng) <b id="vRP">74</b></label>
+        <input id="rP" type="range" min="36" max="80" step="1" value="74"></div>
+      <div class="ctl"><label>Độ cao răng <b id="vH">24</b></label>
+        <input id="h" type="range" min="6" max="28" step="1" value="24"></div>
+      <div class="ctl"><label>Số răng <b id="vN">13</b></label>
+        <input id="N" type="range" min="8" max="24" step="1" value="13"></div>
+      <div class="ctl"><label>Lỗ trục <b id="vBORE">19</b></label>
+        <input id="bore" type="range" min="6" max="34" step="1" value="19"></div>
+    </div>
+
+    <div class="group">
+      <div class="gt">Tín hiệu rung</div>
+      <div class="ctl"><label>Tần số (số dao động) <b id="vCYC">6</b></label>
+        <input id="cyc" type="range" min="2" max="16" step="1" value="6"></div>
+      <div class="ctl"><label>Biên độ <b id="vAMP">18</b></label>
+        <input id="amp" type="range" min="6" max="50" step="1" value="18"></div>
+      <div class="ctl"><label>Điều biến (beat) <b id="vBEAT">0.35</b></label>
+        <input id="beat" type="range" min="0" max="0.8" step="0.05" value="0.35"></div>
+      <div class="ctl"><label>Độ dài tín hiệu <b id="vWLEN">160</b></label>
+        <input id="wlen" type="range" min="60" max="200" step="2" value="160"></div>
+      <div class="ctl"><label>Vị trí dọc (offset Y) <b id="vYOFF">0</b></label>
+        <input id="yoff" type="range" min="-60" max="60" step="2" value="0"></div>
+      <div class="ctl"><label>Độ rộng rãnh đục <b id="vCUT">9</b></label>
+        <input id="cut" type="range" min="0" max="22" step="1" value="9"></div>
+      <div class="ctl"><label>Tốc độ trôi (giây) <b id="vSPD">5</b></label>
+        <input id="spd" type="range" min="1.5" max="10" step="0.5" value="5"></div>
+    </div>
+
+    <div class="group">
+      <div class="gt">Nét & độ đậm</div>
+      <div class="ctl"><label>Nét bánh răng <b id="vGSW">5</b></label>
+        <input id="gsw" type="range" min="2" max="10" step="0.5" value="5"></div>
+      <div class="ctl"><label>Nét tín hiệu <b id="vWSW">1.5</b></label>
+        <input id="wsw" type="range" min="1" max="8" step="0.5" value="1.5"></div>
+      <div class="ctl"><label>Độ đặc thân răng <b id="vFILL">0.06</b></label>
+        <input id="fill" type="range" min="0" max="0.6" step="0.02" value="0.06"></div>
+      <div class="ctl"><label>Tốc độ quay (giây) <b id="vROT">28</b></label>
+        <input id="rot" type="range" min="6" max="60" step="2" value="28"></div>
+    </div>
+
+    <div class="group">
+      <div class="gt">Màu (chọn riêng từng phần)</div>
+      <div class="ctl color"><label>Màu bánh răng</label>
+        <input id="colGear" type="color" value="#0e7490"></div>
+      <div class="ctl color"><label>Màu tín hiệu</label>
+        <input id="colWave" type="color" value="#06b6d4"></div>
+      <div class="ctl color"><label>Màu điểm nhấn</label>
+        <input id="colAmber" type="color" value="#f59e0b"></div>
+      <div class="ctl"><label style="font-size:11px;color:var(--muted)">Nền xem thử</label></div>
+      <div class="btns"><button id="bgLight">Nền sáng</button><button id="bgDark">Nền tối</button></div>
+    </div>
+
+    <div class="btns">
+      <button id="theme">🌙 Dark</button>
+      <button id="reset">↺ Mặc định</button>
+    </div>
+    <button id="copy" style="width:100%;margin-top:8px">📋 Copy số</button>
+    <div id="out"></div>
   </div>
 
 <script>
-  // ---- "ITD Signal-Gear": 15-tooth gear + damped-sine waveform ----
-  const GEAR="M 0.00,-46.00 L 5.10,-57.78 L 18.84,-54.85 L 18.71,-42.02 L 28.15,-50.71 L 39.53,-42.45 L 34.18,-30.78 L 46.35,-34.87 L 53.37,-22.70 L 43.75,-14.21 L 56.52,-13.01 L 57.99,0.97 L 45.75,4.81 L 56.93,11.11 L 52.58,24.48 L 39.84,23.00 L 47.49,33.30 L 38.08,43.75 L 27.04,37.21 L 29.84,49.74 L 17.00,55.45 L 9.56,44.99 L 7.03,57.57 L -7.03,57.57 L -9.56,44.99 L -17.00,55.45 L -29.84,49.74 L -27.04,37.21 L -38.08,43.75 L -47.49,33.30 L -39.84,23.00 L -52.58,24.48 L -56.93,11.11 L -45.75,4.81 L -57.99,0.97 L -56.52,-13.01 L -43.75,-14.21 L -53.37,-22.70 L -46.35,-34.87 L -34.18,-30.78 L -39.53,-42.45 L -28.15,-50.71 L -18.71,-42.02 L -18.84,-54.85 L -5.10,-57.78 L -0.00,-46.00 Z";
-  const WAVE="-92,0 -88,-14.76 -84,-24.23 -80,-26.26 -76,-20.92 -72,-10.29 -68,2.26 -64,13.14 -60,19.49 -56,19.97 -52,14.93 -48,6.22 -44,-3.46 -40,-11.38 -36,-15.51 -32,-15.04 -28,-10.49 -24,-3.44 -20,3.95 -16,9.64 -12,12.21 -8,11.21 -4,7.22 0,1.59 4,-4 8,-8.03 12,-9.51 16,-8.26 20,-4.85 24,-0.4 28,3.79 32,6.58 36,7.34 40,6.02 44,3.16 48,-0.32 52,-3.43 56,-5.33 60,-5.61 64,-4.33 68,-1.97 72,0.73 76,3 80,4.26 84,4.24 88,3.06 92,1.14";
-  const WAVE_SM="-58,0 -40,-20 -22,14 -4,-9 14,6 40,-3 58,0";
-  const BORE=14, DEPTH=12;
+  const $=id=>document.getElementById(id);
+  const root=document.documentElement;
 
-  function gearBody(){
-    return `
-      <path d="${GEAR}" transform="translate(0 ${DEPTH})" fill="currentColor" fill-opacity="0.18" stroke="none"/>
-      <path d="${GEAR}" fill="currentColor" fill-opacity="0.28" stroke="none"/>
-      <path d="${GEAR}" fill="none" stroke="currentColor" stroke-width="5" vector-effect="non-scaling-stroke"/>
-      <circle cy="${DEPTH}" r="${BORE}" fill="none" stroke="currentColor" stroke-width="4" opacity="0.5"/>
-      <line x1="${-BORE}" y1="0" x2="${-BORE}" y2="${DEPTH}" stroke="currentColor" stroke-width="4" opacity="0.5"/>
-      <line x1="${BORE}" y1="0" x2="${BORE}" y2="${DEPTH}" stroke="currentColor" stroke-width="4" opacity="0.5"/>
-      <circle r="${BORE}" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="4"/>
-      <circle r="2.5" fill="currentColor" stroke="none"/>`;
+  // ---------- generators ----------
+  function gearPath(N, rP, h){
+    const rO=rP+h/2, rR=rP-h/2, tipFrac=0.42;
+    const P=(r,a)=>`${(r*Math.sin(a)).toFixed(2)},${(-r*Math.cos(a)).toFixed(2)}`;
+    const half=Math.PI/N, tip=half*tipFrac;
+    let d="M";
+    for(let i=0;i<N;i++){const c=i*2*Math.PI/N;
+      const v=[P(rR,c-half),P(rO,c-tip),P(rO,c+tip),P(rR,c+half)];
+      for(const p of v) d+=` ${p} L`;}
+    return d.replace(/ L$/," Z");
   }
-  function waveGroup(){
-    return `
-      <line x1="-92" y1="0" x2="92" y2="0" stroke-width="1" opacity="0.4"/>
-      <polyline points="${WAVE}" fill="none" stroke="currentColor" stroke-width="3.5" vector-effect="non-scaling-stroke"/>
-      <line x1="-80" y1="-26.26" x2="-80" y2="0" stroke="var(--highlight)" stroke-width="1.5" opacity="0.7"/>
-      <circle cx="-80" cy="-26.26" r="8" fill="none" stroke="var(--highlight)" stroke-width="1.5"/>
-      <circle cx="-80" cy="-26.26" r="4.5" fill="var(--highlight)" stroke="none"/>`;
-  }
-
-  function logoSVG(size, favicon){
-    if(favicon||size<28){
-      return `<svg viewBox="-100 -100 200 200" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="4">
-        <circle r="88"/><circle r="22" fill="currentColor" stroke="none"/>
-        <circle cx="0" cy="-60" r="9" fill="var(--highlight)" stroke="none"/></svg>`;
+  // Visible wave: ONE finite trace of length `len`, centred at x=0,
+  // shifted vertically by `yoff`. Length should be ≤ gear diameter.
+  function wavePoints(cyc, amp, beatDepth, len, yoff){
+    const half=len/2;
+    const carrier=Math.PI*2*cyc/len;     // `cyc` full cycles across the length
+    const beat=Math.PI*2/len;            // 1 beat envelope across the length
+    const lo=1-beatDepth;
+    let pts=[];
+    for(let x=-half;x<=half;x+=2){
+      const env=lo+beatDepth*Math.abs(Math.sin(beat*(x+half)));
+      pts.push(`${x.toFixed(1)},${(yoff-amp*env*Math.sin(carrier*(x+half))).toFixed(2)}`);
     }
-    const detail = size>=64;
-    if(!detail){
+    return pts.join(" ");
+  }
+  // Long scrolling band for the carved groove (loops over period 100).
+  function bandPoints(cyc, amp, beatDepth, yoff){
+    const carrier=Math.PI*2*cyc/100, beat=Math.PI*2/100;
+    const lo=1-beatDepth;
+    let pts=[];
+    for(let x=-200;x<=400;x+=2){
+      const env=lo+beatDepth*Math.abs(Math.sin(beat*x));
+      pts.push(`${x},${(yoff-amp*env*Math.sin(carrier*x)).toFixed(2)}`);
+    }
+    return pts.join(" ");
+  }
+
+  let MID=0;
+  function logoSVG(size, P){
+    const GC=P.colGear, WC=P.colWave, AC=P.colAmber;
+    const dia=2*(P.rP+P.h/2);            // gear outer diameter
+    const len=Math.min(P.wlen, dia);     // trace length ≤ diameter
+    if(size<28){ // favicon silhouette
+      return `<svg viewBox="-100 -100 200 200" width="${size}" height="${size}" fill="none" stroke="${GC}" stroke-width="4">
+        <circle r="88"/><circle r="${Math.max(16,P.bore+6)}" fill="${GC}" stroke="none"/>
+        <circle cx="0" cy="-60" r="9" fill="${AC}" stroke="none"/></svg>`;
+    }
+    const gear=gearPath(P.N,P.rP,P.h);
+    const wave=wavePoints(P.cyc,P.amp,P.beat,len,P.yoff);
+    if(size<64){ // navbar: flat gear + simple static trace
       return `<svg viewBox="-100 -100 200 200" width="${size}" height="${size}" fill="none"
-          stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
-        <g class="carrier"><path d="${GEAR}" stroke-width="4.5" vector-effect="non-scaling-stroke"/>
-          <circle r="${BORE}" fill="currentColor" stroke="none"/></g>
-        <polyline points="${WAVE_SM}" fill="none" stroke-width="4" vector-effect="non-scaling-stroke"/>
-        <circle cx="-40" cy="-20" r="6" fill="var(--highlight)" stroke="none"/>
-      </svg>`;
+          stroke-linejoin="round" stroke-linecap="round">
+        <g stroke="${GC}"><path d="${gear}" fill="none" stroke-width="${(P.gsw-0.5).toFixed(1)}" vector-effect="non-scaling-stroke"/>
+          <circle r="${P.bore}" fill="${GC}" stroke="none"/>
+          <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="${(P.rot*1.4)}s" repeatCount="indefinite"/></g>
+        <polyline points="${wavePoints(P.cyc,P.amp,P.beat,len,P.yoff)}" fill="none" stroke="${WC}" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <circle cx="-40" cy="${(P.yoff-20).toFixed(1)}" r="6" fill="${AC}" stroke="none"/></svg>`;
     }
+    const mid="m"+(MID++);
+    const half=len/2, y0=P.yoff, gap=P.amp;
+    // TWO straight parallel lines carve a fixed band (gap = amplitude).
+    const cut = P.cut>0 ? `<defs><mask id="${mid}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="200" height="200">
+        <rect x="-100" y="-100" width="200" height="200" fill="white"/>
+        <line x1="${-half}" y1="${y0-gap/2}" x2="${half}" y2="${y0-gap/2}" stroke="black" stroke-width="${P.cut}" stroke-linecap="round"/>
+        <line x1="${-half}" y1="${y0+gap/2}" x2="${half}" y2="${y0+gap/2}" stroke="black" stroke-width="${P.cut}" stroke-linecap="round"/>
+      </mask></defs>` : "";
+    const maskAttr = P.cut>0 ? ` mask="url(#${mid})"` : "";
+    // ONE signal trace scrolling through the band (clipped to the band).
+    const band=bandPoints(P.cyc,P.amp,P.beat,y0);
     return `<svg viewBox="-100 -100 200 200" width="${size}" height="${size}" fill="none"
-        stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
-      <g class="iso-stage"><g class="carrier">${gearBody()}</g></g>
-      <g>${waveGroup()}</g>
+        stroke-linejoin="round" stroke-linecap="round">
+      ${cut}
+      <clipPath id="${mid}c"><rect x="${-half}" y="${y0-gap/2-4}" width="${len}" height="${gap+8}"/></clipPath>
+      <g${maskAttr}><g stroke="${GC}">
+        <path d="${gear}" fill="${GC}" fill-opacity="${P.fill}" stroke="none"/>
+        <path d="${gear}" fill="none" stroke="${GC}" stroke-width="${P.gsw}" vector-effect="non-scaling-stroke"/>
+        <circle r="${P.bore}" fill="${GC}" fill-opacity="${P.fill}" stroke="${GC}" stroke-width="4"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="${P.rot}s" repeatCount="indefinite"/>
+      </g></g>
+      <g clip-path="url(#${mid}c)">
+        <polyline class="wave-scroll" points="${band}" fill="none" stroke="${WC}" stroke-width="${P.wsw}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      </g>
     </svg>`;
   }
 
-  document.querySelectorAll(".logo").forEach(el=>{
-    el.innerHTML=logoSVG(+(el.dataset.size||64), el.dataset.favicon==="1");
-  });
-  document.getElementById("splashLogo").innerHTML=logoSVG(128,false);
-
-  // splash auto-hide
-  const splash=document.getElementById("splash");
-  let timer;
-  function runSplash(){
-    splash.classList.remove("hide");
-    const wm=document.getElementById("wordmark"); wm.innerHTML=wm.innerHTML;
-    clearTimeout(timer); timer=setTimeout(()=>splash.classList.add("hide"),3600);
+  // ---------- read params + render ----------
+  function params(){
+    return {
+      rP:+$("rP").value, h:+$("h").value, N:+$("N").value, bore:+$("bore").value,
+      cyc:+$("cyc").value, amp:+$("amp").value, beat:+$("beat").value, cut:+$("cut").value,
+      wlen:+$("wlen").value, yoff:+$("yoff").value,
+      gsw:+$("gsw").value, wsw:+$("wsw").value, fill:+$("fill").value, rot:+$("rot").value,
+      spd:+$("spd").value,
+      colGear:$("colGear").value, colWave:$("colWave").value, colAmber:$("colAmber").value,
+    };
   }
-  runSplash();
+  function render(){
+    const P=params();
+    root.style.setProperty("--dw", P.spd+"s");
+    MID=0;
+    $("hero").innerHTML=logoSVG(150,P);
+    $("s64").innerHTML=logoSVG(64,P);
+    $("s32").innerHTML=logoSVG(32,P);
+    $("s16").innerHTML=logoSVG(16,P);
+    $("snav").innerHTML=logoSVG(32,P);
+    // update value labels
+    const m={rP:"RP",h:"H",N:"N",bore:"BORE",cyc:"CYC",amp:"AMP",beat:"BEAT",cut:"CUT",
+             wlen:"WLEN",yoff:"YOFF",gsw:"GSW",wsw:"WSW",fill:"FILL",rot:"ROT",spd:"SPD"};
+    for(const k in m) $("v"+m[k]).textContent=$(k).value;
+    dump(P);
+  }
+  function dump(P){
+    $("out").textContent =
+`Bánh răng: rP=${P.rP} h=${P.h} N=${P.N} lỗ=${P.bore}
+Tín hiệu: ${P.cyc} dao động, amp=${P.amp}, beat=${P.beat}
+Độ dài=${P.wlen}, vị trí Y=${P.yoff}, 2 đường cách nhau=${P.amp}
+Rãnh đục=${P.cut}, trôi=${P.spd}s
+Nét: gear=${P.gsw} sóng=${P.wsw} fill=${P.fill} quay=${P.rot}s
+Màu bánh răng: ${P.colGear}
+Màu tín hiệu: ${P.colWave}
+Màu điểm nhấn: ${P.colAmber}`;
+  }
 
-  const root=document.documentElement;
-  document.getElementById("replay").onclick=runSplash;
-  document.getElementById("theme").onclick=e=>{root.classList.toggle("dark");
+  // bind all range inputs + color pickers → re-render (colors live in SVG now)
+  document.querySelectorAll('input[type=range],input[type=color]')
+    .forEach(i=>i.addEventListener("input",render));
+
+  // background-only toggles (preview gear/wave colors on light vs dark bg)
+  $("bgLight").onclick=()=>root.classList.remove("dark");
+  $("bgDark").onclick=()=>root.classList.add("dark");
+  $("theme").onclick=e=>{root.classList.toggle("dark");
     e.target.textContent=root.classList.contains("dark")?"☀️ Light":"🌙 Dark";};
-  let spinning=true;
-  document.getElementById("spinAll").onclick=()=>{
-    spinning=!spinning;
-    document.querySelectorAll(".showcase .carrier,.showcase .sun").forEach(g=>{
-      g.style.animationPlayState=spinning?"running":"paused";});
+
+  $("reset").onclick=()=>{
+    const def={rP:74,h:24,N:13,bore:19,cyc:6,amp:18,beat:0.35,wlen:160,yoff:0,cut:9,gsw:5,wsw:1.5,fill:0.06,rot:28,spd:5};
+    for(const k in def) $(k).value=def[k];
+    $("colGear").value="#0e7490"; $("colWave").value="#06b6d4"; $("colAmber").value="#f59e0b";
+    render();
   };
+  $("copy").onclick=()=>{
+    navigator.clipboard?.writeText($("out").textContent);
+    $("copy").textContent="✓ Đã copy"; setTimeout(()=>$("copy").textContent="📋 Copy số",1500);
+  };
+
+  render();
 </script>
 </body>
 </html>

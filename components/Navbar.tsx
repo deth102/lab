@@ -4,7 +4,6 @@ import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
 import MobileMenu from "./MobileMenu";
 import NavLink from "./NavLink";
-import LabLogo from "./LabLogo";
 
 export default async function Navbar() {
   const t = await getTranslations("Nav");
@@ -26,10 +25,13 @@ export default async function Navbar() {
           href="/"
           className="flex items-center gap-2.5 font-semibold tracking-tight text-foreground"
         >
-          <LabLogo
-            size={32}
-            ariaLabel={t("brand")}
-            className="logo-glow text-brand"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.svg"
+            alt={t("brand")}
+            width={32}
+            height={32}
+            className="logo-glow"
           />
           <span className="text-base">{t("brand")}</span>
         </Link>

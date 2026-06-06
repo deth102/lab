@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { Link } from "@/i18n/navigation";
 import Magnetic from "./Magnetic";
 import LabLogo from "./LabLogo";
+import RevealWordmark from "./RevealWordmark";
+import RevealTagline from "./RevealTagline";
 
 type Props = {
   eyebrow: string;
@@ -122,14 +124,13 @@ export default function Hero({
             <p className="hero-eyebrow text-xs md:text-sm uppercase tracking-[0.25em] text-muted">
               {eyebrow}
             </p>
-            <h1 className="hero-name mt-4 text-5xl md:text-7xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-foreground via-brand to-accent bg-clip-text text-transparent">
-                {name}
-              </span>
+            <h1 className="hero-name mt-4 font-bold tracking-tight text-brand">
+              <RevealWordmark />
             </h1>
-            <p className="hero-name mt-2 text-base md:text-lg text-foreground/70">
-              {fullName}
-            </p>
+            <RevealTagline
+              text={fullName}
+              className="hero-name mt-2 block text-base md:text-lg text-foreground/70"
+            />
             <p className="hero-tagline mt-6 text-xl md:text-2xl font-medium text-foreground/85 max-w-3xl">
               {tagline}
             </p>
@@ -167,13 +168,13 @@ export default function Hero({
             </div>
           </div>
 
-          <div className="order-1 md:order-2 justify-self-center md:justify-self-end">
+          <div className="order-1 md:order-2 justify-self-center md:justify-self-end md:mt-40 lg:mt-48">
             <LabLogo
               size={320}
               spin
-              spinDur={24}
+              spinDur={22}
               ariaLabel={name}
-              className="hero-mark h-48 w-48 sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80 text-brand drop-shadow-xl"
+              className="hero-mark h-48 w-48 sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80 drop-shadow-xl"
             />
           </div>
         </div>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ITD LAB — full signal-gear mark (static export of the hero logo)
+  14-tooth spur gear (rP=80), twin straight grooves carving a band across
+  it, and one vibration trace (11 cycles) sitting inside that band.
+  Colors fixed: #024f64 gear, #e2bbbb signal. Self-contained, no CSS vars.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200" width="320" height="320"
+     fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <!-- Twin straight grooves (y=41 & y=59) punch a band out of the gear -->
+    <mask id="band" maskUnits="userSpaceOnUse" x="-100" y="-100" width="200" height="200">
+      <rect x="-100" y="-100" width="200" height="200" fill="white"/>
+      <line x1="-80" y1="41" x2="80" y2="41" stroke="black" stroke-width="22" stroke-linecap="round"/>
+      <line x1="-80" y1="59" x2="80" y2="59" stroke="black" stroke-width="22" stroke-linecap="round"/>
+    </mask>
+    <!-- Clip the signal to the band so it never spills past the grooves -->
+    <clipPath id="band-clip"><rect x="-80" y="37" width="160" height="26"/></clipPath>
+  </defs>
+
+  <!-- GEAR (with the band masked out) -->
+  <g mask="url(#band)">
+    <path d="M -14.69,-64.35 L -8.85,-93.58 L 8.85,-93.58 L 14.69,-64.35 L 14.69,-64.35 L 32.63,-88.15 L 48.57,-80.48 L 41.15,-51.60 L 41.15,-51.60 L 67.65,-65.26 L 78.68,-51.43 L 59.46,-28.64 L 59.46,-28.64 L 89.27,-29.45 L 93.20,-12.20 L 66.00,-0.00 L 66.00,-0.00 L 93.20,12.20 L 89.27,29.45 L 59.46,28.64 L 59.46,28.64 L 78.68,51.43 L 67.65,65.26 L 41.15,51.60 L 41.15,51.60 L 48.57,80.48 L 32.63,88.15 L 14.69,64.35 L 14.69,64.35 L 8.85,93.58 L -8.85,93.58 L -14.69,64.35 L -14.69,64.35 L -32.63,88.15 L -48.57,80.48 L -41.15,51.60 L -41.15,51.60 L -67.65,65.26 L -78.68,51.43 L -59.46,28.64 L -59.46,28.64 L -89.27,29.45 L -93.20,12.20 L -66.00,0.00 L -66.00,0.00 L -93.20,-12.20 L -89.27,-29.45 L -59.46,-28.64 L -59.46,-28.64 L -78.68,-51.43 L -67.65,-65.26 L -41.15,-51.60 L -41.15,-51.60 L -48.57,-80.48 L -32.63,-88.15 L -14.69,-64.35 Z"
+          fill="none" stroke="#024f64" stroke-width="3.5"/>
+    <circle cx="0" cy="0" r="24" fill="#024f64" stroke="#024f64" stroke-width="4"/>
+  </g>
+
+  <!-- ONE signal trace inside the band -->
+  <g clip-path="url(#band-clip)">
+    <polyline points="-80,50.00 -78,46.40 -76,44.22 -74,46.36 -72,52.49 -70,58.42 -68,59.03 -66,52.60 -64,42.91 -62,37.09 -60,40.25 -58,51.14 -56,62.34 -54,65.44 -52,57.46 -50,43.53 -48,33.55 -46,34.99 -44,47.21 -42,61.66 -40,68.00 -38,61.66 -36,47.21 -34,34.99 -32,33.55 -30,43.53 -28,57.46 -26,65.44 -24,62.34 -22,51.14 -20,40.25 -18,37.09 -16,42.91 -14,52.60 -12,59.03 -10,58.42 -8,52.49 -6,46.36 -4,44.22 -2,46.40 0,50.00 2,53.60 4,55.78 6,53.64 8,47.51 10,41.58 12,40.97 14,47.40 16,57.09 18,62.91 20,59.75 22,48.86 24,37.66 26,34.56 28,42.54 30,56.47 32,66.45 34,65.01 36,52.79 38,38.34 40,32.00 42,38.34 44,52.79 46,65.01 48,66.45 50,56.47 52,42.54 54,34.56 56,37.66 58,48.86 60,59.75 62,62.91 64,57.09 66,47.40 68,40.97 70,41.58 72,47.51 74,53.64 76,55.78 78,53.60 80,50.00"
+              fill="none" stroke="#e2bbbb" stroke-width="2"/>
+  </g>
+</svg>

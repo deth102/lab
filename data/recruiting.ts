@@ -61,6 +61,7 @@ export const recruiting: Record<"en" | "vi", RecruitingContent> = {
       heading: "Điều kiện",
       items: [
         "Có GPA 2 kỳ gần nhất trên 3.0",
+        "Tiếng Anh B2 trở lên",
         "Có nền tảng kiến thức về Toán, Signal Processing, Machine Learning",
         "Biết MATLAB và/hoặc Python là một lợi thế lớn",
         "Sinh viên năm cuối hoặc đã tốt nghiệp đại học (có trong danh sách trúng tuyển thạc sĩ tại HUST)",
@@ -124,6 +125,7 @@ export const recruiting: Record<"en" | "vi", RecruitingContent> = {
       heading: "Requirements",
       items: [
         "GPA above 3.0 in the most recent two semesters",
+        "English proficiency at B2 level or above",
         "Solid background in Mathematics, Signal Processing and Machine Learning",
         "MATLAB and/or Python skills are a strong plus",
         "Final-year undergraduate or fresh graduate (admitted to the HUST Master's program)",
