@@ -162,6 +162,7 @@ export const memberGroups: MemberGroup[] = [
         name: "Ths. Nguyễn Văn Quyền",
         affiliation: HUST,
         photo: "/members/quyen.jpg",
+        scholar: "https://orcid.org/0000-0001-9486-1431",
       },
       {
         name: "Ths. Vũ Trần Chính",
