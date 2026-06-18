@@ -43,7 +43,8 @@
   },
   "Partnership": {
     "title": "Hợp tác doanh nghiệp",
-    "empty": "Chưa có hợp tác nào được liệt kê."
+    "empty": "Chưa có hợp tác nào được liệt kê.",
+    "slides": "Tài liệu khóa học"
   },
   "Members": {
     "title": "Thành viên",

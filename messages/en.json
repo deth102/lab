@@ -43,7 +43,8 @@
   },
   "Partnership": {
     "title": "Industry Partnership",
-    "empty": "No partnerships listed yet."
+    "empty": "No partnerships listed yet.",
+    "slides": "Course materials"
   },
   "Members": {
     "title": "Members",

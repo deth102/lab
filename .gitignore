@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# source slide decks (PPTX) — only the converted PDFs in public/ are served
+/slide/
+
