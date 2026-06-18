@@ -9,7 +9,8 @@
     "events": "Events",
     "openings": "Openings",
     "contact": "Contact",
-    "menu": "Open menu"
+    "menu": "Open menu",
+    "about": "About"
   },
   "Hero": {
     "eyebrow": "Hanoi University of Science and Technology",
@@ -22,15 +23,11 @@
   },
   "About": {
     "title": "About the Lab",
-    "body": "ITD Lab specializes in digital signal processing for early fault detection in rotating machinery. We combine vibration analysis, classical signal processing and modern AI to build diagnostic systems that work in the lab and on the factory floor.",
-    "stats": {
-      "founded": "Founded",
-      "foundedValue": "Hanoi, Vietnam",
-      "focus": "Focus",
-      "focusValue": "Vibration · AI · PHM",
-      "host": "Host",
-      "hostValue": "HUST · School of Mechanical Engineering"
-    }
+    "modelTitle": "How We Work",
+    "strengthsTitle": "Our Strengths",
+    "groupsTitle": "Three Research Groups",
+    "groupsSubtitle": "Research students (from year 2 onward) are organised into three main directions.",
+    "supervisor": "Supervisor"
   },
   "Research": {
     "title": "Research Focus",

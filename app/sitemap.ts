@@ -6,6 +6,7 @@ const SITE = "https://itdhust.com";
 // Static routes. If you add a new page (e.g. /awards), list it here.
 const PATHS = [
   "",
+  "/about",
   "/research",
   "/members",
   "/partnership",

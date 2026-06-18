@@ -9,7 +9,8 @@
     "events": "Sự kiện",
     "openings": "Tuyển sinh",
     "contact": "Liên hệ",
-    "menu": "Mở menu"
+    "menu": "Mở menu",
+    "about": "Giới thiệu"
   },
   "Hero": {
     "eyebrow": "Đại học Bách khoa Hà Nội",
@@ -21,16 +22,12 @@
     "ctaSecondary": "Tham gia Lab"
   },
   "About": {
-    "title": "Về Lab",
-    "body": "ITD Lab chuyên sâu về xử lý tín hiệu số nhằm phát hiện sớm hư hỏng trong các máy quay. Chúng tôi kết hợp phân tích rung, xử lý tín hiệu cổ điển và AI hiện đại để xây các hệ chẩn đoán hoạt động được cả trong lab và trên dây chuyền sản xuất.",
-    "stats": {
-      "founded": "Địa điểm",
-      "foundedValue": "Hà Nội, Việt Nam",
-      "focus": "Hướng nghiên cứu",
-      "focusValue": "Rung · AI · PHM",
-      "host": "Đơn vị chủ quản",
-      "hostValue": "ĐHBK HN · Trường Cơ khí"
-    }
+    "title": "Giới thiệu Lab",
+    "modelTitle": "Mô hình hoạt động",
+    "strengthsTitle": "Điểm mạnh",
+    "groupsTitle": "Ba nhóm nghiên cứu",
+    "groupsSubtitle": "Sinh viên nghiên cứu (từ năm 2 trở đi) được tổ chức theo ba hướng chính.",
+    "supervisor": "Phụ trách"
   },
   "Research": {
     "title": "Hướng nghiên cứu",
