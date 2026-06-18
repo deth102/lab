@@ -63,6 +63,13 @@ export const memberGroups: MemberGroup[] = [
         scholar: "https://scholar.google.com/citations?user=P9yPJnsAAAAJ&hl=en",
       },
       {
+        name: "TS. Đỗ Đức Nam",
+        title: "Key Member",
+        affiliation: HUST,
+        photo: "/members/ducnam.png",
+        
+      },
+      {
         name: "TS. Nguyễn Thái Minh Tuấn",
         title: "Key Member",
         affiliation: HUST,
