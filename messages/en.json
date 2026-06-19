@@ -41,7 +41,8 @@
   "Partnership": {
     "title": "Industry Partnership",
     "empty": "No partnerships listed yet.",
-    "slides": "Course materials"
+    "slides": "Course materials",
+    "referenceSlides": "Other reference materials"
   },
   "Members": {
     "title": "Members",

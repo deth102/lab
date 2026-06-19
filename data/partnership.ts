@@ -29,6 +29,8 @@ export type Partnership = {
   highlights?: string[];
   slidesTitle?: string; // tiêu đề khối slide (vd "Tài liệu khóa học")
   slides?: PartnerSlide[];
+  // Tài liệu không thuộc giáo trình 5 ngày (vd blueprint quạt công nghiệp).
+  referenceSlides?: PartnerSlide[];
 };
 
 // Phần giới thiệu chung (đầu trang). Viết tiếng Việt.
@@ -55,17 +57,16 @@ export const partnerships: Partnership[] = [
     slidesTitle: "Tài liệu khóa học (slide)",
     slides: [
       {
-        title:
-          "Day 1 — Vibration Monitoring & Maintenance Strategies",
-        file: "/slides/vicem/day1-vibration-monitoring-maintenance-strategies.pdf",
+        title: "Day 1 — Course Introduction & Vibration Monitoring",
+        file: "/slides/vicem/day1-course-introduction.pdf",
       },
       {
         title: "Day 1–2 — AI Methods for Prognostics & Health Management",
         file: "/slides/vicem/day1-2-ai-methods-for-phm.pdf",
       },
       {
-        title: "Day 2 — Gear & Rolling-Element Bearing Fault Diagnosis",
-        file: "/slides/vicem/day2-gear-and-bearing-diagnosis.pdf",
+        title: "Day 2 — Common Faults in Gears & Bearings, ISO Standards",
+        file: "/slides/vicem/day2-common-faults-gear-bearing-iso.pdf",
       },
       {
         title: "Day 3 — Vertical Roller Mill Fault Diagnosis",
@@ -82,6 +83,16 @@ export const partnerships: Partnership[] = [
       {
         title: "Day 5 — Dynamic Balancing of Rotating Machinery",
         file: "/slides/vicem/day5-dynamic-balancing.pdf",
+      },
+    ],
+    referenceSlides: [
+      {
+        title: "Cement ID Fan — Performance Blueprint",
+        file: "/slides/vicem/reference/cement-id-fan-performance.pdf",
+      },
+      {
+        title: "Industrial Fan — Optimization Blueprint",
+        file: "/slides/vicem/reference/industrial-fan-optimization.pdf",
       },
     ],
   },

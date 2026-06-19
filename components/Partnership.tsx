@@ -4,10 +4,53 @@ import {
   partnerships,
   partnershipIntro,
   type Partnership,
+  type PartnerSlide,
 } from "@/data/partnership";
 import { translate } from "@/lib/translate";
 
 const SOURCE_LOCALE = "vi";
+
+// A titled list of downloadable PDF slides. Reused for the course materials
+// and the "other reference materials" blocks.
+function SlideList({ heading, slides }: { heading: string; slides: PartnerSlide[] }) {
+  return (
+    <div className="mt-7 border-t border-border/60 pt-6">
+      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
+        {heading}
+      </h3>
+      <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+        {slides.map((s, j) => (
+          <li key={j}>
+            <a
+              href={s.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/slide flex items-center gap-3 rounded-xl border border-border/60 bg-background/40 px-3.5 py-3 text-sm text-foreground/85 transition-colors hover:border-brand/60 hover:text-brand"
+            >
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5 shrink-0 text-brand"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+              </svg>
+              <span className="min-w-0 flex-1 leading-snug">{s.title}</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-muted group-hover/slide:text-brand">
+                PDF
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default async function PartnershipSection() {
   const t = await getTranslations("Partnership");
@@ -35,6 +78,7 @@ export default async function PartnershipSection() {
       // heading is localised.
       slidesTitle: (await tr(p.slidesTitle)) ?? p.slidesTitle,
       slides: p.slides,
+      referenceSlides: p.referenceSlides,
     }))
   );
 
@@ -142,43 +186,17 @@ export default async function PartnershipSection() {
                 )}
 
                 {p.slides && p.slides.length > 0 && (
-                  <div className="mt-7 border-t border-border/60 pt-6">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
-                      {p.slidesTitle ?? t("slides")}
-                    </h3>
-                    <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
-                      {p.slides.map((s, j) => (
-                        <li key={j}>
-                          <a
-                            href={s.file}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/slide flex items-center gap-3 rounded-xl border border-border/60 bg-background/40 px-3.5 py-3 text-sm text-foreground/85 transition-colors hover:border-brand/60 hover:text-brand"
-                          >
-                            <svg
-                              aria-hidden
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="1.8"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="h-5 w-5 shrink-0 text-brand"
-                            >
-                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                              <path d="M14 2v6h6" />
-                            </svg>
-                            <span className="min-w-0 flex-1 leading-snug">
-                              {s.title}
-                            </span>
-                            <span className="text-xs font-medium uppercase tracking-wide text-muted group-hover/slide:text-brand">
-                              PDF
-                            </span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <SlideList
+                    heading={p.slidesTitle ?? t("slides")}
+                    slides={p.slides}
+                  />
+                )}
+
+                {p.referenceSlides && p.referenceSlides.length > 0 && (
+                  <SlideList
+                    heading={t("referenceSlides")}
+                    slides={p.referenceSlides}
+                  />
                 )}
               </div>
             </article>
