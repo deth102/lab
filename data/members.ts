@@ -241,6 +241,11 @@ export const memberGroups: MemberGroup[] = [
         contact: "cuongnm.com",
         scholar: "https://www.researchgate.net/profile/Cuong-Nguyen-343",
       },
+      {
+        name: "Nguyễn Mạnh Khang",
+        affiliation: HUST,
+        photo: "/members/khang.jpg",
+      },
     ],
   },
 
