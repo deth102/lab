@@ -14,130 +14,63 @@ export type Stat = {
   label: string;
 };
 
-type StatKey = "members" | "publications" | "research" | "years";
-
-const STAT_CONFIG: Record<
-  StatKey,
+const STAT_LINKS = [
+  { href: "/members" },
   {
-    order: number;
-    href?: string;
-    external?: boolean;
-  }
-> = {
-  members: {
-    order: 1,
-    href: "/members",
-  },
-
-  publications: {
-    order: 2,
     href: "https://www.researchgate.net/profile/Trong-Du-Nguyen",
     external: true,
   },
-
-  research: {
-    order: 3,
-    href: "/research",
-  },
-
-  years: {
-    order: 4,
-  },
-};
-
-// Nhận diện nhãn tiếng Anh và tiếng Việt
-function getStatKey(label: string): StatKey | undefined {
-  const normalized = label.trim().toLowerCase();
-
-  if (["members", "thành viên"].includes(normalized)) {
-    return "members";
-  }
-
-  if (["publications", "công bố"].includes(normalized)) {
-    return "publications";
-  }
-
-  if (
-    ["research areas", "hướng nghiên cứu"].includes(
-      normalized
-    )
-  ) {
-    return "research";
-  }
-
-  if (["years active", "năm hoạt động"].includes(normalized)) {
-    return "years";
-  }
-
-  return undefined;
-}
+  {},
+  { href: "/research" },
+];
 
 export default function StatsBar({ stats }: { stats: Stat[] }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Sắp xếp thứ tự các thẻ
-  const sortedStats = [...stats].sort((a, b) => {
-    const orderA = STAT_CONFIG[getStatKey(a.label) ?? "years"]?.order ?? 999;
-    const orderB = STAT_CONFIG[getStatKey(b.label) ?? "years"]?.order ?? 999;
-
-    return orderA - orderB;
-  });
-
-  // GSAP animation
   useEffect(() => {
     if (!ref.current) return;
 
     const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
+      const cards = gsap.utils.toArray<HTMLElement>(".stat-card");
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const targets =
-          ref.current!.querySelectorAll<HTMLElement>("[data-target]");
-
-        targets.forEach((el) => {
-          const target = Number(el.dataset.target || "0");
-
-          gsap.fromTo(
-            el,
-            { innerText: 0 },
-            {
-              innerText: target,
-              duration: 1.6,
-              ease: "power2.out",
-              snap: { innerText: 1 },
-              scrollTrigger: {
-                trigger: ref.current,
-                start: "top 85%",
-                once: true,
-              },
-            }
-          );
-        });
-
-        gsap.from(ref.current!.querySelectorAll(".stat-card"), {
-          y: 30,
-          opacity: 0,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: "power3.out",
+      // Chỉ fade-in, không di chuyển card
+      gsap.fromTo(
+        cards,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ref.current,
             start: "top 85%",
             once: true,
           },
-        });
-      });
+        }
+      );
 
-      mm.add("(prefers-reduced-motion: reduce)", () => {
-        ref.current!
-          .querySelectorAll<HTMLElement>("[data-target]")
-          .forEach((el) => {
-            el.innerText = String(el.dataset.target);
-          });
+      // Hiệu ứng đếm số
+      const targets =
+        ref.current!.querySelectorAll<HTMLElement>("[data-target]");
 
-        gsap.set(ref.current!.querySelectorAll(".stat-card"), {
-          opacity: 1,
-          y: 0,
+      targets.forEach((el) => {
+        const target = Number(el.dataset.target || "0");
+        const counter = { value: 0 };
+
+        gsap.to(counter, {
+          value: target,
+          duration: 1.6,
+          ease: "power2.out",
+          snap: { value: 1 },
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 85%",
+            once: true,
+          },
+          onUpdate: () => {
+            el.textContent = String(counter.value);
+          },
         });
       });
     }, ref);
@@ -146,54 +79,57 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
   }, []);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+    <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 md:py-16">
       <div
         ref={ref}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+        className="grid grid-cols-2 items-stretch gap-4 md:grid-cols-4 md:gap-6"
       >
-        {sortedStats.map((s) => {
-          const key = getStatKey(s.label);
-          const config = key ? STAT_CONFIG[key] : undefined;
-          const href = config?.href;
-          const isPublication = key === "publications";
+        {stats.map((s, index) => {
+          const config = STAT_LINKS[index];
 
           const cardClass =
-            "stat-card glow-hover block rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm px-5 py-6 md:px-6 md:py-7 text-center transition-all duration-300";
+            "stat-card glow-hover flex h-full min-w-0 flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/40 px-3 py-6 text-center backdrop-blur-sm transition-colors duration-300 hover:border-brand/50 sm:px-5 md:px-6 md:py-7";
 
           const content = (
             <>
-              <div className="flex items-baseline justify-center gap-0.5">
+              {/* Number: cố định chiều rộng */}
+              <div className="flex min-h-[56px] w-full items-center justify-center gap-1">
                 <span
-                  {...(!isPublication && {
-                    "data-target": s.value,
-                  })}
-                  className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-br from-brand to-accent bg-clip-text text-transparent"
+                  data-target={s.value}
+                  style={{
+                    width: `${Math.max(String(Math.abs(s.value)).length, 1)}ch`,
+                    display: "inline-block",
+                    textAlign: "center",
+                    fontVariantNumeric: "tabular-nums",
+                  }}
+                  className="text-4xl font-bold leading-none tracking-tight bg-gradient-to-br from-brand to-accent bg-clip-text text-transparent md:text-5xl"
                 >
-                  {isPublication ? "56" : "0"}
+                  0
                 </span>
 
-                {!isPublication && s.suffix && (
-                  <span className="text-2xl md:text-3xl font-bold text-brand">
+                {s.suffix && (
+                  <span className="text-2xl font-bold leading-none text-brand md:text-3xl">
                     {s.suffix}
                   </span>
                 )}
               </div>
 
-              <p className="mt-2 text-xs md:text-sm uppercase tracking-wider text-muted">
+              {/* Label */}
+              <p className="mt-2 flex min-h-[40px] w-full items-center justify-center text-xs leading-relaxed tracking-wider text-muted uppercase md:text-sm">
                 {s.label}
               </p>
             </>
           );
 
           // Publications: mở ResearchGate ở tab mới
-          if (href && config?.external) {
+          if (config?.external && config.href) {
             return (
               <a
-                key={s.label}
-                href={href}
+                key={`${s.label}-${index}`}
+                href={config.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${cardClass} cursor-pointer hover:border-brand/50`}
+                className={cardClass}
               >
                 {content}
               </a>
@@ -201,21 +137,21 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
           }
 
           // Members và Research areas: giữ locale hiện tại
-          if (href) {
+          if (config?.href) {
             return (
               <Link
-                key={s.label}
-                href={href}
-                className={`${cardClass} cursor-pointer hover:border-brand/50`}
+                key={`${s.label}-${index}`}
+                href={config.href}
+                className={cardClass}
               >
                 {content}
               </Link>
             );
           }
 
-          // Years active: không có link
+          // Years Active: không có link
           return (
-            <div key={s.label} className={cardClass}>
+            <div key={`${s.label}-${index}`} className={cardClass}>
               {content}
             </div>
           );

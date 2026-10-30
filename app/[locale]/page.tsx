@@ -27,7 +27,7 @@ export default async function Home({
     (sum, g) => sum + g.members.length,
     0
   );
-  const pubCount = parseBibtex(publicationsBibtex).length;
+  const pubCount = 56;
   const years = new Date().getFullYear() - 2023;
 
   const stats = [
