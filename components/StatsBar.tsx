@@ -14,42 +14,71 @@ export type Stat = {
   label: string;
 };
 
+type StatKey = "members" | "publications" | "research" | "years";
+
 const STAT_CONFIG: Record<
-  string,
+  StatKey,
   {
     order: number;
     href?: string;
     external?: boolean;
   }
 > = {
-  Members: {
+  members: {
     order: 1,
     href: "/members",
   },
 
-  Publications: {
+  publications: {
     order: 2,
     href: "https://www.researchgate.net/profile/Trong-Du-Nguyen",
     external: true,
   },
 
-  "Research areas": {
+  research: {
     order: 3,
     href: "/research",
   },
 
-  "Years active": {
+  years: {
     order: 4,
   },
 };
+
+// Nhận diện nhãn tiếng Anh và tiếng Việt
+function getStatKey(label: string): StatKey | undefined {
+  const normalized = label.trim().toLowerCase();
+
+  if (["members", "thành viên"].includes(normalized)) {
+    return "members";
+  }
+
+  if (["publications", "công bố"].includes(normalized)) {
+    return "publications";
+  }
+
+  if (
+    ["research areas", "hướng nghiên cứu"].includes(
+      normalized
+    )
+  ) {
+    return "research";
+  }
+
+  if (["years active", "năm hoạt động"].includes(normalized)) {
+    return "years";
+  }
+
+  return undefined;
+}
 
 export default function StatsBar({ stats }: { stats: Stat[] }) {
   const ref = useRef<HTMLDivElement>(null);
 
   // Sắp xếp thứ tự các thẻ
   const sortedStats = [...stats].sort((a, b) => {
-    const orderA = STAT_CONFIG[a.label]?.order ?? 999;
-    const orderB = STAT_CONFIG[b.label]?.order ?? 999;
+    const orderA = STAT_CONFIG[getStatKey(a.label) ?? "years"]?.order ?? 999;
+    const orderB = STAT_CONFIG[getStatKey(b.label) ?? "years"]?.order ?? 999;
 
     return orderA - orderB;
   });
@@ -61,9 +90,7 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Không bật chế độ giảm chuyển động
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Chỉ animate các chỉ số khác Publications
         const targets =
           ref.current!.querySelectorAll<HTMLElement>("[data-target]");
 
@@ -87,7 +114,6 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
           );
         });
 
-        // Animation xuất hiện cho các thẻ
         gsap.from(ref.current!.querySelectorAll(".stat-card"), {
           y: 30,
           opacity: 0,
@@ -102,7 +128,6 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
         });
       });
 
-      // Bật chế độ giảm chuyển động
       mm.add("(prefers-reduced-motion: reduce)", () => {
         ref.current!
           .querySelectorAll<HTMLElement>("[data-target]")
@@ -127,14 +152,14 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
         className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
       >
         {sortedStats.map((s) => {
-          const config = STAT_CONFIG[s.label];
+          const key = getStatKey(s.label);
+          const config = key ? STAT_CONFIG[key] : undefined;
           const href = config?.href;
-          const isPublication = s.label === "Publications";
+          const isPublication = key === "publications";
 
           const cardClass =
             "stat-card glow-hover block rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm px-5 py-6 md:px-6 md:py-7 text-center transition-all duration-300";
 
-          // Nội dung thẻ
           const content = (
             <>
               <div className="flex items-baseline justify-center gap-0.5">
@@ -160,8 +185,8 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
             </>
           );
 
-          // Publications: mở tab mới
-          if (href && config.external) {
+          // Publications: mở ResearchGate ở tab mới
+          if (href && config?.external) {
             return (
               <a
                 key={s.label}
@@ -175,7 +200,7 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
             );
           }
 
-          // Members và Research areas: chuyển trang nội bộ
+          // Members và Research areas: giữ locale hiện tại
           if (href) {
             return (
               <Link
